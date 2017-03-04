@@ -1,0 +1,60 @@
+html, body {
+    height: 100%;
+    background-color: #F2EEB3;
+}
+
+.navbar {
+    background-image: none;
+    background-color: #59323C;
+    border: none;
+    box-shadow: 0px 3px 10px #888888; 
+    -webkit-box-shadow: 0px 3px 10px #888888; /* Safari and Chrome */
+    -moz-box-shadow: 0px 3px 10px #888888; /* Firefox */
+    -ms-box-shadow: 0px 3px 10px #888888; /* IE 9 */
+    -o-box-shadow:0px 3px 10px #888888; /* Opera */
+}
+
+#FooterContainer {
+    background-color: #59323C;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}
+
+#CheckoutPayment {
+    margin-top: 80px;
+}
+
+#SocialMedia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#SocialMedia img {
+    height: 40px;
+    margin: 0px 10px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#SocialMedia img:hover {
+    transform:scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+}
+
+#Copyrights {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
