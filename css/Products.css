@@ -127,18 +127,51 @@ html, body {
 /*end of nav bar css*/
 
 .list-group{
-    font-family: 'Alegreya', serif;
-    font-size: 18px;
-    margin-top: 2em;
-    padding-top: 2em;
-    padding-left: -3em;
+    /*font-family: 'Alegreya', serif;*/
+    font-family: 'Pacifico', cursive;
+    font-size:18px;
+    padding-top: 2px;
     margin-left: -5em;
-    margin-right: 4em;
-    border-color:#614333;
+}
+
+
+.dropdown button{
+    font-family: 'Pacifico', cursive;
+    font-size:18px;
+    text-align: center;
+    color: #614333;
+    text-decoration: none;
+    padding: 0;
+}
+
+.dropdown button:hover{
+    background-color: #F8EEE7;
+    text-decoration: none;
+     color: #614333;
+}
+
+.dropdown button:active{
+    background-color: #F8EEE7;
+    border-color: #F8EEE7;
+    color: #614333;
+    text-decoration: none;
+}
+
+.dropdown ul{
+    font-family: 'Pacifico', cursive;
+    font-size:18px;
+    background-color: #F8EEE7;
+    color: #614333;
 }
 
 .list-group-item{
-    border-color: #614333;
+    font-family: 'Pacifico', cursive;
+    font-size:18px;
+    padding-top: 2em;
+    margin-right: 4em;
+    border-color:white;
+    text-align: center;
+    color: #614333;
 }
 
 .list-group-item:hover{
@@ -148,30 +181,45 @@ html, body {
 
 .carousel{
     margin-top: 1em;
+    margin-left: 4em;
+    margin-bottom: 2em;
 }
 .carousel .item img{
-    margin: 0 auto;  
+    height: 300px;
+    width: 1000px;
 }
 
 
 .bs-example{
-    margin:2em;
+    
     margin-top: 2em;
     padding-top: 2em;
 }
 
+#myCarousel{
+    height: 300px;
+    width: 1000px;
+}
+
+
 .thumbnail{
    font-family: 'Alegreya', serif;
    font-size: 18px;
-   margin-left:1em;
    
+}
+
+.thumbnail img{
+    height: 150px;
+    width: 150px;
 }
 
 .thumbnail:hover {
     border-color:#614333;
-    transform:scale(1.05);
 }
 
+.prod{
+    margin-top: 5em;
+}
 .caption h4{
     font-family: 'Satisfy', cursive;
     color: #614333;
