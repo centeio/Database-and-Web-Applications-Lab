@@ -150,8 +150,8 @@ html, body {
     padding-left: 20px;
 }
 
-#CheckoutPayment .panel-heading .pull-right {
-    padding-right: 10px;
+#CheckoutPayment .panel-heading .fa {
+    margin-right: 15px;
 }
 
 #CheckoutPayment .panel-heading .pull-right a {
