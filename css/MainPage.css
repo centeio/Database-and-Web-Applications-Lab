@@ -91,32 +91,62 @@ html, body {
         transform: translatex(-50%);
     }
 }
-
 .nav.navbar-nav.navbar-center a,
 .nav.navbar-nav.navbar-right a {
     color: #614333;
     text-shadow: none;
-    transition: all .5s ease;
-    -webkit-transition: all .2s ease; /* Safari and Chrome */
-    -moz-transition: all .2s ease; /* Firefox */
-    -ms-transition: all .2s ease; /* IE 9 */
-    -o-transition: all .2s ease; /* Opera */
+}
+
+@media only screen and (min-width: 768px) {
+    .nav.navbar-nav.navbar-center a,
+    .nav.navbar-nav.navbar-right a {
+        transition: all .5s ease;
+        -webkit-transition: all .2s ease; /* Safari and Chrome */
+        -moz-transition: all .2s ease; /* Firefox */
+        -ms-transition: all .2s ease; /* IE 9 */
+        -o-transition: all .2s ease; /* Opera */
+    }
+
+    .nav.navbar-nav.navbar-center a:hover,
+    .nav.navbar-nav.navbar-right a:hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1); /* Safari and Chrome */
+        -moz-transform: scale(1.1); /* Firefox */
+        -ms-transform: scale(1.1); /* IE 9 */
+        -o-transform: scale(1.1); /* Opera */
+}
 }
 
 .nav.navbar-nav.navbar-center a:hover,
 .nav.navbar-nav.navbar-right a:hover {
     color: #614333;
     text-shadow: none;
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1); /* Safari and Chrome */
-    -moz-transform: scale(1.1); /* Firefox */
-    -ms-transform: scale(1.1); /* IE 9 */
-    -o-transform: scale(1.1); /* Opera */
 }
 
 .nav.navbar-nav.navbar-right i {
     color: #614333;
     font-size: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .nav.navbar-nav.navbar-center .navbar-text {
+        display: none;
+    }
+
+    .nav.navbar-nav.navbar-right .navbar-icon {
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .nav.navbar-nav.navbar-center .navbar-text {
+        display: block;
+        margin: 0;
+    }
+
+    .nav.navbar-nav.navbar-right .navbar-icon {
+        display: none;
+    }
 }
 
 #mainpage-body {
@@ -135,6 +165,31 @@ html, body {
 .carousel-control,
 .item {
     border-radius: 4px;
+}
+
+.carousel-caption span {
+    font-family: 'Pacifico';
+    font-size: 50px;
+}
+
+@media only screen and (max-width: 580px) {
+    .carousel-caption span {
+        font-size: 20px;
+    }
+}
+
+#BestSellersTitle {
+    color: #614333;
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Satisfy', cursive;
+}
+
+@media only screen and (max-width: 580px) {
+    #BestSellersTitle {
+        font-size: 40px;
+    }
 }
 
 .caption {
@@ -163,18 +218,6 @@ html, body {
 .thumbnail .caption-full {
     padding: 9px;
     color: #333;
-}
-
-.carousel-caption h1 {
-    font-family: 'Pacifico';
-}
-
-#BestSellersTitle {
-    color: #614333;
-    font-size: 80px;
-    text-align: center;
-    margin-bottom: 40px;
-    font-family: 'Satisfy', cursive;
 }
 
 #BestSellers h4 {
