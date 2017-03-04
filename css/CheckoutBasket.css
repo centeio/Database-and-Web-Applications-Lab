@@ -122,6 +122,16 @@ html, body {
     color: #614333;
 }
 
+#Steps ul li.checked a {
+    background-color: white;
+    color: #614333;
+}
+
+#Steps ul li.checked a:hover {
+    background-color: #F8EEE7;
+    color: #614333;
+}
+
 #CheckoutBasket h1 {
     color: #614333;
     font-family: 'Satisfy', cursive;

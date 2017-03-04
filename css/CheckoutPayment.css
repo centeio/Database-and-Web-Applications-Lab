@@ -113,8 +113,23 @@ html, body {
     font-size: 20px;
 }
 
-#CheckoutPayment {
-    margin-top: 80px;
+#Steps {
+    margin-top: 60px;
+}
+
+#Steps ul li.active a {
+    background-color: #F8EEE7;
+    color: #614333;
+}
+
+#Steps ul li.checked a {
+    background-color: white;
+    color: #614333;
+}
+
+#Steps ul li.checked a:hover {
+    background-color: #F8EEE7;
+    color: #614333;
 }
 
 #CheckoutPayment .panel.panel-info {  
@@ -133,6 +148,10 @@ html, body {
     font-size: 20px;
     padding: 5px;
     padding-left: 20px;
+}
+
+#CheckoutPayment .panel-heading .pull-right {
+    padding-right: 10px;
 }
 
 #CheckoutPayment .panel-heading .pull-right a {
