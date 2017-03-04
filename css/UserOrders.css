@@ -1,0 +1,255 @@
+/*!
+ * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+html, body {
+    height: 100%;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+.navbar {
+    background-image: none;
+    background-color: #F8EEE7;
+    border: none;
+    box-shadow: 0px 1px 5px #777; 
+    -webkit-box-shadow: 0px 1px 5px #777; /* Safari and Chrome */
+    -moz-box-shadow: 0px 1px 5px #777; /* Firefox */
+    -ms-box-shadow: 0px 1px 5px #777; /* IE 9 */
+    -o-box-shadow: 0px 1px 5px #777; /* Opera */
+    margin: 0;
+}
+
+.navbar-header .navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    color: #73503C;
+    text-shadow: none;
+    -webkit-text-shadow: all .2s ease; /* Safari and Chrome */
+    -moz-text-shadow: all .2s ease; /* Firefox */
+    -ms-text-shadow: all .2s ease; /* IE 9 */
+    -o-text-shadow: all .2s ease; /* Opera */
+    transition: all .5s ease;
+    -webkit-transition: all .2s ease; /* Safari and Chrome */
+    -moz-transition: all .2s ease; /* Firefox */
+    -ms-transition: all .2s ease; /* IE 9 */
+    -o-transition: all .2s ease; /* Opera */
+}
+
+.navbar-header .navbar-brand:hover {
+    color: #73503C;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1); /* Safari and Chrome */
+    -moz-transform: scale(1.1); /* Firefox */
+    -ms-transform: scale(1.1); /* IE 9 */
+    -o-transform: scale(1.1); /* Opera */
+}
+
+@media only screen and (max-width: 1024px) {
+    .navbar-header .navbar-brand {
+        font-size: 20px;
+    }
+}
+
+.navbar-nav a {
+    font-family: 'Satisfy', cursive;
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .navbar-nav a {
+        font-size: 20px;
+    }
+}
+
+.navbar-nav.navbar-center > .active > a {
+    background-image: none;
+    background-color: inherit;
+    box-shadow: none;
+    -webkit-box-shadow: none; /* Safari and Chrome */
+    -moz-box-shadow: none; /* Firefox */
+    -ms-box-shadow: none; /* IE 9 */
+    -o-box-shadow: none; /* Opera */
+}
+
+.navbar-nav.navbar-center > .active > a:hover {
+    background-color: inherit;
+}
+
+@media only screen and (min-width: 1024px) {
+    .navbar-nav.navbar-center {
+        position: absolute;
+        left: 50%;
+        transform: translatex(-50%);
+    }
+}
+
+.nav.navbar-nav.navbar-center a,
+.nav.navbar-nav.navbar-right a {
+    color: #614333;
+    text-shadow: none;
+    transition: all .5s ease;
+    -webkit-transition: all .2s ease; /* Safari and Chrome */
+    -moz-transition: all .2s ease; /* Firefox */
+    -ms-transition: all .2s ease; /* IE 9 */
+    -o-transition: all .2s ease; /* Opera */
+}
+
+.nav.navbar-nav.navbar-center a:hover,
+.nav.navbar-nav.navbar-right a:hover {
+    color: #614333;
+    text-shadow: none;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1); /* Safari and Chrome */
+    -moz-transform: scale(1.1); /* Firefox */
+    -ms-transform: scale(1.1); /* IE 9 */
+    -o-transform: scale(1.1); /* Opera */
+}
+
+.nav.navbar-nav.navbar-right i {
+    color: #614333;
+    font-size: 20px;
+}
+
+#dashboard {
+    margin-top: 80px;
+}
+
+.panel-primary {
+    border-color: #FFF;
+}
+
+.panel-primary > .panel-heading {
+    color: #614333;
+    border-color: #F8EEE7;
+    background-color: #F8EEE7;
+	background-image: none;
+}
+
+.panel-primary > a {
+    color: #F8EEE7;
+}
+
+.panel-primary > a:hover {
+    color: #59323C;
+}
+
+#Orders h1 {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+}
+
+#Orders table th {
+    border-color: #614333;
+}
+
+#Orders table.table.total-price tbody tr:first-child td {
+    border-top: 2px solid #614333;
+}
+
+#Orders table.table.total-price tbody td {
+    border: none;
+}
+
+#Orders table thead {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 25px;
+}
+
+#Orders table tbody a {
+    color: #614333;
+}
+
+#Orders table tbody a:hover {
+    text-decoration: none;
+}
+
+#Orders table tbody input {
+    text-align: center;
+}
+
+#Orders tbody .thumbnail.pull-left:hover {
+    border-color: #614333;
+}
+
+#Orders img {
+    width: 152px; 
+    height: 72px;
+}
+
+#Orders table button.btn.remove {
+    border: 1px solid #614333;
+    background-color: #eee;
+    transition: all .5s ease;
+    -webkit-transition: all .1s ease; /* Safari and Chrome */
+    -moz-transition: all .1s ease; /* Firefox */
+    -ms-transition: all .1s ease; /* IE 9 */
+    -o-transition: all .1s ease; /* Opera */
+}
+
+#Orders table button.btn.remove:hover {
+    transform:scale(1.25);
+    -webkit-transform:scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:scale(1.05); /* Opera */
+}
+
+#Orders table button.btn.remove i {
+    color: #614333;
+}
+
+.media-body > *{
+    margin-left: 20px;
+}
+
+#Total {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+}
+
+#footer {
+    background-color: #F8EEE7;
+}
+
+#SocialMedia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#SocialMedia i {
+    font-size: 40px;
+    color: #614333;
+    margin: 0px 10px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#SocialMedia i:hover {
+    color: #614333;
+    transform:scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+}
+
+#Copyrights {
+    color: #614333;
+    text-align: center;
+    margin-top: 20px;
+}
