@@ -39,7 +39,7 @@ html, body {
 }
 
 .navbar-header .navbar-brand:hover {
-     color: #73503C;
+    color: #73503C;
     transform: scale(1.1);
     -webkit-transform: scale(1.1); /* Safari and Chrome */
     -moz-transform: scale(1.1); /* Firefox */
@@ -55,12 +55,12 @@ html, body {
 
 .navbar-nav a {
     font-family: 'Satisfy', cursive;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 @media only screen and (max-width: 1024px) {
     .navbar-nav a {
-        font-size: 15px;
+        font-size: 20px;
     }
 }
 
