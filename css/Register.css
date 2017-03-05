@@ -1,0 +1,255 @@
+
+/*!
+ * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+html, body {
+    height: 100%;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+.navbar {
+    background-image: none;
+    background-color: #F8EEE7;
+    border: none;
+    box-shadow: 0px 1px 5px #777; 
+    -webkit-box-shadow: 0px 1px 5px #777; /* Safari and Chrome */
+    -moz-box-shadow: 0px 1px 5px #777; /* Firefox */
+    -ms-box-shadow: 0px 1px 5px #777; /* IE 9 */
+    -o-box-shadow: 0px 1px 5px #777; /* Opera */
+    margin: 0;
+}
+
+.navbar-header .navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    color: #73503C;
+    text-shadow: none;
+    -webkit-text-shadow: all .2s ease; /* Safari and Chrome */
+    -moz-text-shadow: all .2s ease; /* Firefox */
+    -ms-text-shadow: all .2s ease; /* IE 9 */
+    -o-text-shadow: all .2s ease; /* Opera */
+    transition: all .5s ease;
+    -webkit-transition: all .2s ease; /* Safari and Chrome */
+    -moz-transition: all .2s ease; /* Firefox */
+    -ms-transition: all .2s ease; /* IE 9 */
+    -o-transition: all .2s ease; /* Opera */
+}
+
+.navbar-header .navbar-brand:hover {
+    color: #73503C;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1); /* Safari and Chrome */
+    -moz-transform: scale(1.1); /* Firefox */
+    -ms-transform: scale(1.1); /* IE 9 */
+    -o-transform: scale(1.1); /* Opera */
+}
+
+@media only screen and (max-width: 1024px) {
+    .navbar-header .navbar-brand {
+        font-size: 20px;
+    }
+}
+
+.navbar-nav a {
+    font-family: 'Satisfy', cursive;
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .navbar-nav a {
+        font-size: 20px;
+    }
+}
+
+.navbar-nav.navbar-center > .active > a {
+    background-image: none;
+    background-color: inherit;
+    box-shadow: none;
+    -webkit-box-shadow: none; /* Safari and Chrome */
+    -moz-box-shadow: none; /* Firefox */
+    -ms-box-shadow: none; /* IE 9 */
+    -o-box-shadow: none; /* Opera */
+}
+
+.navbar-nav.navbar-center > .active > a:hover {
+    background-color: inherit;
+}
+
+@media only screen and (min-width: 1024px) {
+    .navbar-nav.navbar-center {
+        position: absolute;
+        left: 50%;
+        transform: translatex(-50%);
+    }
+}
+
+.nav.navbar-nav.navbar-center a,
+.nav.navbar-nav.navbar-right a {
+    color: #614333;
+    text-shadow: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .nav.navbar-nav.navbar-center a,
+    .nav.navbar-nav.navbar-right a {
+        transition: all .5s ease;
+        -webkit-transition: all .2s ease; /* Safari and Chrome */
+        -moz-transition: all .2s ease; /* Firefox */
+        -ms-transition: all .2s ease; /* IE 9 */
+        -o-transition: all .2s ease; /* Opera */
+    }
+
+    .nav.navbar-nav.navbar-center a:hover,
+    .nav.navbar-nav.navbar-right a:hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1); /* Safari and Chrome */
+        -moz-transform: scale(1.1); /* Firefox */
+        -ms-transform: scale(1.1); /* IE 9 */
+        -o-transform: scale(1.1); /* Opera */
+}
+}
+
+.nav.navbar-nav.navbar-center a:hover,
+.nav.navbar-nav.navbar-right a:hover {
+    color: #614333;
+    text-shadow: none;
+}
+
+.nav.navbar-nav.navbar-right i {
+    color: #614333;
+    font-size: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .nav.navbar-nav.navbar-center .navbar-text {
+        display: none;
+    }
+
+    .nav.navbar-nav.navbar-right .navbar-icon {
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .nav.navbar-nav.navbar-center .navbar-text {
+        display: block;
+        margin: 0;
+    }
+
+    .nav.navbar-nav.navbar-right .navbar-icon {
+        display: none;
+    }
+}
+
+#wrapper {
+    margin-top: 100px;
+}
+
+a:active {
+    background-color: #F8EEE7;
+}
+.panel-login {
+    border-color: #F8EEE7;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+	color: #F8EEE7;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-login>.panel-heading a{
+	text-decoration: none;
+    font-family: 'Satisfy', cursive;
+	color: #614333;
+	font-size: 20px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+
+.panel-login>.panel-heading hr{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	clear: both;
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+	height: 45px;
+	border: 1px solid #F8EEE7;
+	font-size: 16px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login input:hover,
+.panel-login input:focus {
+	outline:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-color: #F8EEE7;
+}
+.btn-login {
+    font-family: 'Satisfy', cursive;
+	background-color:#F8EEE7 ;
+	outline: none;
+	color: #73503C;
+	font-size: 20px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	border-color: #F8EEE7;
+}
+.btn-login:hover,
+.btn-login:focus {
+	color: #73503C;
+	background-color: #F8EEE7;
+	border-color: #F8EEE7;
+}
+.forgot-password {
+	text-decoration: underline;
+	color: #73503C;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+	text-decoration: underline;
+	color: #73503C;
+}
+
+.btn-register {
+    font-family: 'Satisfy', cursive;
+
+	background-color: #F8EEE7;
+	outline: none;
+	color: #73503C;
+	font-size: 20px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	border-color: #F8EEE7;
+}
+.btn-register:hover,
+.btn-register:focus {
+	color: #73503C;
+	background-color: #F8EEE7;
+	border-color: #F8EEE7;
+}
+
