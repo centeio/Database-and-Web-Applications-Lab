@@ -64,6 +64,14 @@ textarea {
     background-color: #F8EEE7;
 }
 
+@media(min-width: 992px) {
+    #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
 #SocialMedia {
     text-align: center;
     margin-top: 20px;
