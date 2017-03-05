@@ -1,9 +1,3 @@
-/*!
- * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-
 html, body {
     height: 100%;
     background-color: white;
@@ -155,7 +149,7 @@ html, body {
 .carousel{
     margin-top: 1em;
     margin-left: 4em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 .carousel .item img{
     height: 500px;
@@ -171,23 +165,8 @@ html, body {
 #myCarousel{
     height: 500px;
     width: 1000px;
-}/*
-.slide-image {
-    width: 80%;
 }
 
-.carousel-holder {
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.carousel-control,
-.item {
-    border-radius: 4px;
-    margin:0;
-    padding: 0;
-}
-*/
 .carousel-caption span {
     font-family: 'Pacifico';
     font-size: 50px;
@@ -199,19 +178,6 @@ html, body {
     }
 }
 
-#BestSellersTitle {
-    color: #614333;
-    font-size: 80px;
-    text-align: center;
-    margin-bottom: 40px;
-    font-family: 'Satisfy', cursive;
-}
-
-@media only screen and (max-width: 580px) {
-    #BestSellersTitle {
-        font-size: 40px;
-    }
-}
 
 .caption {
     height: 200px;
@@ -223,7 +189,7 @@ html, body {
 }
 
 
-
+/*Footer*/
 #footer {
     background-color: #F8EEE7;
 }
