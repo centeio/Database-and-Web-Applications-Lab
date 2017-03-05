@@ -142,6 +142,24 @@ html, body {
     color: #59323C;
 }
 
+#Orders .panel-heading {
+    background-image: linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -o-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -moz-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -webkit-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-color: #F8EEE7;
+    border-bottom: 1px solid #f2e0d3;
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 20px;
+}
+
+#Orders .panel.panel-info {  
+    border: 1px solid #f2e0d3;
+}
+
 #Orders h1 {
     color: #614333;
     font-family: 'Satisfy', cursive;
