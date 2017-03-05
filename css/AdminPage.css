@@ -96,58 +96,27 @@ html, body {
 .nav.navbar-nav.navbar-right a {
     color: #614333;
     text-shadow: none;
-}
-
-@media only screen and (min-width: 768px) {
-    .nav.navbar-nav.navbar-center a,
-    .nav.navbar-nav.navbar-right a {
-        transition: all .5s ease;
-        -webkit-transition: all .2s ease; /* Safari and Chrome */
-        -moz-transition: all .2s ease; /* Firefox */
-        -ms-transition: all .2s ease; /* IE 9 */
-        -o-transition: all .2s ease; /* Opera */
-    }
-
-    .nav.navbar-nav.navbar-center a:hover,
-    .nav.navbar-nav.navbar-right a:hover {
-        transform: scale(1.1);
-        -webkit-transform: scale(1.1); /* Safari and Chrome */
-        -moz-transform: scale(1.1); /* Firefox */
-        -ms-transform: scale(1.1); /* IE 9 */
-        -o-transform: scale(1.1); /* Opera */
-}
+    transition: all .5s ease;
+    -webkit-transition: all .2s ease; /* Safari and Chrome */
+    -moz-transition: all .2s ease; /* Firefox */
+    -ms-transition: all .2s ease; /* IE 9 */
+    -o-transition: all .2s ease; /* Opera */
 }
 
 .nav.navbar-nav.navbar-center a:hover,
 .nav.navbar-nav.navbar-right a:hover {
     color: #614333;
     text-shadow: none;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1); /* Safari and Chrome */
+    -moz-transform: scale(1.1); /* Firefox */
+    -ms-transform: scale(1.1); /* IE 9 */
+    -o-transform: scale(1.1); /* Opera */
 }
 
 .nav.navbar-nav.navbar-right i {
     color: #614333;
     font-size: 20px;
-}
-
-@media only screen and (min-width: 768px) {
-    .nav.navbar-nav.navbar-center .navbar-text {
-        display: none;
-    }
-
-    .nav.navbar-nav.navbar-right .navbar-icon {
-        display: inline-block;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .nav.navbar-nav.navbar-center .navbar-text {
-        display: block;
-        margin: 0;
-    }
-
-    .nav.navbar-nav.navbar-right .navbar-icon {
-        display: none;
-    }
 }
 
 #AdminDashboard {
@@ -169,21 +138,15 @@ html, body {
     color: #F8EEE7;
 }
 
- .panel-primary > a:hover {
+.panel-primary > a:hover {
     color: #59323C;
 }
 
-h1 {
-    color: #614333;
-    font-family: 'Satisfy', cursive;
-    font-size: 50px;
-}
-
-#charts .panel.panel-info {  
+#EditProfile .panel.panel-info {  
     border: 1px solid #f2e0d3;
 }
 
-#charts .panel-heading {
+#EditProfile .panel-heading {
     background-image: linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
     background-image: -o-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
     background-image: -moz-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
@@ -197,11 +160,11 @@ h1 {
     padding-left: 20px;
 }
 
-#charts .panel-heading .pull-right {
+#EditProfile .panel-heading .pull-right {
     padding-right: 10px;
 }
 
-#charts .panel-heading .pull-right a {
+#EditProfile .panel-heading .pull-right a {
     color: #614333;
     font-size: 20px;
     transition: all .5s ease;
@@ -210,7 +173,8 @@ h1 {
     -ms-transition: all .2s ease; /* IE 9 */
     -o-transition: all .2s ease; /* Opera */
 }
-#charts .panel-heading .pull-right a:hover {
+
+#EditProfile .panel-heading .pull-right a:hover {
     color: #614333;
     text-decoration: none;
     font-size: 22px;
