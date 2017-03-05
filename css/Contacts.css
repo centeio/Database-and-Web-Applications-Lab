@@ -26,7 +26,7 @@ html, body {
     font-family: 'Pacifico', cursive;
     font-size: 30px;
     color: #73503C;
-    text-shadow: none;
+     text-shadow: none;
     -webkit-text-shadow: all .2s ease; /* Safari and Chrome */
     -moz-text-shadow: all .2s ease; /* Firefox */
     -ms-text-shadow: all .2s ease; /* IE 9 */
@@ -53,14 +53,15 @@ html, body {
     }
 }
 
+
 .navbar-nav a {
     font-family: 'Satisfy', cursive;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 @media only screen and (max-width: 1024px) {
     .navbar-nav a {
-        font-size: 20px;
+        font-size: 15px;
     }
 }
 
@@ -90,32 +91,22 @@ html, body {
 .nav.navbar-nav.navbar-right a {
     color: #614333;
     text-shadow: none;
-}
-
-@media only screen and (min-width: 768px) {
-    .nav.navbar-nav.navbar-center a,
-    .nav.navbar-nav.navbar-right a {
-        transition: all .5s ease;
-        -webkit-transition: all .2s ease; /* Safari and Chrome */
-        -moz-transition: all .2s ease; /* Firefox */
-        -ms-transition: all .2s ease; /* IE 9 */
-        -o-transition: all .2s ease; /* Opera */
-    }
-
-    .nav.navbar-nav.navbar-center a:hover,
-    .nav.navbar-nav.navbar-right a:hover {
-        transform: scale(1.1);
-        -webkit-transform: scale(1.1); /* Safari and Chrome */
-        -moz-transform: scale(1.1); /* Firefox */
-        -ms-transform: scale(1.1); /* IE 9 */
-        -o-transform: scale(1.1); /* Opera */
-    }
+    transition: all .5s ease;
+    -webkit-transition: all .2s ease; /* Safari and Chrome */
+    -moz-transition: all .2s ease; /* Firefox */
+    -ms-transition: all .2s ease; /* IE 9 */
+    -o-transition: all .2s ease; /* Opera */
 }
 
 .nav.navbar-nav.navbar-center a:hover,
 .nav.navbar-nav.navbar-right a:hover {
     color: #614333;
     text-shadow: none;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1); /* Safari and Chrome */
+    -moz-transform: scale(1.1); /* Firefox */
+    -ms-transform: scale(1.1); /* IE 9 */
+    -o-transform: scale(1.1); /* Opera */
 }
 
 .nav.navbar-nav.navbar-right i {
@@ -123,81 +114,75 @@ html, body {
     font-size: 20px;
 }
 
-@media only screen and (min-width: 768px) {
-    .nav.navbar-nav.navbar-center .navbar-text {
-        display: none;
-    }
-
-    .nav.navbar-nav.navbar-right .navbar-icon {
-        display: inline-block;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .nav.navbar-nav.navbar-center .navbar-text {
-        display: block;
-        margin: 0;
-    }
-
-    .nav.navbar-nav.navbar-right .navbar-icon {
-        display: none;
-    }
-}
-
 /*end navbar*/
-.container {
-    margin-top: 70px;
-}
 
-.panel.panel-default {
-    border: 1px solid #f2e0d3;
-    font-size: 15px;
-    background-color: white;
-    border-color: none;
-    color: #614333;
-}
-
-.panel-default > .panel-heading{
+.panel h5{
     font-family: 'Satisfy', cursive;
     text-align: center;
     color: #614333;
     font-size: 20px;
-    background-image: linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
-    background-image: -o-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
-    background-image: -moz-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
-    background-image: -webkit-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
-    background-color: #F8EEE7;
-    border: none;
+}
+.panel{
+    margin: 4em;
+    margin-top: 5em;
+    font-family: 'Alegreya', serif;
+    font-size: 15px;
+    background-color: white;
+    border-color:#614333;
+    color: #614333;
 }
 
-.panel-default > .panel-body {
-    padding: 10%;
-}
-
-.panel a {
+.panel a{
    color: #614333;
    font-size: 20px;
+
+}
+.panel input:hover{
+    border-color:#614333;
+}
+
+
+.panel-default{
+    padding: 1em;
+}
+
+.btn{
+    margin-left: 6em;
+}
+
+.btn:hover{
+    border-color:#614333;
+}
+
+.contacts{
+     margin-top: 6em;
+     margin-left: 3em;
 }
 
 textarea {
    resize: none;
 }
 
-.contacts {
+textarea:hover{
+    border-color:#614333;
+}
+
+.contacts h4 {
+    font-family: 'Satisfy', cursive;
+    text-align: center;
+    color: #614333;
+    font-size: 30px;
+}
+
+.contacts{
+    font-family: 'Alegreya', serif;
     font-size: 15px;
     color: #614333;
-    text-align: center;
 }
 
-.contacts h2 {
-    font-family: 'Satisfy', cursive;
-    color: #614333;
-    font-size: 50px;
-    margin-bottom: 20px;
-}
-
-.contacts a {
+.contacts a{
     text-decoration: none;
+    font-family: 'Alegreya', serif;
     font-size: 15px;
     color: #614333;
 }
@@ -206,8 +191,17 @@ textarea {
     font-weight: bold;
 }
 
+/*footer*/
 #footer {
     background-color: #F8EEE7;
+}
+
+@media(min-width: 992px) {
+    #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
 }
 
 #SocialMedia {
