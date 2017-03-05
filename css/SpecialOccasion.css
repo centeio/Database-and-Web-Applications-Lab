@@ -149,45 +149,24 @@ html, body {
     }
 }
 
-#mainpage-body {
+#specialOccasion-body {
     margin-top: 50px;
 }
-.carousel{
-    margin-top: 1em;
-    margin-left: 4em;
-    margin-bottom: 2em;
-}
-.carousel .item img{
-    height: 500px;
-    width: 1000px;
-}
 
-
-.bs-example{
-    margin-top: 1em;
-    padding-top: 2em;
-}
-
-#myCarousel{
-    height: 500px;
-    width: 1000px;
-}/*
 .slide-image {
-    width: 80%;
+    width: 100%;
 }
 
 .carousel-holder {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .carousel-control,
 .item {
     border-radius: 4px;
-    margin:0;
-    padding: 0;
 }
-*/
+
 .carousel-caption span {
     font-family: 'Pacifico';
     font-size: 50px;
@@ -222,10 +201,11 @@ html, body {
     white-space: nowrap;
 }
 
-
-
 #footer {
     background-color: #F8EEE7;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 #SocialMedia {
