@@ -1,9 +1,9 @@
-
 /*!
  * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+
 
 html, body {
     height: 100%;
@@ -170,21 +170,11 @@ html, body {
     color: #F8EEE7;
 }
 
- .panel-primary > a:hover {
+.panel-primary > a:hover {
     color: #59323C;
 }
 
-h1 {
-    color: #614333;
-    font-family: 'Satisfy', cursive;
-    font-size: 50px;
-}
-
-#charts .panel.panel-info {  
-    border: 1px solid #f2e0d3;
-}
-
-#charts .panel-heading {
+#Clients .panel-heading {
     background-image: linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
     background-image: -o-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
     background-image: -moz-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
@@ -198,102 +188,56 @@ h1 {
     padding-left: 20px;
 }
 
-#charts .panel-heading .pull-right {
-    padding-right: 10px;
-}
-
-#charts .panel-heading .pull-right a {
-    color: #614333;
-    font-size: 20px;
-    transition: all .5s ease;
-    -webkit-transition: all .2s ease; /* Safari and Chrome */
-    -moz-transition: all .2s ease; /* Firefox */
-    -ms-transition: all .2s ease; /* IE 9 */
-    -o-transition: all .2s ease; /* Opera */
-}
-#charts .panel-heading .pull-right a:hover {
-    color: #614333;
-    text-decoration: none;
-    font-size: 22px;
-}
-
-
-#Orders .panel.panel-info {  
+#Clients .panel.panel-info {  
     border: 1px solid #f2e0d3;
 }
 
-#Orders .panel-heading {
-    background-image: linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
-    background-image: -o-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
-    background-image: -moz-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
-    background-image: -webkit-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
-    background-color: #F8EEE7;
-    border-bottom: 1px solid #f2e0d3;
+#Clients h1 {
     color: #614333;
     font-family: 'Satisfy', cursive;
-    font-size: 20px;
-    padding: 5px;
-    padding-left: 20px;
+    font-size: 40px;
 }
 
-#Orders .panel-heading .pull-right {
-    padding-right: 10px;
-}
-
-#Orders .panel-heading .pull-right a {
-    color: #614333;
-    font-size: 20px;
-    transition: all .5s ease;
-    -webkit-transition: all .2s ease; /* Safari and Chrome */
-    -moz-transition: all .2s ease; /* Firefox */
-    -ms-transition: all .2s ease; /* IE 9 */
-    -o-transition: all .2s ease; /* Opera */
-}
-#Orders .panel-heading .pull-right a:hover {
-    color: #614333;
-    text-decoration: none;
-    font-size: 22px;
-}
-#Orders table th {
+#Clients table th {
     border-color: #614333;
 }
 
-#Orders table.table.total-price tbody tr:first-child td {
+#Clients table.table.total-price tbody tr:first-child td {
     border-top: 2px solid #614333;
 }
 
-#Orders table.table.total-price tbody td {
+#Clients table.table.total-price tbody td {
     border: none;
 }
 
-#Orders table thead {
+#Clients table thead {
     color: #614333;
     font-family: 'Satisfy', cursive;
     font-size: 25px;
 }
 
-#Orders table tbody a {
+#Clients table tbody a {
     color: #614333;
 }
 
-#Orders table tbody a:hover {
+#Clients table tbody a:hover {
     text-decoration: none;
 }
 
-#Orders table tbody input {
+#Clients table tbody input {
     text-align: center;
 }
 
-#Orders tbody .thumbnail.pull-left:hover {
+#Clients tbody .thumbnail.pull-left:hover {
     border-color: #614333;
 }
 
-#Orders img {
+#Clients img {
     width: 152px; 
     height: 72px;
 }
 
-#Orders table button.btn.remove {
+#Clients table button.btn.remove {
     border: 1px solid #614333;
     background-color: #eee;
     transition: all .5s ease;
@@ -303,7 +247,7 @@ h1 {
     -o-transition: all .1s ease; /* Opera */
 }
 
-#Orders table button.btn.remove:hover {
+#Clients table button.btn.remove:hover {
     transform:scale(1.25);
     -webkit-transform:scale(1.05); /* Safari and Chrome */
     -moz-transform:scale(1.05); /* Firefox */
@@ -311,7 +255,7 @@ h1 {
     -o-transform:scale(1.05); /* Opera */
 }
 
-#Orders table button.btn.remove i {
+#Clients table button.btn.remove i {
     color: #614333;
 }
 
@@ -358,5 +302,4 @@ h1 {
     color: #614333;
     text-align: center;
     margin-top: 20px;
-
 }
