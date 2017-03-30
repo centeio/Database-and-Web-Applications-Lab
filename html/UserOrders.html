@@ -1,0 +1,374 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Charlie&Wonka</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Italianno" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mate+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Upright" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Della+Respira" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/518af292f4.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="../css/UserOrders.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="page-wrapper">
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    <a class="navbar-brand" href="MainPage.html"> &bull;Charlie&Wonka&bull;</a>
+                </div>
+                <div id="myNavbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-center">
+                        <li class="active"><a href="#">Products</a></li>
+                        <li><a href="#">Special Occasions</a></li>
+                        <li><a href="AboutPage.html">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div id="dashboard" class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-lg-offset-3">
+                    <a href="#">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-user fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">26</div>
+                                        <div>Edit Profile</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <a href="UserOrders.html">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-gift fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">12</div>
+                                        <div>Orders</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <a href="#">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-heart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>Favorites</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <!-- /.row -->
+            <!--       <h1 id="thank-you" class="col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3"> Your Orders </h1> -->
+
+            <div id="Orders" class="container-fluid">
+                <div class="row">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Order #6485</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <p>
+                                        <em>Date: 4th March, 2017</em>
+                                    </p>
+
+                                    <p>
+                                        <em>Status: <span class="text-warning"><strong>Shipped</strong></em>
+                                    </p>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                                    <address>
+                                        <strong>Elf Cafe</strong>
+                                        <br> 2135 Sunset Blvd
+                                        <br> Los Angeles, CA 90026
+                                        <br>
+                                        <abbr title="Phone">P:</abbr> (213) 484-6829
+                                    </address>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th class="text-center">Quantity</th>
+                                                <th class="text-center">Price</th>
+                                                <th class="text-center">Total</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-sm-8 col-md-6 col-xs-12 col-lg-6">
+                                                    <div class="media">
+                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/FirstProduct.jpeg"> </a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">Mackie Bars</a></h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-sm-1 col-md-1" style="text-align: center"><strong>1</strong></td>
+                                                <td class="col-sm-1 col-md-1 text-center"><strong>$24.99</strong></td>
+                                                <td class="col-sm-1 col-md-1 text-center"><strong>$24.99</strong></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-6">
+                                                    <div class="media">
+                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/SecondProduct.jpg"> </a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">Hot Chocolate</a></h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-1" style="text-align: center">
+                                                    <strong>1</strong> </td>
+                                                <td class="col-md-1 text-center"><strong>$64.99</strong></td>
+                                                <td class="col-md-1 text-center"><strong>$64.99</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table total-price">
+                                        <tbody>
+                                            <tr>
+                                                <tr>
+                                                    <td class="col-lg-9 col-md-9"> </td>
+                                                    <td>
+                                                        <h5>Subtotal</h5>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h5><strong>$89.98</strong></h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-lg-9 col-md-9"> </td>
+                                                    <td>
+                                                        <h5>Shipping</h5>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h5><strong>$6.00</strong></h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-lg-9 col-md-9"> </td>
+                                                    <td>
+                                                        <h3 id="Total">Total</h3>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h3><strong>$95.98</strong></h3>
+                                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Order #5846</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <p>
+                                        <em>Date: 6th Feb, 2017</em>
+                                    </p>
+
+                                    <p>
+                                        <em>Status: <span class="text-success"><strong>Delivered</strong></em>
+                                    </p>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                                    <address>
+                                        <strong>Elf Cafe</strong>
+                                        <br> 2135 Sunset Blvd
+                                        <br> Los Angeles, CA 90026
+                                        <br>
+                                        <abbr title="Phone">P:</abbr> (213) 484-6829
+                                    </address>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th class="text-center">Quantity</th>
+                                                <th class="text-center">Price</th>
+                                                <th class="text-center">Total</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-md-6">
+                                                    <div class="media">
+                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/ThirdProduct.jpg"> </a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">Doisy&Dam</a></h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-1" style="text-align: center"><strong>1</strong>
+                                                </td>
+                                                <td class="col-md-1 text-center"><strong>$74.99</strong></td>
+                                                <td class="col-md-1 text-center"><strong>$74.99</strong></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-6">
+                                                    <div class="media">
+                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/FifthProduct.jpg"> </a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">Strawberry Bundle II</a></h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-1" style="text-align: center"><strong>2</strong></td>
+                                                <td class="col-md-1 text-center"><strong>$94.99</strong></td>
+                                                <td class="col-md-1 text-center"><strong>$189.98</strong></td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <table class="table total-price">
+                                        <tbody>
+                                            <tr>
+                                                <tr>
+                                                    <td class="col-lg-9 col-md-9"> </td>
+                                                    <td>
+                                                        <h5>Subtotal</h5>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h5><strong>$264.97</strong></h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-lg-9 col-md-9"> </td>
+                                                    <td>
+                                                        <h5>Shipping</h5>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h5><strong>$6.00</strong></h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-lg-9 col-md-9"> </td>
+                                                    <td>
+                                                        <h3 id="Total">Total</h3>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h3><strong>$270.97</strong></h3>
+                                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    </div id="page-wrapper">
+
+    <div id="footer" class="container-fluid">
+        <div id="SocialMedia" class="col-md-12">
+            <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+        <div id="Copyrights" class="col-md-12">
+            <span> ©2017 Charlie&Wonka.com. All rights reserved. </span>
+        </div>
+    </div>
+
+</body>
+
+</html>
