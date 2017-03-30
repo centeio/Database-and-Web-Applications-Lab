@@ -1,0 +1,130 @@
+#Steps {
+    margin-top: 60px;
+}
+
+#Steps ul li.active a {
+    background-color: #F8EEE7;
+    color: #614333;
+}
+
+#Steps ul li.checked a {
+    background-color: white;
+    color: #614333;
+}
+
+#Steps ul li.checked a:hover {
+    background-color: #F8EEE7;
+    color: #614333;
+}
+
+#CheckoutBasket h1 {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+}
+
+#CheckoutBasket table th {
+    border-color: #614333;
+}
+
+#CheckoutBasket table.table.total-price tbody tr:first-child td {
+    border-top: 2px solid #614333;
+}
+
+#CheckoutBasket table.table.total-price tbody td {
+    border: none;
+}
+
+#CheckoutBasket table thead {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 25px;
+}
+
+#CheckoutBasket table tbody a {
+    color: #614333;
+}
+
+#CheckoutBasket table tbody a:hover {
+    text-decoration: none;
+}
+
+#CheckoutBasket table tbody input {
+    text-align: center;
+}
+
+#CheckoutBasket tbody .thumbnail.pull-left:hover {
+    border-color: #614333;
+}
+
+#CheckoutBasket img {
+    width: 152px; 
+    height: 72px;
+}
+
+#CheckoutBasket table button.btn.remove {
+    border: 1px solid #614333;
+    background-color: #eee;
+    transition: all .5s ease;
+    -webkit-transition: all .1s ease; /* Safari and Chrome */
+    -moz-transition: all .1s ease; /* Firefox */
+    -ms-transition: all .1s ease; /* IE 9 */
+    -o-transition: all .1s ease; /* Opera */
+}
+
+#CheckoutBasket table button.btn.remove:hover {
+    transform:scale(1.25);
+    -webkit-transform:scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:scale(1.05); /* Opera */
+}
+
+#CheckoutBasket table button.btn.remove i {
+    color: #614333;
+}
+
+.media-body > *{
+    margin-left: 20px;
+}
+
+#Total {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+}
+
+#footer {
+    background-color: #F8EEE7;
+}
+
+#SocialMedia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#SocialMedia i {
+    font-size: 40px;
+    color: #614333;
+    margin: 0px 10px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#SocialMedia i:hover {
+    color: #614333;
+    transform:scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+}
+
+#Copyrights {
+    color: #614333;
+    text-align: center;
+    margin-top: 20px;
+}

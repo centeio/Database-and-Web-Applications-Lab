@@ -1,0 +1,104 @@
+.container {
+    margin-top: 70px;
+}
+
+.panel.panel-default {
+    border: 1px solid #f2e0d3;
+    font-size: 15px;
+    background-color: white;
+    border-color: none;
+}
+
+.panel-default > .panel-heading {
+    padding: 5px 15px;
+    font-family: 'Satisfy', cursive;
+    text-align: center;
+    color: #614333;
+    font-size: 25px;
+    background-image: linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -o-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -moz-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -webkit-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-color: #F8EEE7;
+    border: none;
+}
+
+.panel-default > .panel-body {
+    padding: 10%;
+}
+
+.panel a {
+   color: #614333;
+   font-size: 20px;
+}
+
+textarea {
+   resize: none;
+}
+
+.contacts {
+    font-size: 15px;
+    text-align: center;
+}
+
+.contacts h2 {
+    font-family: 'Satisfy', cursive;
+    color: #614333;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.contacts strong {
+    color: #614333;
+}
+
+.contacts a {
+    color: inherit;
+}
+
+.contacts a:hover {
+    text-decoration: none;
+}
+
+#footer {
+    background-color: #F8EEE7;
+}
+
+@media(min-width: 992px) {
+    #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+#SocialMedia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#SocialMedia i {
+    font-size: 40px;
+    color: #614333;
+    margin: 0px 10px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#SocialMedia i:hover {
+    color: #614333;
+    transform:scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+}
+
+#Copyrights {
+    color: #614333;
+    text-align: center;
+    margin-top: 20px;
+}

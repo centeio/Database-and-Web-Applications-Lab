@@ -1,0 +1,153 @@
+#ProductInformation {
+    margin-top: 60px;
+}
+
+.product-details {
+    margin-top: 60px;
+}
+
+.product-details h4{
+    font-family: 'Satisfy', cursive;
+    color: #614333;
+    font-size: 25px;
+}
+
+.product-details p{
+    font-family: 'Alegreya', serif;
+    color: #614333;
+    font-size: 20px;
+}
+
+.dropdown button{
+    background-image: none;
+    font-family: 'Alegreya', serif;
+    text-align: center;
+    color: #614333;
+    padding: 10px 15em;
+    font-size: 20px;
+    border-radius: 0%;   
+    background-color: #F8EEE7;
+}
+
+.dropdown-menu{
+    margin-right: -20px;
+    padding: 1em;
+    background-color: #F8EEE7;
+    color: #614333;
+}
+
+button.btn:hover{
+    background-color: #F8EEE7;
+}
+
+.dropdown ul{
+    border-radius: 0%;
+}
+
+p.details{
+    text-align: justify;
+    font-family: 'Alegreya', serif;
+    font-size: 15px;
+}
+
+.bs-example{
+    padding-top: 2em;
+}
+
+#myCarousel{
+    height: 300px;
+    width: 300px;
+}
+
+.carousel{
+    margin-top: 1em;
+    margin-left: 4em;
+    margin-bottom: 2em;
+}
+
+.carousel .item img{
+    height: 300px;
+    width: 300px;
+}
+
+.details h3{
+    font-family: 'Satisfy', cursive;
+    color: #614333;
+    font-size: 35px;
+}
+
+.details hr{
+    border-color: #614333;
+}
+
+.details p{
+    font-family: 'Alegreya', serif;
+    color: #614333;
+    font-size: 18px;
+}
+
+.rev{
+    display: inline-block;
+}
+
+p.data{
+    font-style: italic;
+}
+
+p.username{
+    font-style: italic;
+}
+
+p.descr{
+    text-align: justify;
+}
+
+a.btn{
+    background-image: none;
+    font-family: 'Alegreya', serif;
+    text-align: center;
+    color: #F8EEE7;
+    padding: 10px 1em;
+    font-size: 20px;
+    border-radius: 0%;   
+    background-color:#614333; 
+}
+
+a.btn:hover{
+    color: white;
+}
+
+#footer {
+    background-color: #F8EEE7;
+}
+
+#SocialMedia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#SocialMedia i {
+    font-size: 40px;
+    color: #614333;
+    margin: 0px 10px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#SocialMedia i:hover {
+    color: #614333;
+    transform:scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+}
+
+#Copyrights {
+    color: #614333;
+    text-align: center;
+    margin-top: 20px;
+}

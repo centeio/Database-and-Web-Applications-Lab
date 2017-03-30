@@ -1,0 +1,100 @@
+#Steps {
+    margin-top: 60px;
+}
+
+#Steps ul li.active a {
+    background-color: #F8EEE7;
+    color: #614333;
+}
+
+#Steps ul li.checked a {
+    background-color: white;
+    color: #614333;
+}
+
+#Steps ul li.checked a:hover {
+    background-color: #F8EEE7;
+    color: #614333;
+}
+
+#CheckoutReceipt #thank-you {
+    text-align: center;
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 50px;
+}
+
+#CheckoutReceipt .well {
+    background-image: none;
+    border: 2px solid #F8EEE7;
+    background-color: white;
+    box-shadow: 0px 1px 5px #eee; 
+    -webkit-box-shadow: 0px 1px 5px #eee; /* Safari and Chrome */
+    -moz-box-shadow: 0px 1px 5px #eee; /* Firefox */
+    -ms-box-shadow: 0px 1px 5px #eee; /* IE 9 */
+    -o-box-shadow: 0px 1px 5px #eee; /* Opera */
+}
+
+@media(max-width: 768px) {
+    #CheckoutReceipt .well {
+        margin: 0;
+        border-left: none;
+        border-right: none;
+    }
+}
+
+#CheckoutReceipt h1 {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+}
+
+#CheckoutReceipt thead {
+    font-size: 20px;
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+}
+
+@media(max-width: 320px) {
+    #CheckoutReceipt thead {
+        font-size: 15px;
+    }
+
+    #CheckoutReceipt tbody {
+        font-size: 10px;
+    }
+}
+
+#footer {
+    background-color: #F8EEE7;
+}
+
+#SocialMedia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#SocialMedia i {
+    font-size: 40px;
+    color: #614333;
+    margin: 0px 10px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#SocialMedia i:hover {
+    color: #614333;
+    transform:scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+}
+
+#Copyrights {
+    color: #614333;
+    text-align: center;
+    margin-top: 20px;
+}
