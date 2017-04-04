@@ -1,6 +1,8 @@
 <?php 
 	include_once('../config/init.php');
-	$smarty->display('../templates/common/header.tpl'); ?>
+
+	$smarty->assign('style','css/MainPage.css');
+	$smarty->display('../templates/common/header.tpl');?>
 
             <!-- Page Content -->
             <div id="mainpage-body" class="container">
