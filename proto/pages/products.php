@@ -1,8 +1,13 @@
 <?php 
 	include_once('../config/init.php');
+    include_once($BASE_DIR .'database/products.php');
+
+    $products = getAllAvailableProducts();
 
 	$smarty->assign('style','css/Products.css');
-	$smarty->display('../templates/common/header.tpl'); ?><!DOCTYPE html>        
+	$smarty->display('../templates/common/header.tpl'); ?><!DOCTYPE html>
+
+    
 
             <!-- Page Content -->
             <div id="ProductsContent" class="container">
@@ -14,13 +19,14 @@
                                     <ol class="carousel-indicators">
                                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                                         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="item active">
                                             <a href="#"><img class="slide-image" src="../images/h1.jpg" alt=""></a>
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="slide-image" src="../images/h1.jpg" alt=""></a>
+                                            <a href="#"><img class="slide-image" src="../images/h2.jpg" alt=""></a>
                                         </div>
                                         <div class="item">
                                             <a href="#"><img class="slide-image" src="../images/h3.jpg" alt=""></a>
@@ -104,102 +110,34 @@
                             </div>
                         </div>
                     </div>
-                    <div id="Products">
-                        <div class="col-sm-3 col-lg-3 col-md-3">
-                            <div class="thumbnail">
-                                <img src="../images/2.jpg" alt="">
-                                <div class="caption">
-                                    <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Dark Chocolate</a></h4>
-                                    <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$24.99</h4>
-                                    <div class="ratings">
-                                        <p class="pull-right">15 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                        </p>
+                    <div id="Products">                     
+                        <?foreach ($products as $key => $product) {
+                            $reviews = getAllProductReviewsInfo($product['id']);
+                            $product['rate'] = round($reviews['average']);
+                            $product['count'] = $reviews['count'];
+                            $product['image'] = getAllProductImages($product['id'])[0]['name']?>
+                            <div class="col-sm-3 col-lg-3 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="../images/<?=$product['image']?>" alt="">
+                                    <div class="caption">
+                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="<?$BASE_URL?>product.php?id=<?=$product['id']?>"><?=$product['name']?></a></h4>
+                                        <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12"><?=$product['price']?>€</h4>
+                                        <div class="ratings">
+                                            <p class="pull-right"><?=$product['count']?> reviews</p>
+                                            <p>
+                                                <?for ($i = 1; $i <= $product['rate']; $i++) {?>
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                <?}?>
+                                                <?for ($i = 1; $i <= 5 - $product['rate']; $i++) {?>
+                                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                                <?}?>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-3 col-lg-3 col-md-3">
-                            <div class="thumbnail">
-                                <img src="../images/3.jpg" alt="">
-                                <div class="caption">
-                                    <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Orange</a></h4>
-                                    <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$64.99</h4>
-                                    <div class="ratings">
-                                        <p class="pull-right">12 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-lg-3 col-md-3">
-                            <div class="thumbnail">
-                                <img src="../images/4.jpg" alt="">
-                                <div class="caption">
-                                    <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">White</a></h4>
-                                    <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$74.99</h4>
-                                    <div class="ratings">
-                                        <p class="pull-right">31 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-lg-3 col-md-3">
-                            <div class="thumbnail">
-                                <img src="../images/3.jpg" alt="">
-                                <div class="caption">
-                                    <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Coffee</a></h4>
-                                    <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$84.99</h4>
-                                    <div class="ratings">
-                                        <p class="pull-right">6 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-lg-3 col-md-3">
-                            <div class="thumbnail">
-                                <img src="../images/3.jpg" alt="">
-                                <div class="caption">
-                                    <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Milk</a></h4>
-                                    <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$94.99</h4>
-                                    <div class="ratings">
-                                        <p class="pull-right">18 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?}?>
+                        
                     </div>
                 </div>
             </div>

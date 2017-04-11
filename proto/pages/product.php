@@ -1,5 +1,17 @@
 <?php 
 	include_once('../config/init.php');
+     include_once($BASE_DIR .'database/products.php');
+    
+    if (!$_GET['id']) {
+        $_SESSION['error_messages'][] = 'Undefined product';
+        header("Location: $BASE_URL");
+        exit;
+    }
+    
+    $product = getProduct($_GET['id']);
+    $rate = getAllProductReviewsInfo($product['id']);
+    $reviews = getAllProductReviews($product['id']);
+    $images = getAllProductImages($product['id']);
 
 	$smarty->assign('style','css/Product.css');
 	$smarty->display('../templates/common/header.tpl'); ?>
@@ -13,13 +25,15 @@
                                 <!-- Carousel indicators -->
                                 <ol class="carousel-indicators">
                                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                    <?for ($i = 1; $i < count($images); $i++) {?>
+                                    <li data-target="#myCarousel" data-slide-to="<?=$i?>"></li>
+                                    <?}?>
                                 </ol>   
-                                <!-- Wrapper for carousel items -->
+                                <!-- Wrapper for carousel items 
+                                TODO: change this-->
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="../images/pink.jpg" alt="First Slide">
+                                        <img src="../images/<?=$images[0]['name']?>" alt="First Slide">
                                     </div>
                                     <div class="item">
                                         <img src="../images/pink4.jpg" alt="Second Slide">
@@ -40,17 +54,18 @@
                     </div>
                     <div class="col-md-7">
                         <div class="product-details">
-                            <p class="pull-right">ID#5730</p>
-                            <h4>Chocolates com morangos</h4>
-                            <h4>15.49€</h4>
+                            <p class="pull-right">ID#<?=$product['id']?></p>
+                            <h4><?=$product['name']?></h4>
+                            <h4><?=$product['price']?>€</h4>
                             <div class="ratings">
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    (3)
+                                    <?for ($i = 1; $i <= $rate['average']; $i++) {?>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    <?}?>
+                                    <?for ($i = 1; $i <= 5 - $rate['average']; $i++) {?>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    <?}?>
+                                    (<?=$rate['count']?>)
                                 </p>
                             </div>
                             <p>Caixa sortido de 32 chocolates com morangos cobertos por diversos tipos de chocolates</p>   
@@ -59,9 +74,7 @@
                                     Details <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <p class="details">
-                                        Duis tristique posuere leo, sit amet commodo turpis fermentum elementum. Vestibulum et ex vel magna tincidunt vulputate. Cras dictum odio quis mattis pellentesque. Vestibulum auctor faucibus molestie. Nunc ullamcorper enim libero, sed mattis orci gravida at. Donec a nisi quis elit facilisis facilisis sed a tortor. Sed rutrum scelerisque fermentum.                    
-                                    </p>
+                                    <p class="details"><?=$product['details']?></p>
                                 </ul>
                             </div>
                         </div>
@@ -74,42 +87,27 @@
                     <div class="details" class="col-md-11">
                         <p class="pull-right"><a class="btn">Write a Review</a></p>
                         <h3> Reviews</h3><br>
-                        <hr>                                
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="pull-right">
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                                <p class="data">13/12/2016</p>
-                                <div class="rev">
-                                    <p>Subscried by: <br></p>
-                                    <p class="username">Ariana fernandes</p>
-                                    <p class="descr">This product was great in terms of quality. I would definitely buy another!</p>
+                        <?foreach ($reviews as $key => $review) {?>
+                            <hr>                                
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="pull-right">
+                                        <?for ($i = 1; $i <= $review['rate']; $i++) {?>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                        <?}?>
+                                        <?for ($i = 1; $i <= 5 - $review['rate']; $i++) {?>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                        <?}?>
+                                    </p>
+                                    <p class="data"><?=date("d/m/Y", strtotime($review['date']))?></p>
+                                    <div class="rev">
+                                        <p>Subscried by: <br></p>
+                                        <p class="username"><?=$review['firstname']?> <?=$review['lastname']?></p>
+                                        <p class="descr"><?=$review['comment']?></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="pull-right">
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                                <p class="data">13/12/2016</p>
-                                <div class="rev">
-                                    <p>Subscried by: <br></p>
-                                    <p class="username">Ariana fernandes</p>
-                                    <p class="descr" class="col-md-1">Nullam laoreet venenatis velit vitae iaculis. Phasellus at dictum nibh. Aenean sed augue sit amet dolor tempor porta et vel quam. Cras vitae cursus nisi. In vitae augue lorem. In nec tempor mauris. Quisque tristique quam neque, nec pretium purus malesuada non. Sed non metus non lacus porta gravida a id massa. Nullam enim ipsum, vehicula quis vulputate id, maximus a leo. Suspendisse lacinia semper orci ut semper.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <?}?>
                     </div>
                 </div>
             </div>
