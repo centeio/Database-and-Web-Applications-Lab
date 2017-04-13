@@ -19,7 +19,7 @@
                                     <ol class="carousel-indicators">
                                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                                         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="item active">
@@ -118,9 +118,9 @@
                             $product['image'] = getAllProductImages($product['id'])[0]['name']?>
                             <div class="col-sm-3 col-lg-3 col-md-3">
                                 <div class="thumbnail">
-                                    <img src="../images/<?=$product['image']?>" alt="">
+                                    <img src="<?=$BASE_URL .'images/products/'.$product['image']?>" alt="">
                                     <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="<?$BASE_URL?>product.php?id=<?=$product['id']?>"><?=$product['name']?></a></h4>
+                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="<?=$BASE_URL."pages/product.php?id=".$product['id']?>"><?=$product['name']?></a></h4>
                                         <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12"><?=$product['price']?>€</h4>
                                         <div class="ratings">
                                             <p class="pull-right"><?=$product['count']?> reviews</p>

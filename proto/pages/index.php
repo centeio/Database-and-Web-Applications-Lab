@@ -1,5 +1,8 @@
 <?php 
 	include_once('../config/init.php');
+    include_once($BASE_DIR .'database/products.php');
+    
+    $products = getBestSellers();
 
 	$smarty->assign('style','css/MainPage.css');
 	$smarty->display('../templates/common/header.tpl');?>
@@ -11,6 +14,7 @@
                         <div class="row carousel-holder">
                             <div class="col-md-12">
                                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                    <!-- TODO: what special occasions should be here? Active ones? -->
                                     <ol class="carousel-indicators">
                                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                                         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -43,125 +47,33 @@
 
                             <h1 id="BestSellersTitle"> Best Sellers </h1>
 
+                            <?foreach ($products as $key => $product) {
+                            $reviews = getAllProductReviewsInfo($product['id']);
+                            $product['rate'] = round($reviews['average']);
+                            $product['count'] = $reviews['count'];
+                            $product['image'] = getAllProductImages($product['id'])[0]['name']?>
                             <div class="col-sm-4 col-lg-4 col-md-4">
                                 <div class="thumbnail">
-                                    <img src="../images/FirstProduct.jpeg" alt="">
+                                    <img src="<?=$BASE_URL .'images/products/'.$product['image']?>" alt="">
                                     <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Mackie Bars</a></h4>
-                                        <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$24.99</h4>
+                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="<?$BASE_URL?>product.php?id=<?=$product['id']?>"><?=$product['name']?></a></h4>
+                                        <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12"><?=$product['price']?>€</h4>
                                         <div class="ratings">
-                                            <p class="pull-right">15 reviews</p>
+                                            <p class="pull-right"><?=$product['count']?> reviews</p>
                                             <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
+                                                <?for ($i = 1; $i <= $product['rate']; $i++) {?>
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                <?}?>
+                                                <?for ($i = 1; $i <= 5 - $product['rate']; $i++) {?>
+                                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                                <?}?>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="../images/SecondProduct.jpg" alt="">
-                                    <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Hot Chocolate</a></h4>
-                                        <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$64.99</h4>
-                                        <div class="ratings">
-                                            <p class="pull-right">12 reviews</p>
-                                            <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="../images/ThirdProduct.jpg" alt="">
-                                    <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Doisy&Dam</a></h4>
-                                        <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$74.99</h4>
-                                        <div class="ratings">
-                                            <p class="pull-right">31 reviews</p>
-                                            <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="../images/ForthProduct.jpg" alt="">
-                                    <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Strawberry Bundle I</a></h4>
-                                        <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$84.99</h4>
-                                        <div class="ratings">
-                                            <p class="pull-right">6 reviews</p>
-                                            <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="../images/FifthProduct.jpg" alt="">
-                                    <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Strawberry Bundle II</a></h4>
-                                        <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$94.99</h4>
-                                        <div class="ratings">
-                                            <p class="pull-right">18 reviews</p>
-                                            <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="../images/SixthProduct.jpg" alt="">
-                                    <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#">Chocolate Basket Bundle</a></h4>
-                                        <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">$94.99</h4>
-                                        <div class="ratings">
-                                            <p class="pull-right">18 reviews</p>
-                                            <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?}?>
+                            
                         </div>
                     </div>
                 </div>

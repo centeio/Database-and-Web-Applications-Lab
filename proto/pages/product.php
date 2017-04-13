@@ -1,6 +1,6 @@
 <?php 
 	include_once('../config/init.php');
-     include_once($BASE_DIR .'database/products.php');
+    include_once($BASE_DIR .'database/products.php');
     
     if (!$_GET['id']) {
         $_SESSION['error_messages'][] = 'Undefined product';
@@ -29,18 +29,16 @@
                                     <li data-target="#myCarousel" data-slide-to="<?=$i?>"></li>
                                     <?}?>
                                 </ol>   
-                                <!-- Wrapper for carousel items 
-                                TODO: change this-->
+                                <!-- Wrapper for carousel items-->
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="../images/<?=$images[0]['name']?>" alt="First Slide">
+                                        <img src="../images/products/<?=$images[0]['name']?>" alt="First Slide">
                                     </div>
+                                    <?for ($i = 1; $i < count($images); $i++) {?>
                                     <div class="item">
-                                        <img src="../images/pink4.jpg" alt="Second Slide">
+                                        <img src="<?=$BASE_URL .'images/products/'.$images[$i]['name']?>" alt="">
                                     </div>
-                                    <div class="item">
-                                        <img src="../images/pink3.jpg" alt="Third Slide">
-                                    </div>
+                                    <?}?>
                                 </div>
                                 <!-- Carousel controls -->
                                 <a class="carousel-control left" href="#myCarousel" data-slide="prev">
