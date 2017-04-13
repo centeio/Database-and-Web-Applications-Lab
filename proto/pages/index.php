@@ -56,7 +56,7 @@
                                 <div class="thumbnail">
                                     <img src="<?=$BASE_URL .'images/products/'.$product['image']?>" alt="">
                                     <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="<?$BASE_URL?>product.php?id=<?=$product['id']?>"><?=$product['name']?></a></h4>
+                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="<?=$BASE_URL."pages/products/product.php?id=".$product['id']?>"><?=$product['name']?></a></h4>
                                         <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12"><?=$product['price']?>€</h4>
                                         <div class="ratings">
                                             <p class="pull-right"><?=$product['count']?> reviews</p>
@@ -78,18 +78,4 @@
                     </div>
                 </div>
             </div>
-            <!-- /.container -->
-
-            <div id="footer" class="container-fluid">
-                <div id="SocialMedia" class="col-md-12">
-                    <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-                <div id="Copyrights" class="col-md-12"> 
-                    <span> ©2017 Charlie&Wonka.com. All rights reserved. </span>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

@@ -1,8 +1,8 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
 
 	$smarty->assign('style','css/Receipt.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
 
             <div id="CheckoutReceipt" class="container">
                 <div id="Steps" class="row form-group">
@@ -118,4 +118,4 @@
                 </div>
             </div>
 
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

@@ -1,8 +1,8 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
 
 	$smarty->assign('style','css/Register.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
 
         <!-- /#wrapper -->
 
@@ -97,4 +97,4 @@
         });
     </script>
 
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

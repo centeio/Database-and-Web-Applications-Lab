@@ -1,8 +1,8 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
 
 	$smarty->assign('style','css/SpecialOccasion.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
 
             <!-- Page Content -->
             <div id="specialOccasion-body" class="container-fluid">
@@ -17,13 +17,13 @@
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="item active">
-                                            <a href="#"><img class="slide-image" src="../images/valentineSpecial.jpg" alt=""></a>
+                                            <a href="#"><img class="slide-image" src="<?=$BASE_URL?>images/valentineSpecial.jpg" alt=""></a>
                                             <div class="carousel-caption">
                                                 <span> Valentine's Day </span>
                                             </div>
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="slide-image" src="../images/chocolateBundle.jpg" alt=""></a>
+                                            <a href="#"><img class="slide-image" src="<?=$BASE_URL?>images/chocolateBundle.jpg" alt=""></a>
                                             <div class="carousel-caption">
                                                 <span> Chocolate Bundle </span>
                                             </div>
@@ -42,4 +42,4 @@
                 </div>
             </div>
 
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

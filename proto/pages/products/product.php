@@ -1,5 +1,5 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
     include_once($BASE_DIR .'database/products.php');
     
     if (!$_GET['id']) {
@@ -14,7 +14,7 @@
     $images = getAllProductImages($product['id']);
 
 	$smarty->assign('style','css/Product.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
         
             <!-- Page Content -->
             <div id="ProductInformation" class="container">
@@ -32,7 +32,7 @@
                                 <!-- Wrapper for carousel items-->
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="../images/products/<?=$images[0]['name']?>" alt="First Slide">
+                                        <img src="<?=$BASE_URL .'images/products/'.$images[0]['name']?>" alt="First Slide">
                                     </div>
                                     <?for ($i = 1; $i < count($images); $i++) {?>
                                     <div class="item">
@@ -109,4 +109,4 @@
                     </div>
                 </div>
             </div>
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

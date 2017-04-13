@@ -1,12 +1,12 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
 
 	$smarty->assign('style','css/UserFavorites.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
 
         <div id="dashboard" class="container-fluid">
 
-            <?php $smarty->display('../templates/users/user_menu.tpl'); ?>
+            <?php $smarty->display($BASE_DIR .'templates/users/user_menu.tpl'); ?>
 
             <div id="Favorites" class="container">
 
@@ -121,4 +121,4 @@
             </div>
         </div>
     </div id="page-wrapper">
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

@@ -1,8 +1,8 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
 
 	$smarty->assign('style','css/CheckoutPayment.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
 
             <div id="CheckoutPayment" class="container wrapper">
                 <div id="Steps" class="row form-group">
@@ -35,7 +35,7 @@
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <div class="col-sm-3 col-xs-3">
-                                            <img class="img-responsive" src="../images/FirstProduct.jpeg" />
+                                            <img class="img-responsive" src="<?=$BASE_URL?>images/FirstProduct.jpeg" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="col-xs-12">Mackie Bars</div>
@@ -48,7 +48,7 @@
                                     <div class="form-group"><hr /></div>
                                     <div class="form-group">
                                         <div class="col-sm-3 col-xs-3">
-                                            <img class="img-responsive" src="../images/SecondProduct.jpg" />
+                                            <img class="img-responsive" src="<?=$BASE_URL?>images/SecondProduct.jpg" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="col-xs-12">Hot Chocolate</div>
@@ -61,7 +61,7 @@
                                     <div class="form-group"><hr /></div>
                                     <div class="form-group">
                                         <div class="col-sm-3 col-xs-3">
-                                            <img class="img-responsive" src="../images/ThirdProduct.jpg" />
+                                            <img class="img-responsive" src="<?=$BASE_URL?>images/ThirdProduct.jpg" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="col-xs-12">Doisy&Dam</div>
@@ -74,7 +74,7 @@
                                     <div class="form-group"><hr /></div>
                                     <div class="form-group">
                                         <div class="col-sm-3 col-xs-3">
-                                            <img class="img-responsive" src="../images/FifthProduct.jpg" />
+                                            <img class="img-responsive" src="<?=$BASE_URL?>images/FifthProduct.jpg" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="col-xs-12">Strawberry Bundle II</div>
@@ -295,4 +295,4 @@
                 </div>
             </div>
 
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

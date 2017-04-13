@@ -1,11 +1,11 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
     include_once($BASE_DIR .'database/products.php');
 
     $products = getAllAvailableProducts();
 
 	$smarty->assign('style','css/Products.css');
-	$smarty->display('../templates/common/header.tpl'); ?><!DOCTYPE html>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?><!DOCTYPE html>
 
     
 
@@ -23,13 +23,13 @@
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="item active">
-                                            <a href="#"><img class="slide-image" src="../images/h1.jpg" alt=""></a>
+                                            <a href="#"><img class="slide-image" src="<?=$BASE_URL?>images/h1.jpg" alt=""></a>
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="slide-image" src="../images/h2.jpg" alt=""></a>
+                                            <a href="#"><img class="slide-image" src="<?=$BASE_URL?>images/h2.jpg" alt=""></a>
                                         </div>
                                         <div class="item">
-                                            <a href="#"><img class="slide-image" src="../images/h3.jpg" alt=""></a>
+                                            <a href="#"><img class="slide-image" src="<?=$BASE_URL?>images/h3.jpg" alt=""></a>
                                         </div>
                                     </div>
                                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -120,7 +120,7 @@
                                 <div class="thumbnail">
                                     <img src="<?=$BASE_URL .'images/products/'.$product['image']?>" alt="">
                                     <div class="caption">
-                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="<?=$BASE_URL."pages/product.php?id=".$product['id']?>"><?=$product['name']?></a></h4>
+                                        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="<?=$BASE_URL."pages/products/product.php?id=".$product['id']?>"><?=$product['name']?></a></h4>
                                         <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12"><?=$product['price']?>€</h4>
                                         <div class="ratings">
                                             <p class="pull-right"><?=$product['count']?> reviews</p>
@@ -143,4 +143,4 @@
             </div>
             <!-- /.container -->
 
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

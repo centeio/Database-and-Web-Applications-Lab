@@ -1,5 +1,5 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
     include_once($BASE_DIR .'database/products.php');
 
     $products = getAllAvailableProducts();
@@ -9,7 +9,7 @@
     $products = getShoppingBag(5);
 
 	$smarty->assign('style','css/CheckoutBasket.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
 
             <div id="CheckoutBasket" class="container">
                 <div id="Steps" class="row form-group">
@@ -110,4 +110,4 @@
                 </div>
             </div>
 
-            <?php $smarty->display('../templates/common/footer.tpl'); ?>
+            <?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

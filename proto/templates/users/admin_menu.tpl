@@ -1,6 +1,6 @@
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-lg-offset-3">
-                    <a href="{$BASE_URL}/pages/admin_page_chart.php">
+                    <a href="{$BASE_URL}/pages/admin/admin_page_chart.php">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
@@ -18,7 +18,7 @@
                     </a>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <a href="{$BASE_URL}/pages/admin_clients.php">
+                    <a href="{$BASE_URL}/pages/admin/admin_clients.php">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <a href="{$BASE_URL}/pages/admin_orders.php">
+                    <a href="{$BASE_URL}/pages/admin/admin_orders.php">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">

@@ -1,11 +1,11 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
 	
 	$smarty->assign('style','css/AdminPage.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
 
         <div id="AdminDashboard" class="container-fluid">
-            <?php $smarty->display('../templates/users/admin_menu.tpl'); ?>
+            <?php $smarty->display($BASE_DIR .'templates/users/admin_menu.tpl'); ?>
             <div id="page-wrapper">
 
                 <div id="Orders" class="container-fluid">
@@ -142,4 +142,4 @@
 
     </div>
 
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

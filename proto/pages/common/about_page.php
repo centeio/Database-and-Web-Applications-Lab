@@ -1,12 +1,12 @@
 <?php 
-	include_once('../config/init.php');
+	include_once('../../config/init.php');
 
 	$smarty->assign('style','css/AboutPage.css');
-	$smarty->display('../templates/common/header.tpl'); ?>
+	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
 
             <div id="about-body" class="container-fluid">
                 <div id="AboutImage" class="col-md-4">
-                    <img class="img-responsive" src="../images/About.jpg">
+                    <img class="img-responsive" src="<?=$BASE_URL?>images/About.jpg">
                 </div>
                 <div id="AboutText" class="col-md-8">
                     <h1> About </h1>
@@ -38,4 +38,4 @@
                 </div>
             </div>
 
-<?php $smarty->display('../templates/common/footer.tpl'); ?>
+<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>

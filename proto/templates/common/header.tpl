@@ -23,12 +23,11 @@
 
         <!-- Custom CSS -->
         <link href="{$BASE_URL}css/header.css" rel="stylesheet">
-        <link href="{$BASE_URL}css/MainPage.css" rel="stylesheet">
+        <link href="{$BASE_URL}{$style}" rel="stylesheet">
 
     </head>
 
     <body>
-
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
@@ -38,22 +37,22 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="MainPage.html"> &bull;Charlie&Wonka&bull;</a>
+                        <a class="navbar-brand" href="{$BASE_URL}pages/index.php"> &bull;Charlie&Wonka&bull;</a>
                     </div>
                     <div id="myNavbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-center">
-                            <li class="active"><a href="#">Products</a></li>
-                            <li><a href="#">Special Occasions</a></li>
-                            <li><a href="AboutPage.html">About</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li class="active"><a href="{$BASE_URL}pages/products/products.php">Products</a></li>
+                            <li><a href="{$BASE_URL}pages/products/special_occasion.php">Special Occasions</a></li>
+                            <li><a href="{$BASE_URL}pages/common/about_page.php">About</a></li>
+                            <li><a href="{$BASE_URL}pages/common/contacts.php">Contact</a></li>
                             <li class="navbar-text"><a href="#">Search</a></li>
-                            <li class="navbar-text"><a href="#">Login/Register</a></li>
-                            <li class="navbar-text"><a href="#">Shopping Bag</a></li>
+                            <li class="navbar-text"><a href="{$BASE_URL}pages/common/register.php">Login/Register</a></li>
+                            <li class="navbar-text"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php">Shopping Bag</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="navbar-icon"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                            <li class="navbar-icon"><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                            <li class="navbar-icon"><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                            <li class="navbar-icon"><a href="{$BASE_URL}pages/common/register.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                            <li class="navbar-icon"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
