@@ -13,8 +13,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <ul class="nav nav-tabs nav-justified">
-                                    <li>
-                                        <a href="#" class="active" id="login-form-link">Login</a></li>
+                                    <li><a href="#" class="active" id="login-form-link">Login</a></li>
                                     <li><a href="#" id="register-form-link">Register</a></li>
                             </div>
                             <hr>
@@ -22,12 +21,12 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="login-form" action="" method="post" role="form" style="display: block;">
+                                    <form id="login-form" onsubmit="return validateLogin()" action="<?=$BASE_URL?>actions/login.php" method="post" role="form" style="display: block;">
                                         <div class="form-group">
-                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                            <input type="text" name="username" id="login-username" tabindex="1" class="form-control" placeholder="Username" value="">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                            <input type="password" name="password" id="login-password" tabindex="2" class="form-control" placeholder="Password">
                                         </div>
                                         <div class="form-group text-center">
                                             <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
@@ -96,5 +95,6 @@
 
         });
     </script>
+    <script src="<?=$BASE_URL?>javascript/validation.js"></script>
 
 <?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>
