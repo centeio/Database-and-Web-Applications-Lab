@@ -1,7 +1,7 @@
 <?php
-include_once('../config/init.php');
-
 if(isset($_POST['action']) && !empty($_POST['action'])) {
+    include_once('../config/init.php');
+    
     $action = $_POST['action'];
     switch($action) {
         case 'verifyUser' :
@@ -28,15 +28,27 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     return $row;
   }
   
-  function getUser($id) {
+  function getClient($id) {
     
     global $conn;
     $stmt = $conn->prepare("SELECT * 
-                            FROM \"user\" 
+                            FROM \"user\" NATURAL JOIN client 
                             WHERE id = ?");
     //TODO: hash password
     $stmt->execute(array($id));
 
     return $stmt->fetch();
+  }
+  
+  function getAddresses($iduser) {
+    
+    global $conn;
+    $stmt = $conn->prepare("SELECT iduser, idaddress, address, zipnumber, city 
+                            FROM \"client-address\" NATURAL JOIN client NATURAL JOIN address NATURAL JOIN \"zip-code\"
+                            WHERE iduser = ?;");
+    //TODO: hash password
+    $stmt->execute(array($iduser));
+
+    return $stmt->fetchAll();
   }
 ?>
