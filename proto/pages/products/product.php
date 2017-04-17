@@ -53,7 +53,8 @@
                     <div class="col-md-7">
                         <div class="product-details">
                             <p class="pull-right">ID#<?=$product['id']?></p>
-                            <h4><?=$product['name']?></h4>
+                            <span id="product_id" data="<?=$product['id']?>"/>
+                            <h4><?=$product['name']?>  <a href="#"><span style="color: #7B2832"><i class="fa fa-heart" aria-hidden="true"></span></i></a></h4>
                             <h4><?=$product['price']?>€</h4>
                             <div class="ratings">
                                 <p>

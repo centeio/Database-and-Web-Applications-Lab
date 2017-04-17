@@ -46,7 +46,7 @@
 
                     <div class="form-group">
                         <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                            <input name="address" placeholder="Address" class="form-control" type="text">
+                            <input name="address" placeholder="Address" class="form-control" type="text" value="{$user.address.address}">
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
 
                     <div class="form-group">
                         <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                            <input name="zip" placeholder="Zip Code" class="form-control" type="text">
+                            <input name="zip" placeholder="Zip Code" class="form-control" type="text" value="{$user.address.zipnumber}">
                         </div>
                     </div>
 

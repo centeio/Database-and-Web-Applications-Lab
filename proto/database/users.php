@@ -34,7 +34,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     $stmt = $conn->prepare("SELECT * 
                             FROM \"user\" NATURAL JOIN client 
                             WHERE id = ?");
-    //TODO: hash password
+    
     $stmt->execute(array($id));
 
     return $stmt->fetch();
@@ -46,7 +46,19 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     $stmt = $conn->prepare("SELECT iduser, idaddress, address, zipnumber, city 
                             FROM \"client-address\" NATURAL JOIN client NATURAL JOIN address NATURAL JOIN \"zip-code\"
                             WHERE iduser = ?;");
-    //TODO: hash password
+    
+    $stmt->execute(array($iduser));
+
+    return $stmt->fetchAll();
+  }
+  
+  function getFavorites($iduser) {
+    
+    global $conn;
+    $stmt = $conn->prepare("SELECT * 
+                            FROM favorite JOIN product ON (idproduct = product.id) 
+                            WHERE iduser = ?;");
+    
     $stmt->execute(array($iduser));
 
     return $stmt->fetchAll();

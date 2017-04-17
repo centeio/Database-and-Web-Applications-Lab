@@ -47,12 +47,12 @@
                             <li><a href="{$BASE_URL}pages/common/contacts.php">Contact</a></li>
                             <li class="navbar-text"><a href="#">Search</a></li>
                             <li class="navbar-text"><a href="{$BASE_URL}pages/common/register.php">Login/Register</a></li>
-                            <li class="navbar-text"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php">Shopping Bag</a></li>
+			    <li class="navbar-text"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php">Shopping Bag</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="navbar-icon"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                             <li class="navbar-icon"><a href="{$BASE_URL}pages/common/register.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                            <li class="navbar-icon"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+			    <li class="navbar-icon"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
