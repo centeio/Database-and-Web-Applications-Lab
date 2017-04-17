@@ -1,8 +1,16 @@
 <?php 
 	include_once('../../config/init.php');
+    include_once($BASE_DIR .'database/users.php');
+    
+    session_start();
+    if(!isset($_SESSION['user_id']) || !$_SESSION['is_admin']){
+        header('Location: '.$BASE_URL .'pages/common/register.php');
+    }
+    
+    $clients = getClients();
 
 	$smarty->assign('style','css/AdminClients.css');
-	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
+	$smarty->display('common/header.tpl'); ?>
 
         <div id="AdminDashboard" class="container-fluid">
             <?php $smarty->display($BASE_DIR .'templates/users/admin_menu.tpl'); ?>
@@ -20,11 +28,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?foreach($clients as $key => $client){?>
                                 <tr>
                                     <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Ana Sofia Rodrigues
+                                       <?=$client['firstname']." ".$client['lastname']?>
                                     </td>
-                                    <td class="col-sm-5 col-md-5 ">arodrigues@gmail.com</td>
+                                    <td class="col-sm-5 col-md-5 "><?=$client['email']?></td>
                                     <td class="col-sm-1 col-md-1">
                                         <button type="button" class="btn remove">
                                             <i class="fa fa-times" aria-hidden="true"></i>
@@ -32,138 +41,7 @@
                                     </td>
 
                                 </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Carolina Maria Silva
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">c.msilva@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Cláudio Costa Pinto
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">ccostap@yahoo.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Daniel Filipe Assis e Melo
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">df.assisemelo@msn.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Francisca Andrade Rocha
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">kikaandrade@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Manuel Luís Henriques
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">neluis@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       José Maria Pires
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">jmaria_pires@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Rita Almeida Santos
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">ritinhasantos@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Sara Filipa Carvalho Guedes
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">carvalhoguedes@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Rita Xavier Mendes
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">ritaxavimendes@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Susana Gomes Pinto
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">su_pinto15@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                                                                <tr>
-                                    <td class="col-sm-5 col-md-5 col-xs-12 col-lg-6">
-                                       Zélia Ribeiro Luís
-                                    </td>
-                                    <td class="col-sm-5 col-md-5 ">zezeluis@gmail.com</td>
-                                    <td class="col-sm-1 col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-
-                                </tr>
+                                <?}?>
 
                             </tbody>
                         </table>
@@ -183,4 +61,4 @@
 
     </div>
 
-<?php $smarty->display($BASE_DIR .'templates/common/footer.tpl'); ?>
+<?php $smarty->display('common/footer.tpl'); ?>

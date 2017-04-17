@@ -1,5 +1,14 @@
 <?php 
 	include_once('../../config/init.php');
+    include_once($BASE_DIR .'database/users.php');
+    include_once($BASE_DIR .'database/orders.php');
+    
+    session_start();
+    if(!isset($_SESSION['user_id']) || !$_SESSION['is_admin']){
+        header('Location: '.$BASE_URL .'pages/common/register.php');
+    }
+    
+    $orders = getAllOrders();
 	
 	$smarty->assign('style','css/AdminPage.css');
 	$smarty->display($BASE_DIR .'templates/common/header.tpl'); ?>
@@ -14,12 +23,14 @@
                     <!-- Morris Charts -->
 
                     <!-- /.row -->
-
+                    <?foreach ($orders as $key => $order) {
+                        $client = getClient($order['idclient']);
+                        $products = getProductsFromOrder($order['id']);?>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
-                                    <div class="col-lg-10">Order #345</div>
+                                    <div class="col-lg-10">Order #<?=$order['id']?></div>
                                     <div class="text-right"> 
                                         <button type="button" class="btn remove">
                                             <i class="fa fa-times" aria-hidden="true"></i>
@@ -32,13 +43,23 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <p>
-                                                <em>Date: 6th Feb, 2017</em>
+                                                <?if($order['state'] == 'requested'){
+                                                    $date = date_create($order['orderdate']);
+                                                } else if($order['state'] == 'canceled'){
+                                                    $date = date_create($order['canceleddate']);
+                                                } else if($order['state'] == 'sent'){
+                                                    $date = date_create($order['sentdate']);
+                                                } else {
+                                                    $date = date_create($order['arriveddate']);
+                                                }?>
+                                                <em>Date: <?=date_format($date, 'jS F Y')?></em>
+                                                
                                             </p>
                                             <p>
-                                                <em>Name: Cláudio Costa Pinto</em>
+                                                <em>Name: <?=$client['firstname']." ".$client['lastname']?></em>
                                             </p>
                                             <p>
-                                                <em>Status: <span class="text-success"><strong>Delivered</strong></em>
+                                                <em>Status: <span class="text-success"><strong><?=$order['state']?></strong></em>
                                             </p>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -64,67 +85,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?foreach ($products as $key2 => $product) {?>
                                 <tr>
-                                    <td class="col-sm-8 col-md-6 col-xs-12 col-lg-6">Mackie Bars</td>
+                                    <td class="col-sm-8 col-md-6 col-xs-12 col-lg-6"><?=$product['name']?></td>
                                     <td class="col-sm-1 col-md-1" style="text-align: center">
-                                        <input type="email" class="form-control" id="exampleInputEmail1" value="1">
+                                        <input type="number" class="form-control" id="exampleInputEmail1" value="<?=$product['quantity']?>">
                                     </td>
-                                    <td class="col-sm-1 col-md-1 text-center"><strong>$24.99</strong></td>
-                                    <td class="col-sm-1 col-md-1 text-center"><strong>$24.99</strong></td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong><?=$product['price']?></strong></td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong><?=$product['quantity']*$product['price']?></strong></td>
                                     <td class="col-sm-1 col-md-1">
                                         <button type="button" class="btn remove">
                                             <i class="fa fa-times" aria-hidden="true"></i>
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="col-md-6">Hot Chocolate</td>
-                                        <td class="col-md-1" style="text-align: center">
-                                        <input type="email" class="form-control" id="exampleInputEmail1" value="1">
-                                        </td>
-                                        <td class="col-md-1 text-center"><strong>$64.99</strong></td>
-                                        <td class="col-md-1 text-center"><strong>$64.99</strong></td>
-                                        <td class="col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-6">Doisy&Dam</td>
-                                        <td class="col-md-1" style="text-align: center">
-                                        <input type="email" class="form-control" id="exampleInputEmail1" value="1">
-                                        </td>
-                                        <td class="col-md-1 text-center"><strong>$74.99</strong></td>
-                                        <td class="col-md-1 text-center"><strong>$74.99</strong></td>
-                                        <td class="col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-6">Strawberry Bundle II</td>
-                                        <td class="col-md-1" style="text-align: center">
-                                        <input type="email" class="form-control" id="exampleInputEmail1" value="2">
-                                        </td>
-                                        <td class="col-md-1 text-center"><strong>$94.99</strong></td>
-                                        <td class="col-md-1 text-center"><strong>$189.98</strong></td>
-                                        <td class="col-md-1">
-                                        <button type="button" class="btn remove">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                <?}?>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?}?>
 
                     <!-- /.row -->
 

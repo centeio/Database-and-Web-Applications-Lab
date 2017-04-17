@@ -1,4 +1,16 @@
 <?php
+  function getAllOrders() {
+    
+    global $conn;
+    $stmt = $conn->prepare("SELECT * 
+                            FROM \"order\" 
+                            ORDER BY id;");
+    
+    $stmt->execute(array());
+
+    return $stmt->fetchAll();
+  }
+  
   function getOrders($idClient) {
     
     global $conn;
