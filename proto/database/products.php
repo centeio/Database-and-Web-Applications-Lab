@@ -94,4 +94,21 @@
     $stmt->execute(array($userid, $productid)); 
     return;
   }
+  
+  function addToShoppingBag($userid, $productid, $quantity = 1) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO \"to-go\" (iduser,idproduct,quantity) 
+                            VALUES (?,?,?)");
+    $stmt->execute(array($userid, $productid, $quantity)); 
+    return;
+  }
+  
+  function addAnotherToShoppingBag($userid, $productid) {
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"to-go\" 
+                            SET quantity = quantity + 1 
+                            WHERE iduser = ? AND idproduct = ?;");
+    $stmt->execute(array($userid, $productid)); 
+    return;
+  }
 ?>

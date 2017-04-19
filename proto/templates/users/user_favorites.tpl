@@ -35,12 +35,12 @@
                                 </td>
                                 <td class="col-sm-1 col-md-1 text-center"><strong>{$product.price}€</strong></td>
                                 <td class="col-sm-1 col-md-1 text-center">
-                                    <button type="button" class="btn remove">
+                                    <button type="button" class="btn remove" onclick="addProductToShoppingBag({$smarty.session.user_id}, {$product.id})">
                                         <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                     </button>
                                 </td>
                                 <td class="col-sm-1 col-md-1">
-                                    <button type="button" class="btn remove">
+                                    <button type="button" class="btn remove" onclick="removeFavorite({$smarty.session.user_id}, {$product.id})">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </button>
                                 </td>
@@ -58,4 +58,5 @@
     </div>
 </div id="page-wrapper">
 
+<script src="{$BASE_URL}javascript/user_favorites_buttons.js"></script>
 {include file='common/footer.tpl'}
