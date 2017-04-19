@@ -15,7 +15,7 @@
     $reviews = getAllProductReviews($product['id']);
     $images = getAllProductImages($product['id']);
   
-    $product['rate'] = $rate['average'];
+    $product['rate'] = round($rate['average']);
     $product['votes'] = $rate['count'];
 
 	$smarty->assign('style','css/Product.css');

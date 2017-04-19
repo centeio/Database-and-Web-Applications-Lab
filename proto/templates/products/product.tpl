@@ -76,7 +76,7 @@
                                 {for $i=1 to $product.rate}
                                     <span class="glyphicon glyphicon-star"></span>
                                 {/for}
-                                {for $i=1 to $product.rate}
+                                {for $i=1 to 5 - $product.rate}
                                     <span class="glyphicon glyphicon-star-empty"></span>
                                 {/for}
                                 ({$product.votes})
