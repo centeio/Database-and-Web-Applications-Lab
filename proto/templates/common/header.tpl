@@ -46,12 +46,25 @@
                             <li><a href="{$BASE_URL}pages/common/about_page.php">About</a></li>
                             <li><a href="{$BASE_URL}pages/common/contacts.php">Contact</a></li>
                             <li class="navbar-text"><a href="#">Search</a></li>
+                            {if !isset($smarty.session.user_id)}
                             <li class="navbar-text"><a href="{$BASE_URL}pages/common/register.php">Login/Register</a></li>
+                            {elseif $smarty.session.is_admin}
+                            <li class="navbar-text"><a href="{$BASE_URL}pages/admin/admin_page_chart.php">Admin Pages</a></li>
+                            {else}
+                            <li class="navbar-text"><a href="{$BASE_URL}pages/user/user_page.php">User Pages</a></li>
+                            {/if}
+                            
 			    <li class="navbar-text"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php">Shopping Bag</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="navbar-icon"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                            {if !isset($smarty.session.user_id)}
                             <li class="navbar-icon"><a href="{$BASE_URL}pages/common/register.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                            {elseif $smarty.session.is_admin}
+                            <li class="navbar-icon"><a href="{$BASE_URL}pages/admin/admin_page_chart.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                            {else}
+                            <li class="navbar-icon"><a href="{$BASE_URL}pages/user/user_page.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                            {/if}
 			    <li class="navbar-icon"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>

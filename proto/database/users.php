@@ -13,7 +13,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
   function verifyUser($username, $password) {
     
     global $conn;
-    $stmt = $conn->prepare("SELECT * 
+    $stmt = $conn->prepare("SELECT *
                             FROM \"user\" 
                             WHERE username = ? AND password = ?");
     //TODO: hash password
@@ -39,17 +39,6 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     $stmt->execute(array($id));
 
     return $stmt->fetch();
-  }
-  
-  function getClients() {
-    
-    global $conn;
-    $stmt = $conn->prepare("SELECT * 
-                            FROM \"user\" NATURAL JOIN client");
-    
-    $stmt->execute();
-
-    return $stmt->fetchAll();
   }
   
   function getAddresses($iduser) {

@@ -25,7 +25,7 @@
                                         <i class="fa fa-gift fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge">{$num_orders}</div>
                                         <div>Orders</div>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                         <i class="fa fa-heart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
+                                        <div class="huge">{$num_favorites}</div>
                                         <div>Favorites</div>
                                     </div>
                                 </div>

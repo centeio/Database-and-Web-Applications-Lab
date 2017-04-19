@@ -2,6 +2,7 @@
 	include_once('../../config/init.php');
     include_once($BASE_DIR .'database/products.php');
     include_once($BASE_DIR .'database/orders.php');
+    include_once($BASE_DIR .'database/users.php');
     
     session_start();
     if(!isset($_SESSION['user_id'])){
@@ -33,6 +34,9 @@
 
 	$smarty->assign('style','css/UserOrders.css');
     $smarty->assign('orders', $orders);
+    
+    $smarty->assign('num_orders', count($orders));
+    $smarty->assign('num_favorites', count(getFavorites($_SESSION['user_id'])));
     
     $smarty->display('users/user_orders.tpl'); 
 ?>

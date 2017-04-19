@@ -64,7 +64,8 @@
     $stmt = $conn->prepare("SELECT idproduct, rate, date, comment, firstname, lastname
                             FROM review JOIN Client
                             ON idUser = Client.id
-                            WHERE idProduct = ?;");
+                            WHERE idProduct = ?
+			    ORDER BY date DESC;");
     $stmt->execute(array($productId));
     return $stmt->fetchAll();
   }
