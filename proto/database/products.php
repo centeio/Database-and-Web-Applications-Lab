@@ -69,4 +69,13 @@
     $stmt->execute(array($productId));
     return $stmt->fetchAll();
   }
+  
+  function isFavorite($productid, $userid) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * 
+                            FROM favorite 
+                            WHERE idproduct = ? AND iduser = ?");
+    $stmt->execute(array($productid,$userid)); 
+    return $stmt->fetchAll();
+  }
 ?>

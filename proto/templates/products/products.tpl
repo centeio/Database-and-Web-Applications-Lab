@@ -90,7 +90,7 @@
                             </li>
                             <li>
                                 <input type="checkbox" >
-                                <span class="fa fa-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>
