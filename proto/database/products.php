@@ -78,4 +78,20 @@
     $stmt->execute(array($productid,$userid)); 
     return $stmt->fetchAll();
   }
+  
+  function addFavorite($userid, $productid) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO favorite (iduser,idproduct) 
+                            VALUES (?,?)");
+    $stmt->execute(array($userid, $productid)); 
+    return;
+  }
+  
+  function removeFavorite($userid, $productid) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM favorite 
+                            WHERE iduser = ? AND idproduct = ?");
+    $stmt->execute(array($userid, $productid)); 
+    return;
+  }
 ?>
