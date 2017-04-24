@@ -22,6 +22,16 @@
     return $stmt->fetchAll();
   }
   
+  function getAllSpecialOccasionProducts($specialOccasionId) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * 
+                            FROM product
+                            WHERE availability = TRUE AND idspecialoccasion = ?
+                            ORDER BY id ASC;");
+    $stmt->execute(array($specialOccasionId));
+    return $stmt->fetchAll();
+  }
+  
   function getShoppingBag($userId) {
     global $conn;
     $stmt = $conn->prepare("SELECT *
@@ -47,6 +57,16 @@
                             WHERE idproduct = ?
                             ORDER BY id ASC;");
     $stmt->execute(array($productId));
+    return $stmt->fetchAll();
+  }
+  
+  function getSpecialOccasionGallery($specialOccasionId) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * 
+                            FROM \"occasion-gallery\" JOIN image ON (idimage = image.id)
+                            WHERE idspecialoccasion = ?
+                            ORDER BY id ASC;");
+    $stmt->execute(array($specialOccasionId));
     return $stmt->fetchAll();
   }
   
