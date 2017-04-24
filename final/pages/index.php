@@ -1,23 +1,17 @@
 <?php 
 	include_once('../config/init.php');
     include_once($BASE_DIR .'database/products.php');
+    include_once($BASE_DIR .'database/special occasion.php');
     
-    //TODO: what special occasions should be here? Active ones?
-    $special_occasions;
-    
-    $special_occasions[0]['name'] = "Valentine's Day";
-    $special_occasions[0]['image'] = "valentineSpecial.jpg";
-    $special_occasions[1]['name'] = "Chocolate Bundle Special";
-    $special_occasions[1]['image'] = "chocolateBundle.jpg";
-    $special_occasions[2]['name'] = "Mother's Day";
-    $special_occasions[2]['image'] = "MothersDay.jpg";
+    $special_occasions = getCurrentSpecialOccasions();
+    foreach ($special_occasions as $key => $special_occasion) {
+        $special_occasions[$key]['image_path'] = $BASE_URL . 'images/carousel/' . getSpecialOccasionGallery($special_occasion['id'])[0]['name'];
+        $special_occasions[$key]['link'] = $BASE_URL . 'pages/products/special_occasion.php?id=' . $special_occasion['id'];
+    }
+    //TODO: if count(special_occasions == 0) -> show some products (or promotions?)
     
     $products = getBestSellers();
-
     foreach ($products as $key => $product) {
-        $reviews = getAllProductReviewsInfo($product['id']);
-        $products[$key]['rate'] = round($reviews['average']);
-        $products[$key]['count'] = $reviews['count'];
         $products[$key]['image'] = getAllProductImages($product['id'])[0]['name'];
     }
     

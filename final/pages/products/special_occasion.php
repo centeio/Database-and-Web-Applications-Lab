@@ -1,6 +1,7 @@
 <?php 
 	include_once('../../config/init.php');
     include_once($BASE_DIR .'database/products.php');
+    include_once($BASE_DIR .'database/special occasion.php');
     
     /*$occasions;
     $occasions[0]['image_path'] = $BASE_URL . 'images/valentineSpecial.jpg';

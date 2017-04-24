@@ -12,23 +12,13 @@
   
   function getBestSellers() {
     global $conn;
-    $stmt = $conn->prepare("SELECT idproduct AS id, name, price, SUM(quantity) AS sum
-                            FROM \"to-go\" JOIN product ON (idproduct = product.id) 
-                            WHERE availability = TRUE
-                            GROUP BY idproduct, name, price
-                            ORDER BY sum DESC
+    $stmt = $conn->prepare("SELECT idproduct AS id, name, price, AVG(rate) AS rate, COUNT(review.id) AS count 
+                            FROM product JOIN review ON (review.idproduct = product.id) 
+                            GROUP BY idproduct, price, name
+                            HAVING AVG(rate) >= 0 
+                            ORDER BY rate DESC
                             LIMIT 6;");
     $stmt->execute();
-    return $stmt->fetchAll();
-  }
-  
-  function getAllSpecialOccasionProducts($specialOccasionId) {
-    global $conn;
-    $stmt = $conn->prepare("SELECT * 
-                            FROM product
-                            WHERE availability = TRUE AND idspecialoccasion = ?
-                            ORDER BY id ASC;");
-    $stmt->execute(array($specialOccasionId));
     return $stmt->fetchAll();
   }
   
@@ -57,16 +47,6 @@
                             WHERE idproduct = ?
                             ORDER BY id ASC;");
     $stmt->execute(array($productId));
-    return $stmt->fetchAll();
-  }
-  
-  function getSpecialOccasionGallery($specialOccasionId) {
-    global $conn;
-    $stmt = $conn->prepare("SELECT * 
-                            FROM \"occasion-gallery\" JOIN image ON (idimage = image.id)
-                            WHERE idspecialoccasion = ?
-                            ORDER BY id ASC;");
-    $stmt->execute(array($specialOccasionId));
     return $stmt->fetchAll();
   }
   

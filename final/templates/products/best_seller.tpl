@@ -16,14 +16,14 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <a href="#"><img class="slide-image" src="../images/{$special_occasions[0].image}" alt=""></a>
+                                <a href="{$special_occasions[0].link}"><img class="slide-image" src="{$special_occasions[0].image_path}" alt=""></a>
                                 <div class="carousel-caption">
                                     <span> {$special_occasions[0].name} </span>
                                 </div>
                             </div>
                             {for $i=1 to ($special_occasions|@count - 1)} 
                             <div class="item">
-                                <a href="#"><img class="slide-image" src="../images/{$special_occasions[$i].image}" alt=""></a>
+                                <a href="{$special_occasions[$i].link}"><img class="slide-image" src="{$special_occasions[$i].image_path}" alt=""></a>
                                 <div class="carousel-caption">
                                     <span> {$special_occasions[$i].name} </span>
                                 </div>
@@ -42,7 +42,7 @@
 
             <div id="BestSellers" class="row">
 
-                <h1 id="BestSellersTitle"> Best Sellers </h1>
+                <h1 id="BestSellersTitle"> Best Rated </h1>
 
                 {foreach $products as $product}
                 <div class="col-sm-4 col-lg-4 col-md-4">
