@@ -1,0 +1,152 @@
+#AdminDashboard {
+    margin-top: 80px;
+}
+
+.panel-primary {
+    border-color: #FFF;
+}
+
+.panel-primary > .panel-heading {
+    color: #614333;
+    border-color: #F8EEE7;
+    background-color: #F8EEE7;
+	background-image: none;
+}
+
+.panel-primary > a {
+    color: #F8EEE7;
+}
+
+.panel-primary > a:hover {
+    color: #59323C;
+}
+
+#Clients .panel-heading {
+    background-image: linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -o-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -moz-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-image: -webkit-linear-gradient(to bottom,#F8EEE7 0,#f2e0d3 100%);
+    background-color: #F8EEE7;
+    border-bottom: 1px solid #f2e0d3;
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 20px;
+}
+
+#Clients .panel.panel-info {  
+    border: 1px solid #f2e0d3;
+}
+
+#Clients h1 {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+}
+
+#Clients table th {
+    border-color: #614333;
+}
+
+#Clients table.table.total-price tbody tr:first-child td {
+    border-top: 2px solid #614333;
+}
+
+#Clients table.table.total-price tbody td {
+    border: none;
+}
+
+#Clients table thead {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 25px;
+}
+
+#Clients table tbody a {
+    color: #614333;
+}
+
+#Clients table tbody a:hover {
+    text-decoration: none;
+}
+
+#Clients table tbody input {
+    text-align: center;
+}
+
+#Clients tbody .thumbnail.pull-left:hover {
+    border-color: #614333;
+}
+
+#Clients img {
+    width: 152px; 
+    height: 72px;
+}
+
+#Clients table button.btn.remove {
+    border: 1px solid #614333;
+    background-color: #eee;
+    transition: all .5s ease;
+    -webkit-transition: all .1s ease; /* Safari and Chrome */
+    -moz-transition: all .1s ease; /* Firefox */
+    -ms-transition: all .1s ease; /* IE 9 */
+    -o-transition: all .1s ease; /* Opera */
+}
+
+#Clients table button.btn.remove:hover {
+    transform:scale(1.25);
+    -webkit-transform:scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:scale(1.05); /* Opera */
+}
+
+#Clients table button.btn.remove i {
+    color: #614333;
+}
+
+.media-body > *{
+    margin-left: 20px;
+}
+
+#Total {
+    color: #614333;
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+}
+
+#footer {
+    background-color: #F8EEE7;
+}
+
+#SocialMedia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#SocialMedia i {
+    font-size: 40px;
+    color: #614333;
+    margin: 0px 10px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#SocialMedia i:hover {
+    color: #614333;
+    transform:scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+}
+
+#Copyrights {
+    color: #614333;
+    text-align: center;
+    margin-top: 20px;
+}

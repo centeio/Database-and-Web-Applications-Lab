@@ -1,0 +1,140 @@
+#mainpage-body {
+    margin-top: 50px;
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.carousel-caption span {
+    font-family: 'Pacifico';
+    font-size: 50px;
+}
+
+@media only screen and (max-width: 580px) {
+    .carousel-caption span {
+        font-size: 20px;
+    }
+}
+
+#BestSellersTitle {
+    color: #614333;
+    font-size: 80px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-family: 'Satisfy', cursive;
+}
+
+@media only screen and (max-width: 580px) {
+    #BestSellersTitle {
+        font-size: 40px;
+    }
+}
+
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+#BestSellers h4 {
+    text-align: center;
+}
+
+#BestSellers > div {
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#BestSellers > div:hover {
+    transition: all .5s ease;
+    transform:scale(1.25);
+    -webkit-transform:scale(1.1); /* Safari and Chrome */
+    -moz-transform:scale(1.1); /* Firefox */
+    -ms-transform:scale(1.1); /* IE 9 */
+    -o-transform:scale(1.1); /* Opera */
+    cursor: pointer;
+}
+
+#BestSellers h4 a {
+    color: #614333;
+}
+
+#BestSellers h4 a:hover {
+   text-decoration: none;
+}
+
+.ratings {
+    color: #bd9128;
+}
+
+#footer {
+    background-color: #F8EEE7;
+}
+
+#SocialMedia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#SocialMedia i {
+    font-size: 40px;
+    color: #614333;
+    margin: 0px 10px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease; /* Safari and Chrome */
+    -moz-transition: all .5s ease; /* Firefox */
+    -ms-transition: all .5s ease; /* IE 9 */
+    -o-transition: all .5s ease; /* Opera */
+}
+
+#SocialMedia i:hover {
+    color: #614333;
+    transform:scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+}
+
+#Copyrights {
+    color: #614333;
+    text-align: center;
+    margin-top: 20px;
+}
