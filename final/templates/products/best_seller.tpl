@@ -10,22 +10,22 @@
                         
                         <ol class="carousel-indicators">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            {for $i=1 to ($special_occasions|@count - 1)} 
+                            {for $i=1 to ($highlights|@count - 1)} 
                             <li data-target="#carousel-example-generic" data-slide-to="{$i}"></li>
                             {/for}
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <a href="{$special_occasions[0].link}"><img class="slide-image" src="{$special_occasions[0].image_path}" alt=""></a>
+                                <a href="{$highlights[0].link}"><img class="slide-image" src="{$highlights[0].image_path}" alt=""></a>
                                 <div class="carousel-caption">
-                                    <span> {$special_occasions[0].name} </span>
+                                    <span> {$highlights[0].name} </span>
                                 </div>
                             </div>
-                            {for $i=1 to ($special_occasions|@count - 1)} 
+                            {for $i=1 to ($highlights|@count - 1)} 
                             <div class="item">
-                                <a href="{$special_occasions[$i].link}"><img class="slide-image" src="{$special_occasions[$i].image_path}" alt=""></a>
+                                <a href="{$highlights[$i].link}"><img class="slide-image" src="{$highlights[$i].image_path}" alt=""></a>
                                 <div class="carousel-caption">
-                                    <span> {$special_occasions[$i].name} </span>
+                                    <span> {$highlights[$i].name} </span>
                                 </div>
                             </div>
                             {/for}

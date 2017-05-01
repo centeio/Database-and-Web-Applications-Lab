@@ -1,173 +1,184 @@
 {include file='common/header.tpl'}
 
-<div id="dashboard" class="container-fluid">
+<div class="spinner"></div>
+
+<div id="addAddressPopUp" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Address</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="NewStreetName">Street name:</label>
+                        <input type="text" class="form-control" id="NewStreetName" placeholder="Street name">
+                    </div>
+                    <div class="form-group">
+                        <label for="NewZipCode">Zip-Code:</label>
+                        <input type="text" class="form-control" id="NewZipCode" placeholder="Zip-Code">
+                    </div>
+                    <div class="form-group">
+                        <label for="NewCity">City name:</label>
+                        <input type="text" class="form-control" id="NewCity" placeholder="City name">
+                    </div>
+                    <div class="form-group add-address-buttons">
+                        <hr/>
+                        <span id="addAddressResponse"></span>
+                        <button id="SubmitNewAddress" type="button" class="btn btn-default">Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <span class="clear-fix"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dashboard" class="container-fluid not-popup">
 
     {include file='users/user_menu.tpl'}
 
     <div id="EditProfile" class="container">
-        <form class="form-horizontal" method="post" action="">
-
-            <div class="panel panel-info">
-                <div class="panel-heading">Edit your Profile</div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                            <input name="username" placeholder="Username" class="form-control" type="text" value="{$user.username}">
+        <div class="row">
+            <form class="form-horizontal col-lg-12 col-md-12 col-sm-12 col-xs-12" onsubmit="return checkPassword()" role="form" method="post" action="../../actions/edit_user.php">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Edit your Profile</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
+                                <input name="username" placeholder="Username" class="form-control" type="text" value="{$user.username}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="col-lg-2 col-md-2 col-lg-offset-4 col-md-offset-4 inputGroupContainer">
-                            <input name="first_name" placeholder="First Name" class="form-control" type="text" value="{$user.firstname}">
+                        <div class="form-group">
+                            <div class="col-lg-2 col-md-2 col-lg-offset-4 col-md-offset-4 inputGroupContainer">
+                                <input name="first_name" placeholder="First Name" class="form-control" type="text" value="{$user.firstname}">
+                            </div>
+                            <div class="col-lg-2 col-md-2  inputGroupContainer">
+                                <input name="last_name" placeholder="Last Name" class="form-control" type="text" value="{$user.lastname}">
+                            </div>
                         </div>
-                        <div class="col-lg-2 col-md-2  inputGroupContainer">
-                            <input name="last_name" placeholder="Last Name" class="form-control" type="text" value="{$user.lastname}">
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
+                                <input name="email" placeholder="E-Mail Address" class="form-control" type="email" value="{$user.email}">
+                            </div>
                         </div>
-                    </div>
 
+                        <!-- Text input-->
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                            <input name="email" placeholder="E-Mail Address" class="form-control" type="email" value="{$user.email}">
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
+                                <input name="phone" placeholder="(845)555-1212" class="form-control" type="text" value="{$user.phonenumber}">
+                            </div>
                         </div>
-                    </div>
 
+                        <!-- Text input-->
 
-                    <!-- Text input-->
-
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                            <input name="phone" placeholder="(845)555-1212" class="form-control" type="text" value="{$user.phonenumber}">
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
+                                <input name="taxpayernumber" placeholder="Tax Payer Number" class="form-control" type="text" value="{$user.taxpayernumber}">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Text input-->
-
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                            <input name="address" placeholder="Address" class="form-control" type="text" value="{$user.address.address}">
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
+                                <input id="userProfilePassword" name="password" placeholder="Password" class="form-control" type="password">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Text input-->
-
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                            <input name="zip" placeholder="Zip Code" class="form-control" type="text" value="{$user.address.zipnumber}">
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                            <input name="oldPass" placeholder="Old Password" class="form-control" type="text">
+                        <div class="form-group">
+                            <div id="ChangeDetails" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-10 col-md-offset-10 col-sm-offset-10 col-xs-offset-10">
+                                <input type="submit" class="btn btn-default pull-right" value="Change Account Details">
+                                <span class="underline"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">Change Your Password</div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-                            <input name="oldPass" placeholder="Old Password" class="form-control" type="text">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-                            <input name="NewPass" placeholder="New Password" class="form-control" type="text">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-                            <input name="ConfNewPass" placeholder="Confirm New Password" class="form-control" type="text">
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-
+            </form>
+        </div>
+        <div id="Addresses" class="row">                    
+            {foreach $user.address as $address}
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="panel panel-info">
-                        <div class="panel-heading">Payment Details</div>
+                        <div class="panel-heading"> Address 
+                            <i id="{$address.idaddress}" class="fa fa-times pull-right" aria-hidden="true"></i>
+                        </div>
                         <div class="panel-body">
-                            <label class="col-lg-2 col-md-2 col-md-offset-2">Credit Card Number</label>
-                            <div class="form-group">
-                                <div class="col-lg-4 col-md-4">
-                                    <input type="text" class="form-control" name="car_number" value="" /></div>
-                            </div>
-                            <label class="col-lg-2 col-md-2 col-md-offset-2">Card Type</label>
-                            <div class="form-group">
-                                <div class="col-lg-4 col-md-4 ">
-                                    <select id="CreditCardType" name="CreditCardType" class="form-control">
-                                        <option value="5">Visa</option>
-                                        <option value="6">MasterCard</option>
-                                        <option value="7">American Express</option>
-                                        <option value="8">Discover</option>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <span class="address-label"> Street: </span>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                        <span class="address-content"> {$address.address} <span>
+                                    </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <span class="address-label"> Zip-Code: </span>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                        <span class="address-content"> {$address.zipnumber} <span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <span class="address-label"> City: </span>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                        <span class="address-content"> {$address.city} <span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            {/foreach}
+            <div id="addAddress" class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="panel panel-info add-address">
+                    <i class="fa fa-plus md-trigger" data-modal="modal-11" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form class="form-horizontal col-lg-12 col-md-12 col-sm-12 col-xs-12" role="form" onsubmit="return checkChangePassword()" method="post" action="../../actions/edit_password.php">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Change Your Password</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+                                <input id="changeOldPassword" name="oldPass" placeholder="Old Password" class="form-control" type="password" value="">
                             </div>
+                        </div>
 
-                            <label class="col-lg-2 col-md-2 col-md-offset-2">Card CCV</label>
-                            <div class="form-group">
-                                <div class="col-lg-4 col-md-4">
-                                    <input type="text" class="form-control" name="car_code" value="" /></div>
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+                                <input id="changeNewPassword" name="NewPass" placeholder="New Password" class="form-control" type="password">
                             </div>
-                            <label class="col-lg-2 col-md-2 col-md-offset-2">Expiration Date</label>
-                            <div class="form-group">
-                                <div class="col-lg-2 col-md-2 ">
-                                    <select class="form-control" name="">
-                                        <option value="">Month</option>
-                                        <option value="01">01</option>
-                                        <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
-                                        <option value="05">05</option>
-                                        <option value="06">06</option>
-                                        <option value="07">07</option>
-                                        <option value="08">08</option>
-                                        <option value="09">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-2 col-md-2">
-                                    <select class="form-control" name="">
-                                        <option value="">Year</option>
-                                        <option value="2015">2015</option>
-                                        <option value="2016">2016</option>
-                                        <option value="2017">2017</option>
-                                        <option value="2018">2018</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2021">2021</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2025">2025</option>
-                                </select>
-                                </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+                                <input id="changeNewRepeatPassword" name="ConfNewPass" placeholder="Confirm New Password" class="form-control" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-10 col-md-offset-10 col-sm-offset-10 col-xs-offset-10">
+                                <input type="submit" class="btn btn-default pull-right" value="Change Password">
                             </div>
                         </div>
                     </div>
-            <!-- Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="col-md-4">
-                    <button type="submit" class="btn-group" role="group">Update Changes</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-
 </div>
 <!-- /.container -->
-
 </div>
-</div id="page-wrapper">
-    
+<script src="{$BASE_URL}javascript/validation.js"></script>
+<script src="{$BASE_URL}javascript/user_profile_buttons.js"></script>
 {include file='common/footer.tpl'}

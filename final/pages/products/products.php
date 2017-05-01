@@ -11,6 +11,8 @@
         $products[$key]['image'] = getAllProductImages($product['id'])[0]['name'];
     }
     
+    $categories = getCategories();
+    
     $highlights;
     $highlights[0]['image_path'] = $BASE_URL . 'images/h1.jpg';
     $highlights[0]['link'] = '';
@@ -22,6 +24,7 @@
     $smarty->assign('style','css/Products.css');
     $smarty->assign('products', $products);
     $smarty->assign('highlights', $highlights);
+    $smarty->assign('categories', $categories);
     
     $smarty->display('products/products.tpl');
     

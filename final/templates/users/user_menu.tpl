@@ -1,5 +1,5 @@
             <div class="row">
-                <div class="col-lg-2 col-md-4 col-lg-offset-3">
+                <div class="user_menu col-lg-2 col-md-4 col-lg-offset-3">
                     <a href="{$BASE_URL}pages/user/user_page.php">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -8,7 +8,7 @@
                                         <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
+                                        <br/>
                                         <div>Edit Profile</div>
                                     </div>
                                 </div>
@@ -16,7 +16,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <div class="user_menu col-lg-2 col-md-4">
                     <a href="{$BASE_URL}pages/user/user_orders.php">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -34,7 +34,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <div class="user_menu col-lg-2 col-md-4">
                     <a href="{$BASE_URL}pages/user/user_favorites.php">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -52,6 +52,5 @@
                         </div>
                     </a>
                 </div>
-                
             </div>
             <!-- /.row -->

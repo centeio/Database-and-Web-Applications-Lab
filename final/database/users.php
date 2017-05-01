@@ -7,6 +7,9 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
         case 'verifyUser' :
             echo (verifyUser($_POST['username'],$_POST['password']) == false? "false": "true");
             break;
+        case 'checkPassword' :
+            echo (checkPassword($_POST['password']) == false? "false": "true");
+            break;
     }
 }
 
@@ -25,6 +28,19 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['is_admin'] = $row['isadmin'];
     }
+
+    return $row;
+  }
+
+  function checkPassword($password) {
+    
+    global $conn;
+    $stmt = $conn->prepare("SELECT *
+                            FROM \"user\" 
+                            WHERE id = ? AND password = ?");
+    //TODO: hash password
+    $stmt->execute(array($_SESSION['user_id'], $password));
+    $row = $stmt->fetch();
 
     return $row;
   }
@@ -56,8 +72,8 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     
     global $conn;
     $stmt = $conn->prepare("SELECT iduser, idaddress, address, zipnumber, city 
-                            FROM \"client-address\" NATURAL JOIN client NATURAL JOIN address NATURAL JOIN \"zip-code\"
-                            WHERE iduser = ?;");
+                            FROM \"client-address\", address, \"zip-code\"
+                            WHERE \"client-address\".iduser = ? AND \"client-address\".idaddress = address.id AND address.idzipcode = \"zip-code\".id ORDER BY idaddress ASC;");
     
     $stmt->execute(array($iduser));
 
@@ -75,4 +91,194 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
     return $stmt->fetchAll();
   }
+
+  function updateUsername($username) {
+    
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"user\" SET username = ? WHERE id = ?;");
+    
+    return $stmt->execute(array($username, $_SESSION['user_id']));
+  }
+
+  function updateFirstname($firstname) {
+    
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"client\" SET firstname = ? WHERE id = ?;");
+    
+    return $stmt->execute(array($firstname, $_SESSION['user_id']));
+  }
+
+  function updateLastname($lastname) {
+    
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"client\" SET lastname = ? WHERE id = ?;");
+    
+    return $stmt->execute(array($lastname, $_SESSION['user_id']));
+  }
+
+  function updateEmail($email) {
+    
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"user\" SET email = ? WHERE id = ?;");
+    
+    return $stmt->execute(array($email, $_SESSION['user_id']));
+  }
+
+  function updatePhonenumber($phonenumber) {
+    
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"client\" SET phonenumber = ? WHERE id = ?;");
+    
+    return $stmt->execute(array($phonenumber , $_SESSION['user_id']));
+  }
+
+  function updateTaxpayernumber($taxpayernumber) {
+    
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"client\" SET taxpayernumber = ? WHERE id = ?;");
+    
+    return $stmt->execute(array($taxpayernumber, $_SESSION['user_id']));
+  }
+
+  function updatePassword($password) {
+    
+    global $conn;
+    $stmt = $conn->prepare("UPDATE \"user\" SET password = ? WHERE id = ?;");
+    
+    return $stmt->execute(array($password, $_SESSION['user_id']));
+  }
+
+  function addAddress($streetname, $zipcode, $cityname) {
+    global $conn;
+    
+    $stmtAddress = $conn->prepare("SELECT * FROM \"address\" WHERE \"address\".address = ?;");
+    $stmtAddress->execute(array($streetname));
+      
+    $stmtZipCode = $conn->prepare("SELECT * FROM \"zip-code\" WHERE zipnumber = ? AND city = ?;");
+    $stmtZipCode->execute(array($zipcode, $cityname));
+
+    $addressResult = $stmtAddress->fetchAll();
+    $zipCodeResult = $stmtZipCode->fetch();
+      
+    $addressAssociatedZip = false;
+    $addressID = 0;
+      
+    foreach($addressResult as $key => $value) {
+        if($value['idzipcode'] == $zipCodeResult['id']) {
+            $addressID = $value['id'];
+            $addressAssociatedZip = true;
+        }
+    }
+    
+    /* CASE WHEN ADDRESS AND ZIP-CODE ALREADY EXIST AND THE ADDRESS IS ASSOCIATES WITH THE ZIP-CODE */
+    if($addressResult and $zipCodeResult and $addressAssociatedZip) {
+        
+        try {
+            $stmt = $conn->prepare("INSERT INTO \"client-address\" (iduser, idaddress) VALUES (?, ?);");
+            $stmt->execute(array($_SESSION['user_id'], $addressID));
+            
+            $answer['status'] = "true";
+            $answer['addressID'] = $addressResult[0]['id'];
+            
+            return json_encode($answer);
+            
+        } catch(Exception $e) {
+            $answer['status'] = "Address already added!";
+            
+            return json_encode($answer);
+        }
+        
+    }
+    
+    /* (CASE WHEN ADDRESS AND ZIP-CODE ALREADY EXIST BUT ADDRESS IS NOT ASSOCIATES WITH THE ZIP-CODE) 
+        OR 
+        (ADDRESS DOES NOT EXIST BUT ZIP-CODE DOES) */
+    if(($addressResult and $zipCodeResult and !$addressAssociatedZip)
+        or (!addressResult and $zipCodeResult)){
+            
+        try {
+            $conn->beginTransaction();
+
+            $stmt = $conn->prepare("INSERT INTO \"address\" (address, idzipcode) VALUES (?, ?);");
+            $stmt->execute(array($streetname, $zipCodeResult['id']));
+
+            $stmt = $conn->prepare("INSERT INTO \"client-address\" (iduser, idaddress) 
+                                    (SELECT ?, id FROM \"address\" WHERE \"address\".address = ? AND \"address\".idzipcode = ?);");
+
+            $stmt->execute(array($_SESSION['user_id'], $streetname, $zipCodeResult['id']));
+            
+            $stmt = $conn->prepare("SELECT * FROM \"address\" WHERE \"address\".address = ? AND \"address\".idzipcode = ?;");
+
+            $stmt->execute(array($streetname, $zipCodeResult['id']));
+            $row = $stmt->fetch();
+
+            $conn->commit();
+            
+            $answer['status'] = "true";
+            $answer['addressID'] = $row['id'];
+            
+            return json_encode($answer);
+
+        } catch(Exception $e) {
+            $conn->rollBack();
+            
+            $answer['status'] = "Something went wrong with the server. Apologies.";
+            
+            return json_encode($answer);
+        }
+    }
+    
+    /* CASE WHEN NEITHER THE ADDRESS NOR THE ZIP-CODE EXIST */
+    if(!$zipCodeResult)  {
+
+        try {
+            $conn->beginTransaction();
+
+            $stmt = $conn->prepare("INSERT INTO \"zip-code\" (zipnumber, city) VALUES (?, ?);");
+            $stmt->execute(array($zipcode, $cityname));
+
+            $stmt = $conn->prepare("INSERT INTO \"address\" (address, idzipcode) 
+                                        (SELECT ?, id FROM \"zip-code\" WHERE zipnumber = ? AND city = ?);");
+            $stmt->execute(array($streetname, $zipcode, $cityname));
+
+            $stmt = $conn->prepare("INSERT INTO \"client-address\" (iduser, idaddress) 
+                                    (SELECT ?, \"address\".id FROM \"address\", \"zip-code\" 
+                                        WHERE \"address\".address = ? AND \"address\".idzipcode = \"zip-code\".id
+                                            AND \"zip-code\".zipnumber = ? AND \"zip-code\".city = ?);");
+            $stmt->execute(array($_SESSION['user_id'], $streetname, $zipcode, $cityname));
+            
+            $stmt = $conn->prepare("SELECT \"address\".id FROM \"address\", \"zip-code\" 
+                                        WHERE \"address\".address = ? AND \"address\".idzipcode = \"zip-code\".id
+                                            AND \"zip-code\".zipnumber = ? AND \"zip-code\".city = ?;");
+            $stmt->execute(array(streetname, $zipcode, $cityname));
+            
+            $row = $stmt->fetch();
+            
+            $conn->commit();
+            
+            $answer['status'] = "true";
+            $answer['addressID'] = $row['id'];
+            
+            return json_encode($answer);
+
+        } catch(Exception $e) {
+            $conn->rollBack();
+            
+            $answer['status'] = "Something went wrong with the server. Apologies.";
+            
+            return json_encode($answer);
+        }
+    }
+      
+    $answer['status'] = "false";
+    return json_encode($answer);
+  }
+
+  function deleteAddress($addressID) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM \"client-address\" WHERE idaddress = ? AND iduser = ?;");
+
+    return $stmt->execute(array($addressID, $_SESSION['user_id']));
+  }
+
 ?>

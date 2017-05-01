@@ -1,4 +1,21 @@
 {include file='common/header.tpl'}
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Product added to cart.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
    
 <div id="dashboard" class="container-fluid">
 
@@ -22,9 +39,9 @@
                             <tr>
                                 <td class="col-sm-8 col-md-6 col-xs-12 col-lg-6">
                                     <div class="media">
-                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="{$BASE_URL}images/thumbnails/{$product.image}"> </a>
+                                        <a class="thumbnail pull-left" href="{$BASE_URL}/pages/products/product.php?id={$product.id}"> <img class="media-object" src="{$BASE_URL}images/thumbnails/{$product.image}"> </a>
                                         <div class="media-body">
-                                            <h4 class="media-heading"><a href="#">{$product.name}</a></h4>
+                                            <h4 class="media-heading"><a href="{$BASE_URL}/pages/products/product.php?id={$product.id}">{$product.name}</a></h4>
                                             {if $product.stock > 0}
                                                 <span>Status: <span class="text-success"><strong>In Stock</strong></span></span>
                                             {else}
@@ -35,7 +52,7 @@
                                 </td>
                                 <td class="col-sm-1 col-md-1 text-center"><strong>{$product.price}€</strong></td>
                                 <td class="col-sm-1 col-md-1 text-center">
-                                    <button type="button" class="btn remove" onclick="addProductToShoppingBag({$smarty.session.user_id}, {$product.id})">
+                                    <button type="button" id="addproducttocart" class="btn remove" onclick="addProductToShoppingBag({$smarty.session.user_id}, {$product.id})">
                                         <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                     </button>
                                 </td>

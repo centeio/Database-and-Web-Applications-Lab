@@ -3,22 +3,6 @@
     include_once($BASE_DIR .'database/products.php');
     include_once($BASE_DIR .'database/special occasion.php');
     
-    /*$occasions;
-    $occasions[0]['image_path'] = $BASE_URL . 'images/valentineSpecial.jpg';
-    $occasions[0]['name'] = 'Valentine\'s Day';
-    $occasions[0]['link'] = '';
-    $occasions[1]['image_path'] = $BASE_URL . 'images/chocolateBundle.jpg';
-    $occasions[1]['name'] = 'Chocolate Bundle';
-    $occasions[1]['link'] = '';
-    $occasions[2]['image_path'] = $BASE_URL . 'images/Halloween.jpg';
-    $occasions[2]['name'] = 'Halloween';
-    $occasions[2]['link'] = $BASE_URL . 'pages/products/products.php';
-
-	$smarty->assign('style','css/SpecialOccasion.css');
-    $smarty->assign('occasions',$occasions);
-	
-    $smarty->display('products/special_occasion.tpl'); */
-    
     if (!$_GET['id']) {
         $_SESSION['error_messages'][] = 'Undefined special_occasion';
         header("Location: $BASE_URL");
@@ -38,12 +22,39 @@
     
     foreach ($highlights as $key2 => $image) {
         $highlights[$key2]['image_path'] = $BASE_URL . 'images/carousel/' . $image['name'];
-        $highlights[$key2]['link'] = $BASE_URL . 'pages/product?id=' . $image['idproduct'];
+        $highlights[$key2]['link'] = $BASE_URL . 'pages/products/product?id=' . $image['idproduct'];
+    }
+    
+    $occasions = getCurrentSpecialOccasions();
+    $special_occasion = [];
+    $index = -1;
+    
+    foreach ($occasions as $key3 => $occasion) {
+        if($occasion['id'] == $_GET['id']){
+            $special_occasion = $occasion;           
+            $index = $key3;            
+            break;
+        }
+    }
+    
+    //Occasion not found
+    if($index == -1){
+        $_SESSION['error_messages'][] = 'Expired special_occasion';
+        header("Location: $BASE_URL");
+        exit;
     }
     
     $smarty->assign('style','css/Products.css');
     $smarty->assign('products', $products);
-    $smarty->assign('highlights', $highlights);
+    $smarty->assign('highlights', $highlights); 
+    $smarty->assign('special_occasion', $special_occasion);
+    if($index - 1 < 0){
+        $smarty->assign('linkPrevious', $BASE_URL . 'pages/products/special_occasion.php?id='. $occasions[count($occasions) - 1]['id']);
+    }
+    else{
+        $smarty->assign('linkPrevious', $BASE_URL . 'pages/products/special_occasion.php?id='. $occasions[($index - 1) % count($occasions)]['id']);
+    }
+    $smarty->assign('linkNext', $BASE_URL . 'pages/products/special_occasion.php?id='. $occasions[($index + 1) % count($occasions)]['id']);
     
-    $smarty->display('products/products.tpl')
+    $smarty->display('products/special_occasion.tpl')
 ?>

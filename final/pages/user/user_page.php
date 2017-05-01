@@ -9,7 +9,7 @@
     }
 
     $user = getClient($_SESSION['user_id']);
-    $user['address'] = getAddresses($_SESSION['user_id'])[0];
+    $user['address'] = getAddresses($_SESSION['user_id']);
 
 	$smarty->assign('style','css/UserPage.css');
     $smarty->assign('user', $user);

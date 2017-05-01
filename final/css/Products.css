@@ -6,7 +6,6 @@
     font-family: 'Pacifico', cursive;
     font-size:18px;
     padding-top: 2px;
-    margin-left: -5em;
 }
 
 .dropdown button {
@@ -43,7 +42,15 @@ toggle.btn-primary:focus, .open > .dropdown-toggle.btn-link:hover {
     color: #614333;
 }
 
+.carousel-caption h1{
+    font-family: 'Pacifico', cursive;
+    color: #fff;
+}
 
+.carousel-caption small{
+    font-size: 50%;
+    color: #fff;
+}
 
 .dropdown ul {
     font-family: 'Pacifico', cursive;
@@ -56,10 +63,38 @@ toggle.btn-primary:focus, .open > .dropdown-toggle.btn-link:hover {
     font-family: 'Pacifico', cursive;
     font-size:18px;
     padding-top: 2em;
-    margin-right: 4em;
     border-color:white;
     text-align: center;
     color: #614333;
+    cursor: pointer;
+}
+
+.categoryOption, .priceOption, .ratingOption{
+    padding-top: 0em;
+    display: none;
+    text-align: left;
+}
+
+#minPrice{
+    width:50%;
+    display: inline-block;
+}
+
+#maxPrice{
+    width:50%;
+    display: inline-block;
+    text-align: right;
+}
+
+#slider-range {
+    height: .3em;
+}
+
+#slider-range .ui-slider-handle{
+    top: -.4em;
+    margin-left: -.1em;
+    width: .5em;
+    height: 1.0em;
 }
 
 .slide-image {
@@ -123,6 +158,23 @@ toggle.btn-primary:focus, .open > .dropdown-toggle.btn-link:hover {
 
 #Products h4 a:hover {
    text-decoration: none;
+}
+
+#Products div.add-product{
+    height: 230px;
+    border: 1px solid #f2e0d3;
+    background-color: #F8EEE7;
+    font-size: 60px;
+    color: #bbb;
+    text-align: center;
+}
+
+#Products div.add-product i {
+    opacity: 0.4;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .ratings {

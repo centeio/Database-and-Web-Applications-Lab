@@ -58,13 +58,13 @@
                                     <tr>
                                         <td class="col-md-6">
                                             <div class="media">
-                                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="{$BASE_URL}images/thumbnails/{$product.image}"> </a>
+                                                <a class="thumbnail pull-left" href="{$BASE_URL}/pages/products/product.php?id={$product.id}"> <img class="media-object" src="{$BASE_URL}images/thumbnails/{$product.image}"> </a>
                                                 <div class="media-body">
-                                                    <h4 class="media-heading"><a href="#">{$product.name}</a></h4>
+                                                    <h4 class="media-heading"><a href="{$BASE_URL}/pages/products/product.php?id={$product.id}">{$product.name}</a></h4>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="col-md-1" style="text-align: center"><strong>1</strong>
+                                        <td class="col-md-1" style="text-align: center"><strong>{$product.quantity}</strong>
                                         </td>
                                         <td class="col-md-1 text-center"><strong>{$product.price}€</strong></td>
                                         <td class="col-md-1 text-center"><strong>{$product.total}€</strong></td>

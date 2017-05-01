@@ -3,12 +3,18 @@
     include_once($BASE_DIR .'database/products.php');
     include_once($BASE_DIR .'database/special occasion.php');
     
-    $special_occasions = getCurrentSpecialOccasions();
-    foreach ($special_occasions as $key => $special_occasion) {
-        $special_occasions[$key]['image_path'] = $BASE_URL . 'images/carousel/' . getSpecialOccasionGallery($special_occasion['id'])[0]['name'];
-        $special_occasions[$key]['link'] = $BASE_URL . 'pages/products/special_occasion.php?id=' . $special_occasion['id'];
+    $highlights = getCurrentSpecialOccasions();
+    foreach ($highlights as $key => $special_occasion) {
+        $highlights[$key]['image_path'] = $BASE_URL . 'images/carousel/' . getSpecialOccasionGallery($special_occasion['id'])[0]['name'];
+        $highlights[$key]['link'] = $BASE_URL . 'pages/products/special_occasion.php?id=' . $special_occasion['id'];
     }
-    //TODO: if count(special_occasions == 0) -> show some products (or promotions?)
+     
+    if (count($highlights) == 0){
+        //show some products (or promotions?)
+        $highlights[0]['image_path'] = $BASE_URL . 'images/carousel/h2.jpg';
+        $highlights[0]['link'] = $BASE_URL . 'pages/products/products.php';
+        $highlights[0]['name'] = 'Welcome to the shop';
+    }
     
     $products = getBestSellers();
     foreach ($products as $key => $product) {
@@ -17,7 +23,7 @@
     
     $smarty->assign('style','css/MainPage.css');
     $smarty->assign('products', $products);
-    $smarty->assign('special_occasions', $special_occasions);
+    $smarty->assign('highlights', $highlights);
                             
     $smarty->display('products/best_seller.tpl'); 
 ?>
