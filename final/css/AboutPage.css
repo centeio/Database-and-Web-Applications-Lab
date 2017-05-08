@@ -29,6 +29,11 @@
     }
 }
 
+@media(min-width: 996px){
+    #AboutImage{
+        display: none;
+    }
+}
 #SocialMedia {
     text-align: center;
     margin-top: 20px;
