@@ -1,4 +1,12 @@
 /* Navbar */
+.screenreader { 
+   clip: rect(1px, 1px, 1px, 1px); 
+   height: 1px; 
+   width: 1px; 
+   overflow: hidden; 
+   position: absolute !important;
+}
+
 html, body {
     height: 100%;
     background-color: white;
@@ -260,6 +268,14 @@ html, body {
     -moz-transition: all 1 ease; /* Firefox */
     -ms-transition: all 1 ease; /* IE 9 */
     -o-transition: all 1 ease; /* Opera */
+}
+
+.not-popup {
+    transition: all .25s linear;
+    -webkit-transition: all .25s linear; /* Safari and Chrome */
+    -moz-transition: all .25s linear; /* Firefox */
+    -ms-transition: all .25s linear; /* IE 9 */
+    -o-transition: all .25s linear; /* Opera */
 }
 
 /* End of Navbar */

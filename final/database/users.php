@@ -125,18 +125,21 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
     function rememberUser($id) {
         global $conn;
+        global $BASE_DIR;
         
         $selector = randomKey(12);
         $validator = randomKey(20);
         $hash = hash('sha256', $validator);
         $expires = strtotime('+1 week');
-            
+        
+        try{        
         $stmt = $conn->prepare("INSERT INTO auth_tokens (selector , \"hashedValidator\" , userid, expires) values (?, ?, ?, ?);");
         $stmt->execute(array($selector, $hash, $id, date('Y-m-d H:i:s', $expires)));
-        
-        if (!$stmt) {
-            echo "\nPDO::errorInfo():\n";
-            print_r($conn->errorInfo());
+        }
+        catch(Exception $e){
+            $errorLog = $BASE_DIR . 'config/error_log.txt';
+            
+            file_put_contents($errorLog,date(DATE_RSS) . "\n" . $e->getMessage() . "\n\n" , FILE_APPEND | LOCK_EX);
             
             return false;
         }
@@ -382,6 +385,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
             
         } catch(Exception $e) {
             $answer['status'] = "Address already added!";
+            $answer['addressID'] = $addressResult[0]['id'];
             
             return json_encode($answer);
         }

@@ -58,5 +58,26 @@
 
     return $stmt->fetch();
   }
-
+  
+  function createOrder($client_id, $address_id, $products){
+    global $conn;
+    
+    $conn->beginTransaction();
+    $stmt = $conn->prepare("INSERT INTO \"order\" (idaddress, idclient) VALUES (?, ?);");
+    $stmt->execute(array($address_id, $client_id));
+    
+    $order_id = $conn->lastInsertId();
+    
+    foreach ($products as $key => $product) {
+        $stmt = $conn->prepare("INSERT INTO \"order-product\" (idorder, idproduct, quantity) VALUES (?, ?, ?);");
+        $stmt->execute(array($order_id, $product['id'], $product['quantity']));
+    }
+    
+    //Delete To-go
+    $stmt = $conn->prepare("DELETE FROM \"to-go\" WHERE iduser = ?;");
+    $stmt->execute(array($client_id));
+    
+    $conn->commit(); 
+  }
+  
 ?>

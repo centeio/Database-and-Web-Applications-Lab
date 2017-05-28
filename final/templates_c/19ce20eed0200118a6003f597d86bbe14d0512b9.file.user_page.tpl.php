@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-22 08:58:36
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 23:14:58
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/users/user_page.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:150180728158ff567174d386-85268219%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '19ce20eed0200118a6003f597d86bbe14d0512b9' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/users/user_page.tpl',
-      1 => 1495439914,
+      1 => 1496000866,
       2 => 'file',
     ),
   ),
@@ -158,7 +158,7 @@ $_smarty_tpl->tpl_vars['address']->_loop = true;
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                         <span class="address-content"> <?php echo $_smarty_tpl->tpl_vars['address']->value['address'];?>
- <span>
+ </span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -167,7 +167,7 @@ $_smarty_tpl->tpl_vars['address']->_loop = true;
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                         <span class="address-content"> <?php echo $_smarty_tpl->tpl_vars['address']->value['zipnumber'];?>
- <span>
+ </span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -176,7 +176,7 @@ $_smarty_tpl->tpl_vars['address']->_loop = true;
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                         <span class="address-content"> <?php echo $_smarty_tpl->tpl_vars['address']->value['city'];?>
- <span>
+ </span>
                                     </div>
                                 </div>
                         </div>

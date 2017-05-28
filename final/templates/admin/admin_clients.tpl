@@ -47,10 +47,7 @@
 
     </div>
     <!-- /#page-wrapper -->
-
+    {include file='common/footer.tpl'}
 </div>
 <!-- /#wrapper -->
 
-</div>
-
-{include file='common/footer.tpl'}

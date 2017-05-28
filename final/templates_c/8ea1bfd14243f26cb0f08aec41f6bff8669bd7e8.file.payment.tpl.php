@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-22 08:30:22
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 20:28:03
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/shopping_bag/payment.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:137170642658ffd56d0e1dd2-21166640%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ea1bfd14243f26cb0f08aec41f6bff8669bd7e8' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/shopping_bag/payment.tpl',
-      1 => 1494974779,
+      1 => 1495999678,
       2 => 'file',
     ),
   ),
@@ -264,8 +264,10 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <button type="submit" value="Submit">Confirm</button>
+            </div>
         </form>
-        <button type="submit" form="payment" value="Submit">Confirm</button>
     </div> 
 </div>
 

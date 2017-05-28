@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-25 17:29:13
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 18:51:46
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/products/best_seller.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:99687996658fe1e2c52ff41-77774588%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '529a5cb012c5fca94d49d841a5bec9de6455f41e' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/products/best_seller.tpl',
-      1 => 1495729378,
+      1 => 1495993900,
       2 => 'file',
     ),
   ),
@@ -52,7 +52,8 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
                             <div class="item active">
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['highlights']->value[0]['link'];?>
 "><img class="slide-image" src="<?php echo $_smarty_tpl->tpl_vars['highlights']->value[0]['image_path'];?>
-" alt=""></a>
+" alt="<?php echo $_smarty_tpl->tpl_vars['highlights']->value[0]['alt'];?>
+"></a>
                                 <div class="carousel-caption">
                                     <span> <?php echo $_smarty_tpl->tpl_vars['highlights']->value[0]['name'];?>
  </span>
@@ -65,7 +66,8 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
                             <div class="item">
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['highlights']->value[$_smarty_tpl->tpl_vars['i']->value]['link'];?>
 "><img class="slide-image" src="<?php echo $_smarty_tpl->tpl_vars['highlights']->value[$_smarty_tpl->tpl_vars['i']->value]['image_path'];?>
-" alt=""></a>
+" alt="<?php echo $_smarty_tpl->tpl_vars['highlights']->value[$_smarty_tpl->tpl_vars['i']->value]['alt'];?>
+"></a>
                                 <div class="carousel-caption">
                                     <span> <?php echo $_smarty_tpl->tpl_vars['highlights']->value[$_smarty_tpl->tpl_vars['i']->value]['name'];?>
  </span>
@@ -99,7 +101,7 @@ pages/products/product.php?id=<?php echo $_smarty_tpl->tpl_vars['product']->valu
                         <div class="thumbnail">
                             <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?>
-" alt="<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
 ">
                             <div class="caption">
                                 <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>

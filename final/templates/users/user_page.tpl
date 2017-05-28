@@ -117,7 +117,7 @@
                                         <span class="address-label"> Street: </span>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <span class="address-content"> {$address.address} <span>
+                                        <span class="address-content"> {$address.address} </span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -125,7 +125,7 @@
                                         <span class="address-label"> Zip-Code: </span>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <span class="address-content"> {$address.zipnumber} <span>
+                                        <span class="address-content"> {$address.zipnumber} </span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -133,7 +133,7 @@
                                         <span class="address-label"> City: </span>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <span class="address-content"> {$address.city} <span>
+                                        <span class="address-content"> {$address.city} </span>
                                     </div>
                                 </div>
                         </div>

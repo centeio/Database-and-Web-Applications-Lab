@@ -220,8 +220,10 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <button type="submit" value="Submit">Confirm</button>
+            </div>
         </form>
-        <button type="submit" form="payment" value="Submit">Confirm</button>
     </div> 
 </div>
 

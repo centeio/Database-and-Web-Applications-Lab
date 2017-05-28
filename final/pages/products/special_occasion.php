@@ -28,7 +28,7 @@
         else{
             $highlights[$key2]['image_path'] = $BASE_URL . 'images/carousel/placeholder.jpg';
         }
-        $highlights[$key2]['link'] = $BASE_URL . 'pages/products/product?id=' . $image['idproduct'];
+        $highlights[$key2]['link'] = $BASE_URL . 'pages/products/product.php?id=' . $image['idproduct'];
     }
     
     $occasions = getCurrentSpecialOccasions();

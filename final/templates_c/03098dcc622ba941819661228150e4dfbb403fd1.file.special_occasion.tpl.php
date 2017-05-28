@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-03 17:21:02
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 18:38:24
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/products/special_occasion.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16736129945900df745b9f79-33814275%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '03098dcc622ba941819661228150e4dfbb403fd1' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/products/special_occasion.tpl',
-      1 => 1493828442,
+      1 => 1495993101,
       2 => 'file',
     ),
   ),
@@ -92,10 +92,10 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6"><a href="<?php echo $_smarty_tpl->tpl_vars['linkPrevious']->value;?>
-"><i class="fa fa-arrow-left" aria-hidden="true"></i>Previous occasion</a></div>
-        <div class="col-xs-6"><a href="<?php echo $_smarty_tpl->tpl_vars['linkNext']->value;?>
-">Next occasion<i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="col-xs-6" id="linkPrevious"><a href="<?php echo $_smarty_tpl->tpl_vars['linkPrevious']->value;?>
+"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous occasion</a></div>
+        <div class="col-xs-6" id="linkNext"><a href="<?php echo $_smarty_tpl->tpl_vars['linkNext']->value;?>
+">Next occasion <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
     </div>
     <div class="row">
         <div class="col-md-12" id="Products">                     

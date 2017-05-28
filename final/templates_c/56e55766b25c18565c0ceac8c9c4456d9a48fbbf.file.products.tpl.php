@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 00:46:55
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 19:44:35
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/products/products.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:83489452858fe238a248591-88532230%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56e55766b25c18565c0ceac8c9c4456d9a48fbbf' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/products/products.tpl',
-      1 => 1495928156,
+      1 => 1495997067,
       2 => 'file',
     ),
   ),
@@ -103,29 +103,29 @@ $_smarty_tpl->tpl_vars['category']->_loop = true;
                 Rating <i class="fa fa-caret-down" aria-hidden="true"></i>
             </div>
             <div  class="ratingOption list-group-item">
-                <input type="checkbox" value="1">
+                <input type="checkbox" value="1" aria-label="1 star">
                 <i class="fa fa-star" aria-hidden="true"></i>
             </div>
             <div class="ratingOption list-group-item">
-                <input type="checkbox" value="2">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-            <div class="ratingOption list-group-item">
-                <input type="checkbox" value="3">
-                <i class="fa fa-star" aria-hidden="true"></i>
+                <input type="checkbox" value="2" aria-label="2 stars">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
             </div>
             <div class="ratingOption list-group-item">
-                <input type="checkbox" value="4">
-                <i class="fa fa-star" aria-hidden="true"></i>
+                <input type="checkbox" value="3" aria-label="3 stars">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
             </div>
             <div class="ratingOption list-group-item">
-                <input type="checkbox" value="5">
+                <input type="checkbox" value="4" aria-label="4 stars">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+            <div class="ratingOption list-group-item">
+                <input type="checkbox" value="5" aria-label="5 stars">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -142,7 +142,7 @@ $_smarty_tpl->tpl_vars['product']->_loop = true;
             <div class="col-md-3 col-xs-6">
                 <?php if ($_smarty_tpl->tpl_vars['USERID']->value==2) {?>
                 <button onclick="deleteProduct(this, <?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
-)"><i class="fa fa-times pull-right" aria-hidden="true"></i></button>
+)" aria-label="delete product"><i class="fa fa-times pull-right" aria-hidden="true"></i></button>
                 <?php }?>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/products/product.php?id=<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
@@ -150,7 +150,7 @@ pages/products/product.php?id=<?php echo $_smarty_tpl->tpl_vars['product']->valu
                     <div class="thumbnail">
                         <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?>
-" alt="<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
 ">
                         <div class="caption">
                             <h4 class="col-xs-12"><?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
@@ -170,7 +170,7 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
             <?php } ?>
             <?php if ($_smarty_tpl->tpl_vars['USERID']->value==2) {?>
             <div id="addProduct" class="col-md-3 col-xs-6">
-                <div class="panel panel-info add-product">
+                <div class="panel panel-info add-product" aria-label="New Product">
                     <i class="fa fa-plus md-trigger" data-modal="modal-11" aria-hidden="true"></i>
                 </div>
             </div>
@@ -207,16 +207,19 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                     </div>
                     <div class="form-group">
                         <fieldset id="NewCategories">
-                            <label>Categories:</label>
+                            <legend>Categories:</legend>
                             <br>
                             <?php  $_smarty_tpl->tpl_vars['category'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['category']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['categories']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['category']->key => $_smarty_tpl->tpl_vars['category']->value) {
 $_smarty_tpl->tpl_vars['category']->_loop = true;
 ?>
+                                <label>
                                 <input type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
-"> <?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
-
+"> 
+                                <?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
+ 
+                                </label>
                             <?php } ?>
                         </fieldset>
                     </div>
@@ -247,7 +250,7 @@ $_smarty_tpl->tpl_vars['category']->_loop = true;
 javascript/plugins/star-rating/star-rating.js" type="text/javascript"></script>
 
 <script>
-    $('.rating-loading').rating({displayOnly: true, size:'xs', filledStar:'<i class="fa fa-star" aria-hidden="true"></i>', emptyStar:'<i class="fa fa-star-o" aria-hidden="true"></i>'});
+    $('.rating-loading').rating({displayOnly: true, size:'xs', showCaption:true});
 </script>
 
 

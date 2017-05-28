@@ -49,9 +49,7 @@ function validateLogin() {
                 rememberMe: $rememberMe
 			},
 			success: function(data) {
-                
-                $validUser = (data.trim() === "true");
-                
+                $validUser = (data.trim() === "true");                
             }
 		});
         

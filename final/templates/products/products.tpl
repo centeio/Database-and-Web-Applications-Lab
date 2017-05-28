@@ -53,29 +53,29 @@
                 Rating <i class="fa fa-caret-down" aria-hidden="true"></i>
             </div>
             <div  class="ratingOption list-group-item">
-                <input type="checkbox" value="1">
+                <input type="checkbox" value="1" aria-label="1 star">
                 <i class="fa fa-star" aria-hidden="true"></i>
             </div>
             <div class="ratingOption list-group-item">
-                <input type="checkbox" value="2">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-            <div class="ratingOption list-group-item">
-                <input type="checkbox" value="3">
-                <i class="fa fa-star" aria-hidden="true"></i>
+                <input type="checkbox" value="2" aria-label="2 stars">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
             </div>
             <div class="ratingOption list-group-item">
-                <input type="checkbox" value="4">
-                <i class="fa fa-star" aria-hidden="true"></i>
+                <input type="checkbox" value="3" aria-label="3 stars">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
             </div>
             <div class="ratingOption list-group-item">
-                <input type="checkbox" value="5">
+                <input type="checkbox" value="4" aria-label="4 stars">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+            <div class="ratingOption list-group-item">
+                <input type="checkbox" value="5" aria-label="5 stars">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -87,11 +87,11 @@
             {foreach $products as $product}
             <div class="col-md-3 col-xs-6">
                 {if $USERID == 2}
-                <button onclick="deleteProduct(this, {$product.id})"><i class="fa fa-times pull-right" aria-hidden="true"></i></button>
+                <button onclick="deleteProduct(this, {$product.id})" aria-label="delete product"><i class="fa fa-times pull-right" aria-hidden="true"></i></button>
                 {/if}
                 <a href="{$BASE_URL}pages/products/product.php?id={$product.id}">
                     <div class="thumbnail">
-                        <img src="{$BASE_URL}images/thumbnails/{$product.image}" alt="{$product.image}">
+                        <img src="{$BASE_URL}images/thumbnails/{$product.image}" alt="{$product.name}">
                         <div class="caption">
                             <h4 class="col-xs-12">{$product.name}</h4>
                             <h4 class="pull-right col-xs-12">{$product.price}€</h4>
@@ -106,7 +106,7 @@
             {/foreach}
             {if $USERID == 2}
             <div id="addProduct" class="col-md-3 col-xs-6">
-                <div class="panel panel-info add-product">
+                <div class="panel panel-info add-product" aria-label="New Product">
                     <i class="fa fa-plus md-trigger" data-modal="modal-11" aria-hidden="true"></i>
                 </div>
             </div>
@@ -143,10 +143,13 @@
                     </div>
                     <div class="form-group">
                         <fieldset id="NewCategories">
-                            <label>Categories:</label>
+                            <legend>Categories:</legend>
                             <br>
                             {foreach $categories as $category}
-                                <input type="checkbox" value="{$category.id}"> {$category.name}
+                                <label>
+                                <input type="checkbox" value="{$category.id}"> 
+                                {$category.name} 
+                                </label>
                             {/foreach}
                         </fieldset>
                     </div>
@@ -174,7 +177,7 @@
 <script src="{$BASE_URL}javascript/plugins/star-rating/star-rating.js" type="text/javascript"></script>
 {literal}
 <script>
-    $('.rating-loading').rating({displayOnly: true, size:'xs', filledStar:'<i class="fa fa-star" aria-hidden="true"></i>', emptyStar:'<i class="fa fa-star-o" aria-hidden="true"></i>'});
+    $('.rating-loading').rating({displayOnly: true, size:'xs', showCaption:true});
 </script>
 {/literal}
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-15 10:03:24
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 19:50:53
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/common/contacts.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:37425704459064d88246759-43492293%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9884312afd87ef77c8d6322ce6da9085f2216c37' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/common/contacts.tpl',
-      1 => 1494839002,
+      1 => 1495997449,
       2 => 'file',
     ),
   ),
@@ -37,18 +37,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="panel-body">
                     <form>
                         <div class="form-group">
-                            <strong>Your email:</strong> <small>*</small>
-                            <input type="email" class="form-control" id="email">
+                            <label for="email"><strong>Your email:</strong> <small>*</small></label>
+                            <input name="email" type="email" class="form-control" id="email">
                         </div>
                         <div class="form-group">
-                            <strong>Subject:</strong> <small>*</small>
-                            <input type="subject" class="form-control" id="subject">
+                            <label for="subject"><strong>Subject:</strong> <small>*</small></label>
+                            <input name="subject" type="subject" class="form-control" id="subject">
                         </div>
                         <div class="form-group">
-                            <strong>Message:</strong> <small>*</small>
-                            <textarea class="form-control" rows="5" cols="3" id="message"></textarea>
+                            <label for="message"><strong>Message:</strong> <small>*</small></label>
+                            <textarea name="message" class="form-control" rows="5" cols="3" id="message"></textarea>
+                            
                         </div>
-                        <button type="button" id="sendEmail" href="#" class="pull-right"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        <button type="button" id="sendEmail" href="#" class="pull-right" aria-label="send"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 </i></button>
                     </form>
                 </div>

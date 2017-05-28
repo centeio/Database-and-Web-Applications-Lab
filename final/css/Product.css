@@ -1,30 +1,11 @@
 @import url("popupDialog.css");
 
-.rating {
-    float:right;
-    width:300px;
+.ratings p div.rating-container{
+    display: inline;
 }
-.rating span { float:right; position:relative; }
-.rating span input {
-    position:absolute;
-    top:0px;
-    left:0px;
-    opacity:0;
-}
-.rating span label {
-    display:inline-block;
-    width:30px;
-    height:30px;
-    text-align:center;
-    color:#FFF;
-    background: transparent;
-    font-size:30px;
-}
-.rating span:hover ~ span label i,
-.rating span:hover label i,
-.rating span.checked label i,
-.rating span.checked ~ span label i{
-    color:#614333;
+
+.rating-container{
+    text-align: right;
 }
 
 #writeReviewComment {
@@ -140,4 +121,121 @@ a.btn:hover{
 
 #Images div {
     padding: 0;
+}
+
+#editProduct {
+    cursor: pointer;
+}
+
+#reviewsContainer i {
+    cursor: pointer;
+}
+
+#editImages > div {
+    margin: 5px 0px;
+    padding: 5px;
+}
+
+#editImages i {
+    color: #614333;
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateX(50px);
+    transition: all .5s ease;
+    -webkit-transition: all .2s linear; /* Safari and Chrome */
+    -o-transition: all .2s linear; /* Opera */
+    -moz-transition: all .2s ease; /* Firefox */
+    -ms-transition: all .2s ease; /* IE 9 */
+    cursor: pointer;
+}
+
+#editImages i:hover {
+    transform: translateX(-50%) translateX(50px) scale(1.2);
+    -webkit-transform: translateX(-50%) translateX(50px) scale(1.2); /* Safari and Chrome */
+    -o-transform: translateX(-50%) translateX(50px) scale(1.2); /* Opera */
+    -moz-transform: translateX(-50%) translateX(50px) scale(1.2); /* Firefox */
+    -ms-transform: translateX(-50%) translateX(50px) scale(1.2); /* IE 9 */
+}
+
+#editImages > div img {
+    display: block;
+    margin: auto;
+    height: 130px;
+    width: 130px;
+    box-shadow: 0px 0px 0px 5px #F8EEE7, 0px 0px 0px 6px #f2e0d3;
+}
+
+#insideAddNewImage {
+    display: block;
+    margin: auto;
+    height: 144px;
+    width: 144px;
+    background-color: #F8EEE7;
+    border: 1px solid #f2e0d3;
+    transition: all .5s ease;
+    -webkit-transition: all .2s linear; /* Safari and Chrome */
+    -o-transition: all .2s linear; /* Opera */
+    -moz-transition: all .2s ease; /* Firefox */
+    -ms-transition: all .2s ease; /* IE 9 */
+    cursor: pointer;
+}
+
+#insideAddNewImage:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1); /* Safari and Chrome */
+    -o-transform: scale(1.1); /* Opera */
+    -moz-transform: scale(1.1); /* Firefox */
+    -ms-transform: scale(1.1); /* IE 9 */
+}
+
+#addNewImage i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+}
+
+#addNewImage i:hover {
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+    -o-transform: translate(-50%, -50%); /* Opera */
+    -moz-transform: translate(-50%, -50%); /* Firefox */
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+}
+
+@media screen and (max-width: 768px) {
+    #editImages > div img {
+        height: 200px;
+        width: 200px;
+    }
+    #editImages i {
+        transform: translateX(-50%) translateX(85px); 
+    }
+    
+    #insideAddNewImage {
+        height: 214px;
+        width: 214px;
+    }
+    
+    #addNewImage i {
+        transform: translate(-50%, -50%);
+    }
+    
+    #insideAddNewImage:hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1); /* Safari and Chrome */
+        -o-transform: scale(1.1); /* Opera */
+        -moz-transform: scale(1.1); /* Firefox */
+        -ms-transform: scale(1.1); /* IE 9 */
+    }
+    
+    #addNewImage i:hover {
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%); /* Safari and Chrome */
+        -o-transform: translate(-50%, -50%); /* Opera */
+        -moz-transform: translate(-50%, -50%); /* Firefox */
+        -ms-transform: translate(-50%, -50%); /* IE 9 */
+    }
 }

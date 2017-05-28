@@ -16,14 +16,14 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <a href="{$highlights[0].link}"><img class="slide-image" src="{$highlights[0].image_path}" alt=""></a>
+                                <a href="{$highlights[0].link}"><img class="slide-image" src="{$highlights[0].image_path}" alt="{$highlights[0].alt}"></a>
                                 <div class="carousel-caption">
                                     <span> {$highlights[0].name} </span>
                                 </div>
                             </div>
                             {for $i=1 to ($highlights|@count - 1)} 
                             <div class="item">
-                                <a href="{$highlights[$i].link}"><img class="slide-image" src="{$highlights[$i].image_path}" alt=""></a>
+                                <a href="{$highlights[$i].link}"><img class="slide-image" src="{$highlights[$i].image_path}" alt="{$highlights[$i].alt}"></a>
                                 <div class="carousel-caption">
                                     <span> {$highlights[$i].name} </span>
                                 </div>
@@ -48,7 +48,7 @@
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <a href="{$BASE_URL}pages/products/product.php?id={$product.id}">
                         <div class="thumbnail">
-                            <img src="{$BASE_URL}images/thumbnails/{$product.image}" alt="{$product.image}">
+                            <img src="{$BASE_URL}images/thumbnails/{$product.image}" alt="{$product.name}">
                             <div class="caption">
                                 <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">{$product.name}</h4>
                                 <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">{$product.price}€</h4>

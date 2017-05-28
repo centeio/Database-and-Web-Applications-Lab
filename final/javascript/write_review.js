@@ -23,10 +23,10 @@ $(document).ready(function(){
     });
 
 	$('#submitButton').click(function() {
-		$rating = $('input[name=rating]:checked').val();
+		$rating = $('#review-rating').val();
 		$comment = $('#writeReviewComment').val();
 		$productID = $('#productID').val();
-		var $result;
+		var $result;        
 
 		$.ajax({
 			type:"POST",
@@ -39,24 +39,28 @@ $(document).ready(function(){
 			},
 			success: function(result) {
 				$result = JSON.parse(result);
-				$inserthtml = "	<hr>\
+                $inserthtml = "	<hr>\
 						<div class='row'>\
 							<div class='col-md-12'>\
-								<p class='pull-right'>";
-				for (i = 0; i < $rating; i++) {
-    					$inserthtml += "<span class='glyphicon glyphicon-star'></span>";
-				}
-				for (i = 0; i < 5 - $rating; i++) {
-    					$inserthtml += "<span class='glyphicon glyphicon-star-empty'></span>";
-				}
-				$inserthtml += "	</p>\
-						<p class='data'>" + $result['Date'] + "</p>\
-						<div class='rev'>\
-							<p>Subscried by: <br></p>\
-							<p class='username'>" + $result['FirstName'] + " " + $result['LastName'] + "</p>\
-							<p class='descr'>" + $comment + "</p>\</div> </div> </div>";
+								<p class='pull-right'>" + 
+                                    "<input name='rate' value=" + $rating + " class='rating-loading'>" + 
+                                "</p>\
+                                <p class='data'>" + $result['Date'] + "</p>\
+                                <div class='rev'>\
+                                    <p>Subscried by: <br></p>\
+                                    <p class='username'>" + $result['FirstName'] + " " + $result['LastName'] + "</p>\
+                                    <p class='descr'>" + $comment + "</p>\</div> </div> </div>";
 				$("#ReviewsTitle").after($inserthtml);
-				$('#cancelReview').click();
+				$('#writeReview').modal("hide");
+                
+                //Update stars
+                $('.ratings').html("<p>\
+                                    <input name=\"rate\" value=\"" + $result['averageRate'] + "\" class=\"rating-loading\" id=\"averageRate\">\
+                                    ("+ $result['votes'] +")\
+                                </p>");
+                
+                $('.rating-loading:not(#review-rating)').rating({displayOnly: true, size:'xs'});
+                $('#review-rating').rating('update', 0);
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
         			alert(xhr.status);

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 13:42:45
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 23:16:50
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/products/product.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:64699621758fe772517a9c0-91842440%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f274f68a76ec71520d3eda9fdc76b2a8dbd0b8dc' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/products/product.tpl',
-      1 => 1495975364,
+      1 => 1496009806,
       2 => 'file',
     ),
   ),
@@ -65,13 +65,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </div>
             <div class="modal-body">
                 <form>
-                <form>
                     <div class="rating form-group">
-                        <span><input class="form-check-input" type="radio" name="rating" id="str5" value="5"><label for="str5"><i class="fa fa-star" aria-hidden="true"></i></label></span>
-                        <span><input class="form-check-input" type="radio" name="rating" id="str4" value="4"><label for="str4"><i class="fa fa-star" aria-hidden="true"></i></label></span>
-                        <span><input class="form-check-input" type="radio" name="rating" id="str3" value="3"><label for="str3"><i class="fa fa-star" aria-hidden="true"></i></label></span>
-                        <span><input class="form-check-input" type="radio" name="rating" id="str2" value="2"><label for="str2"><i class="fa fa-star" aria-hidden="true"></i></label></span>
-                        <span><input class="form-check-input" type="radio" name="rating" id="str1" value="1"><label for="str1"><i class="fa fa-star" aria-hidden="true"></i></label></span>
+                        <input id="review-rating" name="rating" class="rating rating-loading">
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" id="writeReviewComment" rows="5" placeholder="Write your review in here..."></textarea>
@@ -81,7 +76,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 "/> 
                     </div>
                     <div>
-                        <input id="submitButton" type="button" class="btn btn-success" value="Submit"></button>
+                        <input id="submitButton" type="button" class="btn btn-default" value="Submit"/>
                     </div>
                 </form>
             </div>
@@ -142,8 +137,29 @@ $_smarty_tpl->tpl_vars['category']->_loop = true;
                         </fieldset>
                     </div>
                     
+                    <div class="form-group">
+                        <div id="editImages" class="row">
+                            <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? count($_smarty_tpl->tpl_vars['images']->value)-1+1 - (0) : 0-(count($_smarty_tpl->tpl_vars['images']->value)-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 already-added">
+                                    <i id="image<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl->tpl_vars['i']->value]['id'];?>
+" class="fa fa-times pull-right" aria-hidden="true"></i>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+images/products/<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl->tpl_vars['i']->value]['name'];?>
+" alt=""/>
+                                </div>
+                            <?php }} ?>
+                            <div id="addNewImage" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div id="insideAddNewImage">
+                                    <i class="fa fa-plus " aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
                     <div class="form-group popup-buttons">
-                        <hr/>
                         <span id="popupResponse"></span>
                         <button id="SubmitEditProduct" type="button" class="btn btn-default">Submit</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -165,18 +181,21 @@ $_smarty_tpl->tpl_vars['category']->_loop = true;
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <!-- Carousel indicators -->
                             <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li id="indicator<?php echo $_smarty_tpl->tpl_vars['images']->value[0]['id'];?>
+" data-target="#myCarousel" data-slide-to="0" class="active"></li>
                                 <?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? count($_smarty_tpl->tpl_vars['images']->value)-1+1 - (1) : 1-(count($_smarty_tpl->tpl_vars['images']->value)-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
-                                <li data-target="#myCarousel" data-slide-to="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+                                <li id="indicator<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl->tpl_vars['i']->value]['id'];?>
+" data-target="#myCarousel" data-slide-to="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 "></li>
                                 <?php }} ?>
                             </ol>   
                             <!-- Wrapper for carousel items-->
                             <div class="carousel-inner">
-                                <div class="item active">
+                                <div id="slideshow<?php echo $_smarty_tpl->tpl_vars['images']->value[0]['id'];?>
+" class="item active">
                                     <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 images/products/<?php echo $_smarty_tpl->tpl_vars['images']->value[0]['name'];?>
 " alt="First Slide">
@@ -185,7 +204,8 @@ images/products/<?php echo $_smarty_tpl->tpl_vars['images']->value[0]['name'];?>
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
-                                <div class="item">
+                                <div id="slideshow<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl->tpl_vars['i']->value]['id'];?>
+" class="item">
                                     <img src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 images/products/<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl->tpl_vars['i']->value]['name'];?>
 " alt="">
@@ -218,26 +238,27 @@ images/products/<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl-
 "/>
                         <h4><?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
 
-                        <?php if (isset($_smarty_tpl->tpl_vars['heart']->value)) {?>
-                            <a href="#" id="addfavorite"><span style="color: #7B2832"> 
-                                <i id="heart" class="fa <?php echo $_smarty_tpl->tpl_vars['heart']->value;?>
+                            <?php if (isset($_smarty_tpl->tpl_vars['heart']->value)) {?>
+                                <a href="#" id="addfavorite"><span style="color: #7B2832"> 
+                                    <i id="heart" class="fa <?php echo $_smarty_tpl->tpl_vars['heart']->value;?>
 "
-                                aria-hidden="true">
-                            </span></i></a>
-                        <?php }?>
-                        <?php if (!$_SESSION['is_admin']) {?>
-                            <button type="button" id="addproducttocart" class="btn" onclick="addProductToShoppingBag(<?php echo $_SESSION['user_id'];?>
+                                    aria-hidden="true"></i>
+                                </span></a>
+                            <?php }?>
+                            <?php if (isset($_SESSION['user_id'])&&!$_SESSION['is_admin']) {?>
+                                <button type="button" id="addproducttocart" class="btn" onclick="addProductToShoppingBag(<?php echo $_SESSION['user_id'];?>
 , <?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
 )">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </button>
-                        <?php }?>
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                </button>
+                            <?php }?>
+                        </h4>
                         <h4><?php echo $_smarty_tpl->tpl_vars['product']->value['price'];?>
 €</h4>
                         <div class="ratings">
                             <p>
                                 <input name="rate" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['rate'];?>
-" class="rating-loading" id="averageRate">
+" class="rating-loading" id="averageRate"/>
                                 (<?php echo $_smarty_tpl->tpl_vars['product']->value['votes'];?>
 )
                             </p>
@@ -251,7 +272,7 @@ images/products/<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl-
 
         <div class="container">
             <div class="row">
-                <div class="details" class="col-md-11">               
+                <div id="reviewsContainer" class="details" class="col-md-11">               
                     <?php if (isset($_SESSION['user_id'])&&!$_SESSION['is_admin']) {?>
                         <p class="pull-right"><a id="writeReviewBtn" class="btn">Write a Review</a></p>
                     <?php }?>
@@ -261,22 +282,29 @@ images/products/<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl-
 foreach ($_from as $_smarty_tpl->tpl_vars['review']->key => $_smarty_tpl->tpl_vars['review']->value) {
 $_smarty_tpl->tpl_vars['review']->_loop = true;
 ?>
-                        <hr>                                
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="pull-right">
-                                    <input name="rate" value="<?php echo $_smarty_tpl->tpl_vars['review']->value['rate'];?>
+                        <div id="review<?php echo $_smarty_tpl->tpl_vars['review']->value['id'];?>
+">
+                            <hr>                                
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="pull-right">
+                                        <?php if ($_smarty_tpl->tpl_vars['USERID']->value==1) {?>
+                                            <i id="<?php echo $_smarty_tpl->tpl_vars['review']->value['id'];?>
+" class="fa fa-times pull-right" aria-hidden="true"></i>
+                                        <?php }?>
+                                        <input name="rate" value="<?php echo $_smarty_tpl->tpl_vars['review']->value['rate'];?>
 " class="rating-loading">
-                                </p>
-                                <p class="data"><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['review']->value['date']);?>
+                                    </p>
+                                    <p class="data"><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['review']->value['date']);?>
 </p>
-                                <div class="rev">
-                                    <p>Subscried by: <br></p>
-                                    <p class="username"><?php echo $_smarty_tpl->tpl_vars['review']->value['firstname'];?>
+                                    <div class="rev">
+                                        <p>Subscried by: <br></p>
+                                        <p class="username"><?php echo $_smarty_tpl->tpl_vars['review']->value['firstname'];?>
  <?php echo $_smarty_tpl->tpl_vars['review']->value['lastname'];?>
 </p>
-                                    <p class="descr"><?php echo $_smarty_tpl->tpl_vars['review']->value['comment'];?>
+                                        <p class="descr"><?php echo $_smarty_tpl->tpl_vars['review']->value['comment'];?>
 </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +315,9 @@ $_smarty_tpl->tpl_vars['review']->_loop = true;
     </div>
         
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-javascript/writeReview.js"></script>
+javascript/write_review.js"></script>
+    <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/delete_review.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/add_favorite.js"></script>
     <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
@@ -298,8 +328,8 @@ javascript/user_favorites_buttons.js"></script>
 javascript/plugins/star-rating/star-rating.js" type="text/javascript"></script>
     
     <script>
-        $('.rating-loading').rating({displayOnly: true, size:'xs', filledStar:'<i class="fa fa-star" aria-hidden="true"></i>', emptyStar:'<i class="fa fa-star-o" aria-hidden="true"></i>'});
-        $('#averageRate').parent().parent().css('display', 'inline');
+        $('.rating-loading:not(#review-rating)').rating({displayOnly: true, size:'xs'});
+        $('#review-rating').rating({size:'md', showClear:false, showCaption:false, step:1});
     </script>
     
     

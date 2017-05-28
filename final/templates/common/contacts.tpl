@@ -11,18 +11,19 @@
                 <div class="panel-body">
                     <form>
                         <div class="form-group">
-                            <strong>Your email:</strong> <small>*</small>
-                            <input type="email" class="form-control" id="email">
+                            <label for="email"><strong>Your email:</strong> <small>*</small></label>
+                            <input name="email" type="email" class="form-control" id="email">
                         </div>
                         <div class="form-group">
-                            <strong>Subject:</strong> <small>*</small>
-                            <input type="subject" class="form-control" id="subject">
+                            <label for="subject"><strong>Subject:</strong> <small>*</small></label>
+                            <input name="subject" type="subject" class="form-control" id="subject">
                         </div>
                         <div class="form-group">
-                            <strong>Message:</strong> <small>*</small>
-                            <textarea class="form-control" rows="5" cols="3" id="message"></textarea>
+                            <label for="message"><strong>Message:</strong> <small>*</small></label>
+                            <textarea name="message" class="form-control" rows="5" cols="3" id="message"></textarea>
+                            
                         </div>
-                        <button type="button" id="sendEmail" href="#" class="pull-right"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        <button type="button" id="sendEmail" href="#" class="pull-right" aria-label="send"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 </i></button>
                     </form>
                 </div>

@@ -85,7 +85,7 @@
   
   function getAllProductReviews($productId) {
     global $conn;
-    $stmt = $conn->prepare("SELECT idproduct, rate, date, comment, firstname, lastname
+    $stmt = $conn->prepare("SELECT review.id, idproduct, rate, date, comment, firstname, lastname
                             FROM review JOIN Client
                             ON idUser = Client.id
                             WHERE idProduct = ?
@@ -211,6 +211,17 @@
     return $result;
   }
 
+  function deleteImage($id) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM image
+                            WHERE id = ?;");
+    
+    if($stmt->execute(array($id)))
+        return false;
+    
+    return true;
+  }
+
   function search($input) {
     global $conn;
     $string = "%" . $input . "%";
@@ -220,5 +231,57 @@
       
      $stmt->execute(array($string, $string, $string));
      return $stmt->fetchAll();
+  }
+
+  function editProduct($id, $name, $price, $stock, $details, $newCategories) {
+    global $conn;
+    $stmt = $conn->prepare("UPDATE product
+                            SET name = ?
+                            WHERE id = ?;");
+    if(!$stmt->execute(array($name, $id)))
+        return false;
+      
+    $stmt = $conn->prepare("UPDATE product
+                            SET price = ?
+                            WHERE id = ?;");
+    if(!$stmt->execute(array($price, $id)))
+        return false;
+      
+    $stmt = $conn->prepare("UPDATE product
+                            SET stock = ?
+                            WHERE id = ?;");
+    if(!$stmt->execute(array($stock, $id)))
+        return false;
+      
+    $stmt = $conn->prepare("UPDATE product
+                            SET details = ?
+                            WHERE id = ?;");
+    if(!$stmt->execute(array($details, $id)))
+        return false;
+      
+    $stmt = $conn->prepare("DELETE FROM kind
+                                WHERE idproduct = ?;");
+    if(!$stmt->execute(array($id)))
+        return false;
+      
+    foreach($newCategories as $category) {
+        $stmt = $conn->prepare("INSERT INTO kind (idcategory, idproduct) VALUES (?,?);");
+        if(!$stmt->execute(array($category, $id)))
+            return false;
+    }
+      
+    return true;
+  }
+
+  function deleteReview($idreview) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM review
+                            WHERE id = ?;");
+      
+    if(!$stmt->execute(array($idreview)))
+        return false;
+      
+    return true;
+      
   }
 ?>

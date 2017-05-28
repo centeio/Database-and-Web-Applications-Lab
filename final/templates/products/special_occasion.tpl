@@ -41,8 +41,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6"><a href="{$linkPrevious}"><i class="fa fa-arrow-left" aria-hidden="true"></i>Previous occasion</a></div>
-        <div class="col-xs-6"><a href="{$linkNext}">Next occasion<i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="col-xs-6" id="linkPrevious"><a href="{$linkPrevious}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous occasion</a></div>
+        <div class="col-xs-6" id="linkNext"><a href="{$linkNext}">Next occasion <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
     </div>
     <div class="row">
         <div class="col-md-12" id="Products">                     

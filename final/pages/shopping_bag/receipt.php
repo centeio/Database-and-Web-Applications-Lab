@@ -2,7 +2,7 @@
 	include_once('../../config/init.php');
     include_once($BASE_DIR .'database/products.php');
     include_once($BASE_DIR .'database/users.php');
-
+    include_once($BASE_DIR .'database/orders.php');
     
     session_start();
     if(!isset($_SESSION['user_id'])){
@@ -27,6 +27,9 @@
     
     $shipping = 5.48;
     
+    //Create new order
+    $answer = json_decode(addAddress($address, $zipcode, $city));
+    createOrder($_SESSION['user_id'], $answer->addressID, $products);
 
 	$smarty->assign('style','css/Receipt.css');
     $smarty->assign('user', $user);

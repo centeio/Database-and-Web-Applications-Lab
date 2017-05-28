@@ -205,3 +205,18 @@ toggle.btn-primary:focus, .open > .dropdown-toggle.btn-link:hover {
 .ratings {
     color: #bd9128;
 }
+
+#linkPrevious{
+    margin-bottom: 10px;
+}
+
+#linkNext{
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+#linkPrevious a, #linkNext a{
+    font-family: 'Pacifico', cursive;
+    font-size:18px;
+    color: #614333;
+}

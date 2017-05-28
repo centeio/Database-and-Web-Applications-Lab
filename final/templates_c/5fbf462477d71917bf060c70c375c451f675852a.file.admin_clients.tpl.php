@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-16 21:56:35
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 20:28:59
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/admin/admin_clients.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:193860802759197a969048f5-71457777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5fbf462477d71917bf060c70c375c451f675852a' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/admin/admin_clients.tpl',
-      1 => 1494967981,
+      1 => 1495999731,
       2 => 'file',
     ),
   ),
@@ -85,11 +85,9 @@ $_smarty_tpl->tpl_vars['client']->_loop = true;
 
     </div>
     <!-- /#page-wrapper -->
+    <?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 </div>
 <!-- /#wrapper -->
 
-</div>
-
-<?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 <?php }} ?>

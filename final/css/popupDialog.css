@@ -57,6 +57,16 @@
     color: #614333;
 }
 
+.modal-content legend {
+    color: #614333;
+    font-size: 14px;
+    line-height: 1.42857143;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
 #popupResponse {
     color: #614333;
     float: left;

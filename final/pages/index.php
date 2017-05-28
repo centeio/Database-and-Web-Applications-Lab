@@ -8,6 +8,7 @@
     foreach ($highlights as $key => $special_occasion) {
         $highlights[$key]['image_path'] = $BASE_URL . 'images/carousel/' . getSpecialOccasionGallery($special_occasion['id'])[0]['name'];
         $highlights[$key]['link'] = $BASE_URL . 'pages/products/special_occasion.php?id=' . $special_occasion['id'];
+        $highlights[$key]['alt'] = $special_occasion['name'];
     }
      
     if (count($highlights) == 0){
@@ -15,6 +16,7 @@
         $highlights[0]['image_path'] = $BASE_URL . 'images/carousel/h2.jpg';
         $highlights[0]['link'] = $BASE_URL . 'pages/products/products.php';
         $highlights[0]['name'] = 'Welcome to the shop';
+        $highlights[0]['alt'] = 'Welcome to the shop';
     }
     
     $products = getBestSellers();

@@ -28,13 +28,8 @@
             </div>
             <div class="modal-body">
                 <form>
-                <form>
                     <div class="rating form-group">
-                        <span><input class="form-check-input" type="radio" name="rating" id="str5" value="5"><label for="str5"><i class="fa fa-star" aria-hidden="true"></i></label></span>
-                        <span><input class="form-check-input" type="radio" name="rating" id="str4" value="4"><label for="str4"><i class="fa fa-star" aria-hidden="true"></i></label></span>
-                        <span><input class="form-check-input" type="radio" name="rating" id="str3" value="3"><label for="str3"><i class="fa fa-star" aria-hidden="true"></i></label></span>
-                        <span><input class="form-check-input" type="radio" name="rating" id="str2" value="2"><label for="str2"><i class="fa fa-star" aria-hidden="true"></i></label></span>
-                        <span><input class="form-check-input" type="radio" name="rating" id="str1" value="1"><label for="str1"><i class="fa fa-star" aria-hidden="true"></i></label></span>
+                        <input id="review-rating" name="rating" class="rating rating-loading">
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" id="writeReviewComment" rows="5" placeholder="Write your review in here..."></textarea>
@@ -43,7 +38,7 @@
                         <input id="productID" type="hidden" value="{$product.id}"/> 
                     </div>
                     <div>
-                        <input id="submitButton" type="button" class="btn btn-success" value="Submit"></button>
+                        <input id="submitButton" type="button" class="btn btn-default" value="Submit"/>
                     </div>
                 </form>
             </div>
@@ -92,8 +87,23 @@
                         </fieldset>
                     </div>
                     
+                    <div class="form-group">
+                        <div id="editImages" class="row">
+                            {for $i=0 to $images|@count - 1}
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 already-added">
+                                    <i id="image{$images[$i].id}" class="fa fa-times pull-right" aria-hidden="true"></i>
+                                    <img src="{$BASE_URL}images/products/{$images[$i].name}" alt=""/>
+                                </div>
+                            {/for}
+                            <div id="addNewImage" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div id="insideAddNewImage">
+                                    <i class="fa fa-plus " aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
                     <div class="form-group popup-buttons">
-                        <hr/>
                         <span id="popupResponse"></span>
                         <button id="SubmitEditProduct" type="button" class="btn btn-default">Submit</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -115,18 +125,18 @@
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <!-- Carousel indicators -->
                             <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li id="indicator{$images[0].id}" data-target="#myCarousel" data-slide-to="0" class="active"></li>
                                 {for $i=1 to $images|@count - 1}
-                                <li data-target="#myCarousel" data-slide-to="{$i}"></li>
+                                <li id="indicator{$images[$i].id}" data-target="#myCarousel" data-slide-to="{$i}"></li>
                                 {/for}
                             </ol>   
                             <!-- Wrapper for carousel items-->
                             <div class="carousel-inner">
-                                <div class="item active">
+                                <div id="slideshow{$images[0].id}" class="item active">
                                     <img src="{$BASE_URL}images/products/{$images[0].name}" alt="First Slide">
                                 </div>
                                 {for $i=1 to $images|@count - 1}
-                                <div class="item">
+                                <div id="slideshow{$images[$i].id}" class="item">
                                     <img src="{$BASE_URL}images/products/{$images[$i].name}" alt="">
                                 </div>
                                 {/for}
@@ -154,21 +164,22 @@
                         </p>
                         <span id="product_id" data="{$product.id}"/>
                         <h4>{$product.name}
-                        {if isset($heart)}
-                            <a href="#" id="addfavorite"><span style="color: #7B2832"> 
-                                <i id="heart" class="fa {$heart}"
-                                aria-hidden="true">
-                            </span></i></a>
-                        {/if}
-                        {if !$smarty.session.is_admin}
-                            <button type="button" id="addproducttocart" class="btn" onclick="addProductToShoppingBag({$smarty.session.user_id}, {$product.id})">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </button>
-                        {/if}
+                            {if isset($heart)}
+                                <a href="#" id="addfavorite"><span style="color: #7B2832"> 
+                                    <i id="heart" class="fa {$heart}"
+                                    aria-hidden="true"></i>
+                                </span></a>
+                            {/if}
+                            {if isset($smarty.session.user_id) && !$smarty.session.is_admin}
+                                <button type="button" id="addproducttocart" class="btn" onclick="addProductToShoppingBag({$smarty.session.user_id}, {$product.id})">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                </button>
+                            {/if}
+                        </h4>
                         <h4>{$product.price}€</h4>
                         <div class="ratings">
                             <p>
-                                <input name="rate" value="{$product.rate}" class="rating-loading" id="averageRate">
+                                <input name="rate" value="{$product.rate}" class="rating-loading" id="averageRate"/>
                                 ({$product.votes})
                             </p>
                         </div>
@@ -180,23 +191,28 @@
 
         <div class="container">
             <div class="row">
-                <div class="details" class="col-md-11">               
+                <div id="reviewsContainer" class="details" class="col-md-11">               
                     {if isset($smarty.session.user_id) && !$smarty.session.is_admin}
                         <p class="pull-right"><a id="writeReviewBtn" class="btn">Write a Review</a></p>
                     {/if}
                         <h3 id="ReviewsTitle" > Reviews</h3><br>
                     {foreach $reviews as $review}
-                        <hr>                                
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="pull-right">
-                                    <input name="rate" value="{$review.rate}" class="rating-loading">
-                                </p>
-                                <p class="data">{$review.date|date_format}</p>
-                                <div class="rev">
-                                    <p>Subscried by: <br></p>
-                                    <p class="username">{$review.firstname} {$review.lastname}</p>
-                                    <p class="descr">{$review.comment}</p>
+                        <div id="review{$review.id}">
+                            <hr>                                
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="pull-right">
+                                        {if $USERID == 1}
+                                            <i id="{$review.id}" class="fa fa-times pull-right" aria-hidden="true"></i>
+                                        {/if}
+                                        <input name="rate" value="{$review.rate}" class="rating-loading">
+                                    </p>
+                                    <p class="data">{$review.date|date_format}</p>
+                                    <div class="rev">
+                                        <p>Subscried by: <br></p>
+                                        <p class="username">{$review.firstname} {$review.lastname}</p>
+                                        <p class="descr">{$review.comment}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -206,15 +222,16 @@
         </div>
     </div>
         
-    <script src="{$BASE_URL}javascript/writeReview.js"></script>
+    <script src="{$BASE_URL}javascript/write_review.js"></script>
+    <script src="{$BASE_URL}javascript/delete_review.js"></script>
     <script src="{$BASE_URL}javascript/add_favorite.js"></script>
     <script src="{$BASE_URL}javascript/edit_product.js"></script>
     <script src="{$BASE_URL}javascript/user_favorites_buttons.js"></script>
     <script src="{$BASE_URL}javascript/plugins/star-rating/star-rating.js" type="text/javascript"></script>
     {literal}
     <script>
-        $('.rating-loading').rating({displayOnly: true, size:'xs', filledStar:'<i class="fa fa-star" aria-hidden="true"></i>', emptyStar:'<i class="fa fa-star-o" aria-hidden="true"></i>'});
-        $('#averageRate').parent().parent().css('display', 'inline');
+        $('.rating-loading:not(#review-rating)').rating({displayOnly: true, size:'xs'});
+        $('#review-rating').rating({size:'md', showClear:false, showCaption:false, step:1});
     </script>
     {/literal}
     

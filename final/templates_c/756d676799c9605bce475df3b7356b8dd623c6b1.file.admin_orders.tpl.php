@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 02:16:24
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 20:36:27
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/admin/admin_orders.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:147709856559197474c47829-39515276%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '756d676799c9605bce475df3b7356b8dd623c6b1' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/admin/admin_orders.tpl',
-      1 => 1495934174,
+      1 => 1496000166,
       2 => 'file',
     ),
   ),
@@ -80,7 +80,7 @@ $_smarty_tpl->tpl_vars['order']->_loop = true;
 " class=<?php echo $_smarty_tpl->tpl_vars['order']->value['state'];?>
 ><strong id="state_order_strong_<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['order']->value['state'];?>
-</strong></em>
+</strong></span></em>
                                         </p>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -99,68 +99,57 @@ $_smarty_tpl->tpl_vars['order']->_loop = true;
                                         </address>
                                     </div>
                                 </div>
-                <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th class="text-center">Quantity</th>
-                                <th class="text-center">Price</th>
-                                <th class="text-center">Total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php  $_smarty_tpl->tpl_vars['product'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['product']->_loop = false;
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th class="text-center">Quantity</th>
+                                                    <th class="text-center">Price</th>
+                                                    <th class="text-center">Total</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php  $_smarty_tpl->tpl_vars['product'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['product']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['order']->value['products']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['product']->key => $_smarty_tpl->tpl_vars['product']->value) {
 $_smarty_tpl->tpl_vars['product']->_loop = true;
 ?>
-                            <tr>
-                                <td class="col-sm-8 col-md-6 col-xs-12 col-lg-6"><?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
+                                                <tr>
+                                                    <td class="col-sm-8 col-md-6 col-xs-12 col-lg-6"><?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
 </td>
-                                <td class="col-sm-1 col-md-1" style="text-align: center">
-                                    <input type="number" class="form-control" id="exampleInputEmail1" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['quantity'];?>
+                                                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                                                        <input type="number" class="form-control" id="exampleInputEmail1" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['quantity'];?>
 ">
-                                </td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $_smarty_tpl->tpl_vars['product']->value['price'];?>
+                                                    </td>
+                                                    <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $_smarty_tpl->tpl_vars['product']->value['price'];?>
 </strong></td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $_smarty_tpl->tpl_vars['product']->value['quantity']*$_smarty_tpl->tpl_vars['product']->value['price'];?>
+                                                    <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $_smarty_tpl->tpl_vars['product']->value['quantity']*$_smarty_tpl->tpl_vars['product']->value['price'];?>
 </strong></td>
-                                <td class="col-sm-1 col-md-1">
-                                    <button type="button" class="btn remove">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                                                    <td class="col-sm-1 col-md-1">
+                                                        <button type="button" class="btn remove">
+                                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <?php } ?>
 
-                <!-- /.row -->
-
-
-                <!-- /.row -->
-
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- /#page-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
-
-</div>
-
 <?php echo $_smarty_tpl->getSubTemplate ('common/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>

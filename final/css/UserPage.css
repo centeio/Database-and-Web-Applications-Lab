@@ -10,14 +10,6 @@ html, body {
     padding: 0;
 }
 
-.not-popup {
-    transition: all .25s linear;
-    -webkit-transition: all .25s linear; /* Safari and Chrome */
-    -moz-transition: all .25s linear; /* Firefox */
-    -ms-transition: all .25s linear; /* IE 9 */
-    -o-transition: all .25s linear; /* Opera */
-}
-
 #dashboard {
     min-height: 100%;
     padding-top: 80px;
