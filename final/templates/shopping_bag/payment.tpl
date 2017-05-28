@@ -21,7 +21,7 @@
     </div> 
 
     <div class="row">
-        <form class="form-horizontal" method="post" action="">
+        <form id="payment" class="form-horizontal" method="post" action="receipt.php" onsubmit="return validateForm()">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                 <!--REVIEW ORDER-->
                 <div class="panel panel-info">
@@ -36,10 +36,10 @@
                             </div>
                             <div class="col-sm-6 col-xs-6">
                                 <div class="col-xs-12">{$product.name}</div>
-                                <div class="col-xs-12"><small>Quantity:<span>{$product.quantity}</span></small></div>
+                                <div class="col-xs-12"><small>Quantity:<span> {$product.quantity}</span></small></div>
                             </div>
                             <div class="col-sm-3 col-xs-3 text-right">
-                                <span>{$product.total}</span>
+                                <span>{$product.total}€</span>
                             </div>
                         </div>
                         <div class="form-group"><hr /></div>
@@ -47,18 +47,18 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <strong>Subtotal</strong>
-                                <div class="pull-right"><span>{$subTotal}</span></div>
+                                <div class="pull-right"><span>{$subTotal}€</span></div>
                             </div>
                             <div class="col-xs-12">
                                 <small>Shipping</small>
-                                <div class="pull-right"><span>{$shipping}</span></div>
+                                <div class="pull-right"><span>{$shipping}€</span></div>
                             </div>
                         </div>
                         <div class="form-group"><hr /></div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <strong>Order Total</strong>
-                                <div class="pull-right"><span>{$total}</span></div>
+                                <div class="pull-right"><span>{$total}€</span></div>
                             </div>
                         </div>
                     </div>
@@ -129,129 +129,163 @@
                 </div>
                 <!--CREDIT CART PAYMENT END-->
             </div>
+            
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
                 <div class="panel panel-info">
                     <div class="panel-heading">Address</div>
                     <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <select class="predifined" id="predifinedBillingAddress">
+                                    <option value="-1">New Address</option>
+                                </select>
+                            </div>
+                        </div>
                         <!--BILLING FORM-->
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <h4>Billing Address</h4>
+                        <div id="billing">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <h4>Billing Address</h4>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Country:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" name="country" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Address:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="address" class="form-control" value="" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-xs-12">
-                                <strong>First Name:</strong>
-                                <input type="text" name="first_name" class="form-control" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>City:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="city" class="form-control" value="" />
+                                </div>
                             </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12">
-                                <strong>Last Name:</strong>
-                                <input type="text" name="last_name" class="form-control" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="zip_code" class="form-control" value="" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Address:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="address" class="form-control" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Country:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="country" value="" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>City:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="city" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>State:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="state" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="zip_code" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Phone Number:</strong></div>
-                            <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Email Address:</strong></div>
-                            <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
                         </div>
                         <!--BILLING FORM END-->
-                        <input type="checkbox">  My Shipping address is the same as my billing address.</input>
-                        <hr>
+                        <input type="checkbox" id="addressesAreTheSame">  My Shipping address is the same as my billing address.</input>
+                        
                         <!--SHIPPING FORM-->
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <h4>Shipping Address</h4>
+                        <div id="shipping">
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <select class="predifined" id="predifinedShippingAddress">
+                                        <option value="-1">New Address</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Country:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" name="country" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <h4>Shipping Address</h4>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-xs-12">
-                                <strong>First Name:</strong>
-                                <input type="text" name="first_name" class="form-control" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Address:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="address" class="form-control" value="" />
+                                </div>
                             </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12">
-                                <strong>Last Name:</strong>
-                                <input type="text" name="last_name" class="form-control" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>City:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="city" class="form-control" value="" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Address:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="address" class="form-control" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="zip_code" class="form-control" value="" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>City:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="city" class="form-control" value="" />
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Country:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="country" value="" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>State:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="state" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="zip_code" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Phone Number:</strong></div>
-                            <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Email Address:</strong></div>
-                            <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
                         </div>
                     <!--SHIPPING FORM END-->
                     </div>
                 </div>
             </div>
         </form>
-    </div>
+        <button type="submit" form="payment" value="Submit">Confirm</button>
+    </div> 
 </div>
+
+
+<script>
+    var addresses = {$addresses|json_encode};
+
+{literal}
+    $.each(addresses, function (i, address) {
+        $('.predifined').append($('<option>', { 
+            value: i,
+            text : address.address 
+        }));
+    });
+
+    $('#predifinedBillingAddress').change(function(e) {
+        
+        if(this.value != -1){
+            var address = addresses[this.value];
+            
+            $('#billing input[name=address]').val(address.address);
+            $('#billing input[name=city]').val(address.city);
+            $('#billing input[name=zip_code]').val(address.zipnumber);
+            $('#billing input[name=country]').val(address.country);
+        }
+        else{
+            $('#billing input[name=address]').val("");
+            $('#billing input[name=city]').val("");
+            $('#billing input[name=zip_code]').val("");
+            $('#billing input[name=country]').val("");
+        }
+    });
+    
+    $('#predifinedShippingAddress').change(function(e) {
+        
+        if(this.value != -1){
+            var address = addresses[this.value];
+            
+            $('#shipping input[name=address]').val(address.address);
+            $('#shipping input[name=city]').val(address.city);
+            $('#shipping input[name=zip_code]').val(address.zipnumber);
+            $('#shipping input[name=country]').val(address.country);
+        }
+        else{
+            $('#shipping input[name=address]').val("");
+            $('#shipping input[name=city]').val("");
+            $('#shipping input[name=zip_code]').val("");
+            $('#shipping input[name=country]').val("");
+        }
+    });
+    
+    $('#addressesAreTheSame').click(function() {
+        $('#shipping').toggle();
+    });
+    
+    function validateForm() {
+        if($('#addressesAreTheSame').is(':checked')){
+            $('#shipping input[name=address]').val( $('#billing input[name=address]').val());
+            $('#shipping input[name=city]').val($('#billing input[name=city]').val());
+            $('#shipping input[name=zip_code]').val($('#billing input[name=zip_code]').val());
+            $('#shipping input[name=country]').val($('#billing input[name=country]').val());
+        }
+    };
+</script>
+{/literal}
 
 {include file='common/footer.tpl'}

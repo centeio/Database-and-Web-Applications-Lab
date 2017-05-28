@@ -1,5 +1,16 @@
-$(document).ready(function() { boundEventToDeleteAddress();
-                               boundEventToAddAddress();});
+$(document).ready(function() {
+    
+    $("#EditProfile #username").on("blur", validateUsernameAsync);
+
+    $("#EditProfile #email").on("blur", validateEmailAsync);
+
+    $("#EditProfile #firstName").on("blur", validateFirstNameAsync);
+
+    $("#EditProfile #lastName").on("blur", validateLastNameAsync);
+    
+    boundEventToDeleteAddress();
+    boundEventToAddAddress();
+});
 
 function boundEventToDeleteAddress() {
     $("#Addresses .panel-heading i").click(function() {
@@ -124,10 +135,132 @@ function boundEventToAddAddress() {
     $('#addAddressPopUp').on('shown.bs.modal', function () {
         $("#NewStreetName").focus();
     });
+    
+    $('#addAddressPopUp').on('hide.bs.modal', function () {
+      $(".not-popup").css({ "filter": "blur(0px)", "-moz-filter": "blur(0px)", "-webkit-filter": "blur(0px)", "-o-filter": "blur(0px)"});
+    });
 
     $('#addAddressPopUp').on('hidden.bs.modal', function () {
-        $(".not-popup").css({ "filter": "blur(0px)", "-moz-filter": "blur(0px)", "-webkit-filter": "blur(0px)", "-o-filter": "blur(0px)"});
         $('#addAddressPopUp form input').val("");
         $('#addAddressPopUp form input').removeClass("wrongAnswer");
     });
+}
+
+function checkPassword() {
+
+	var $password = $('#userProfilePassword');
+	var $passwordText = $password.val();
+
+	var $validUser = false;
+
+	if ($passwordText !== "") {
+		$.ajax({
+			type: "POST",
+			url: "../../database/users.php",
+			async: false,
+			data: {
+				action: 'checkPassword',
+				password: $passwordText
+			},
+			success: function(data) {
+                $validUser = (data === "true");
+			}
+		});
+	}
+
+	if (!$validUser) {
+		$password.addClass("wrongAnswer");
+		$password.effect("shake", {distance: 2});
+	}
+
+	return $validUser;
+}
+
+function checkChangePassword() {
+	$oldPassword = $('#changeOldPassword');
+	$oldPasswordText = $oldPassword.val();
+
+	$newPassword = $('#changeNewPassword');
+	$newPasswordText = $newPassword.val();
+
+	$newRepeatPassword = $('#changeNewRepeatPassword');
+	$newRepeatPasswordText = $newRepeatPassword.val();
+
+	var $validUser = false;
+
+	if ($oldPasswordText !== "") {
+		$.ajax({
+			type: "POST",
+			url: "../../database/users.php",
+			async: false,
+			data: {
+				action: 'checkPassword',
+				password: $oldPasswordText
+			},
+			success: function(data) {
+				$validUser = (data === "true");
+			}
+		});
+	}
+
+	if (!$validUser) {
+		$oldPassword.addClass("wrongAnswer");
+		$oldPassword.effect("shake", {distance: 2});
+	} else {
+		if ($newPasswordText !== "" && $newRepeatPasswordText !== "") {
+			if($newPasswordText != $newRepeatPasswordText) {
+				$newRepeatPassword.addClass("wrongAnswer");
+				$newRepeatPassword.effect("shake", {distance: 2});
+				$validUser = false;
+			}
+		} else {
+			if ($newPasswordText == "") {
+				$newPassword.addClass("wrongAnswer");
+				$newPassword.effect("shake", {distance: 2});
+			}
+			if ($newRepeatPasswordText == "") {
+				$newRepeatPassword.addClass("wrongAnswer");
+				$newRepeatPassword.effect("shake", {distance: 2});
+			}
+			$validUser = false;
+		}
+	}
+
+	return $validUser;
+}
+
+function checkPersonalDetails() {
+    $(".spinner").css("visibility", "visible");
+
+    $username = $("#username").val();
+    if(!validateUsername($username)) {
+        $(".spinner").css("visibility", "hidden");
+        return false;
+    }
+    
+    $email = $("#email").val();
+    if(!validateEmail($email)) {
+        $(".spinner").css("visibility", "hidden");
+        return false;
+    }
+    
+    $firstName = $('#firstName');
+    if(!validateName($firstName, "first")) {
+        $(".spinner").css("visibility", "hidden");
+        return false;
+    }
+    
+    $lastName = $('#lastName');
+    if(!validateName($lastName, "last")) {
+        $(".spinner").css("visibility", "hidden");
+        return false;
+    }
+    
+    if(!checkPassword()) {
+        $(".spinner").css("visibility", "hidden");
+        return false;
+    }
+
+    $(".spinner").css("visibility", "hidden");
+    return true;
 }

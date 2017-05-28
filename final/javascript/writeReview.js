@@ -1,24 +1,26 @@
 $(document).ready(function(){
 	// Check Radio-box
-        $(".rating input:radio").attr("checked", false);
+    $(".rating input:radio").attr("checked", false);
 
-        $('.rating input').click(function () {
-        	$(".rating span").removeClass('checked');
-                $(this).parent().addClass('checked');
-        }); 
+    $('.rating input').click(function () {
+    	$(".rating span").removeClass('checked');
+            $(this).parent().addClass('checked');
+    }); 
 
 	$('#writeReviewBtn').click(function() {
-		$('#writeReview').css("visibility", "visible");
-		$('#writeReview').css("opacity", "1");
+        $(".not-popup").css({ "filter": "blur(1px)", "-moz-filter": "blur(1px)", "-webkit-filter": "blur(1px)", "-o-filter": "blur(1px)"});
+		$('#writeReview').modal("show");
 	});
-
-	$('#cancelReview').click(function() {
-		$('#writeReview').css("opacity", "0");
-		$('#writeReview').css("visibility", "hidden");
-		$('input[name=Choose]').attr('checked',false);
+    
+    $('#writeReview').on('hidden.bs.modal', function () {
+        $('input[name=Choose]').attr('checked',false);
 		$('#writeReviewComment').val('');
 		$(".rating span").removeClass('checked');
-	});
+    });
+    
+    $('#writeReview').on('hide.bs.modal', function () {
+      $(".not-popup").css({ "filter": "blur(0px)", "-moz-filter": "blur(0px)", "-webkit-filter": "blur(0px)", "-o-filter": "blur(0px)"});
+    });
 
 	$('#submitButton').click(function() {
 		$rating = $('input[name=rating]:checked').val();

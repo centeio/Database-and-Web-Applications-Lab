@@ -27,16 +27,16 @@
                             </p>
 
                             <p>
-                                <em>Status: <span class="text-success"><strong>{$order.state}</strong></em>
+                                <em>Status: <span class={$order.state}><strong>{$order.state}</strong></em>
                             </p>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                             <address>
-                                <strong>Elf Cafe</strong>
-                                <br> 2135 Sunset Blvd
-                                <br> Los Angeles, CA 90026
+                                <strong>{$user.firstname} {$user.lastname}</strong>
+                                <br> {$order.address}
+                                <br> {$order.city}, {$order.zipnumber}
                                 <br>
-                                <abbr title="Phone">P:</abbr> (213) 484-6829
+                                <abbr title="Phone">P:</abbr> {$user.phonenumber}
                             </address>
 
                         </div>

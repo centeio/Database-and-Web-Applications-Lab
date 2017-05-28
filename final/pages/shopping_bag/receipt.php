@@ -1,14 +1,20 @@
 <?php 
 	include_once('../../config/init.php');
     include_once($BASE_DIR .'database/products.php');
+    include_once($BASE_DIR .'database/users.php');
+
     
     session_start();
     if(!isset($_SESSION['user_id'])){
         header('Location: '.$BASE_URL .'pages/common/register.php');
     }
     
-    $address = '<strong>Elf Cafe</strong><br>2135 Sunset Blvd<br>Los Angeles, CA 90026';
-    $phone = '(213) 484-6829';
+    $user = getClient($_SESSION['user_id']);
+    $id = "CW" + $_SESSION['user_id'] + date("Ymd");
+    $address =  $_POST["address"];
+    $city =  $_POST["city"];
+    $zipcode =  $_POST["zip_code"];
+    $phone = $_POST["phone_number"];
     $date = date("Y-m-d");
     
     $products = getShoppingBag($_SESSION['user_id']);
@@ -21,10 +27,15 @@
     
     $shipping = 5.48;
     
+
 	$smarty->assign('style','css/Receipt.css');
+    $smarty->assign('user', $user);
     $smarty->assign('address', $address);
+    $smarty->assign('city', $city);
+    $smarty->assign('zipcode', $zipcode);
     $smarty->assign('phone', $phone);
     $smarty->assign('date', $date);
+    $smarty->assign('id', $id);
     $smarty->assign('products', $products);
     $smarty->assign('subTotal', $subTotal);
     $smarty->assign('shipping', $shipping);

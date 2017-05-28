@@ -4,7 +4,7 @@
     global $conn;
     $stmt = $conn->prepare("SELECT * 
                             FROM \"order\" 
-                            ORDER BY id;");
+                            ORDER BY id DESC;");
     
     $stmt->execute(array());
 
@@ -46,4 +46,17 @@
 
     return $stmt->fetch();
   }
+  
+  function cancelOrder($id) {
+    global $conn;
+    
+    $stmt = $conn->prepare("UPDATE \"order\"
+                            SET state = 'canceled'
+                            WHERE id = ?;");
+    
+    $stmt->execute(array($id));
+
+    return $stmt->fetch();
+  }
+
 ?>

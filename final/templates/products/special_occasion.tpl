@@ -45,69 +45,7 @@
         <div class="col-xs-6"><a href="{$linkNext}">Next occasion<i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
     </div>
     <div class="row">
-        <div class="col-md-2 list-group">
-            <div class="list-group-item" id="categoryDropdown">
-                Categories <i class="fa fa-caret-down" aria-hidden="true"></i>
-            </div>
-            <div  class="categoryOption list-group-item">
-                <input type="checkbox" value="White Chocolate"> White Chocolate
-            </div>
-            <div class="categoryOption list-group-item">
-                <input type="checkbox" value ="Dark Chocolate"> Dark Chocolate
-            </div>
-            <div class="categoryOption list-group-item">
-                <input type="checkbox" value ="Milk Chocolate"> Milk Chocolate
-            </div>
-            <div class="list-group-item" id="priceDropdown">
-                Price <i class="fa fa-caret-down" aria-hidden="true"></i>
-            </div>
-            <div  class="priceOption list-group-item">
-                <input type="checkbox" value="(price>0 AND price<10)">  0€...10€
-            </div>
-            <div class="priceOption list-group-item">
-                <input type="checkbox" value="(price>10 AND price<20)"> 10€...20€
-            </div>
-            <div class="priceOption list-group-item">
-                <input type="checkbox" value="(price>20 AND price<30)"> 20€...30€
-            </div>
-            <div class="priceOption list-group-item">
-                <input type="checkbox" value="(price>30)"> 30€...
-            </div>
-            <div class="list-group-item" id="ratingDropdown">
-                Rating <i class="fa fa-caret-down" aria-hidden="true"></i>
-            </div>
-            <div  class="ratingOption list-group-item">
-                <input type="checkbox" value="1">
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-            <div class="ratingOption list-group-item">
-                <input type="checkbox" value="2">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-            <div class="ratingOption list-group-item">
-                <input type="checkbox" value="3">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-            <div class="ratingOption list-group-item">
-                <input type="checkbox" value="4">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-            <div class="ratingOption list-group-item">
-                <input type="checkbox" value="5">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div class="col-md-10" id="Products">                     
+        <div class="col-md-12" id="Products">                     
             {foreach $products as $product}
             <div class="col-md-3 col-xs-6">
                 <div class="thumbnail">

@@ -42,28 +42,23 @@
 
             <div id="BestSellers" class="row">
 
-                <h1 id="BestSellersTitle"> Best Rated </h1>
+                <h1 id="BestSellersTitle">Best Rated</h1>
 
                 {foreach $products as $product}
                 <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="{$BASE_URL}images/thumbnails/{$product.image}" alt="{$product.image}">
-                        <div class="caption">
-                            <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="{$BASE_URL}pages/products/product.php?id={$product.id}">{$product.name}</a></h4>
-                            <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">{$product.price}€</h4>
-                            <div class="ratings">
-                                <p class="pull-right">{$product.count} reviews</p>
-                            <p>
-                                {for $i=1 to $product.rate}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {/for}
-                                {for $i=1 to 5 - $product.rate}
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                {/for}
-                            </p>
+                    <a href="{$BASE_URL}pages/products/product.php?id={$product.id}">
+                        <div class="thumbnail">
+                            <img src="{$BASE_URL}images/thumbnails/{$product.image}" alt="{$product.image}">
+                            <div class="caption">
+                                <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">{$product.name}</h4>
+                                <h4 class="pull-right col-lg-12 col-md-12 col-sm-12 col-xs-12">{$product.price}€</h4>
+                                <div class="ratings">
+                                    <p class="pull-right">{$product.count} reviews</p>
+                                    <input name="rate" value="{$product.rate}" class="rating-loading">
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 {/foreach}
                 
@@ -71,5 +66,12 @@
         </div>
     </div>
 </div>
+
+<script src="{$BASE_URL}javascript/plugins/star-rating/star-rating.js" type="text/javascript"></script>
+{literal}
+<script>
+    $('.rating-loading').rating({displayOnly: true, size:'xs', filledStar:'<i class="fa fa-star" aria-hidden="true"></i>', emptyStar:'<i class="fa fa-star-o" aria-hidden="true"></i>'});
+</script>
+{/literal}
 
 {include file='common/footer.tpl'}

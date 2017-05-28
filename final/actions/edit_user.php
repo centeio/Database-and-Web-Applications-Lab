@@ -16,9 +16,13 @@
 
     if($_POST['phone'] != "")
         updatePhonenumber($_POST['phone']);
+    else
+        updatePhonenumber(null);
 
     if($_POST['taxpayernumber'] != "")
         updateTaxpayernumber($_POST['taxpayernumber']);
+    else
+        updateTaxpayernumber(null);
 
      header("Location: " . $_SERVER["HTTP_REFERER"]);
 ?>

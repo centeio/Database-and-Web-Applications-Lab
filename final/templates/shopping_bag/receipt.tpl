@@ -29,6 +29,7 @@
                     <address>
                         {$address}
                         <br>
+                        {$zipcode} {$city}
                         <abbr title="Phone">P:</abbr> {$phone}
                     </address>
                 </div>
@@ -37,7 +38,7 @@
                         <em>Date: {$date|date_format: "%B %eth, %Y"}</em>
                     </p>
                     <p>
-                        <em>Receipt #: 34522677W</em>
+                        <em>Receipt #: {$id}</em>
                     </p>
                 </div>
             </div>

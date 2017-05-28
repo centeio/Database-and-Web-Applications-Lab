@@ -1,5 +1,8 @@
+@import url("popupDialog.css");
+
 #ProductsContent {
-    margin-top: 60px;
+    padding-top: 60px;
+    padding-bottom: 120px;
 }
 
 .list-group{
@@ -55,7 +58,6 @@ toggle.btn-primary:focus, .open > .dropdown-toggle.btn-link:hover {
 .dropdown ul {
     font-family: 'Pacifico', cursive;
     font-size:18px;
-    background-color: #F8EEE7;
     color: #614333;
 }
 
@@ -132,6 +134,7 @@ toggle.btn-primary:focus, .open > .dropdown-toggle.btn-link:hover {
 
 #Products h4 {
     text-align: center;
+    white-space: nowrap;
 }
 
 #Products > div {
@@ -160,8 +163,30 @@ toggle.btn-primary:focus, .open > .dropdown-toggle.btn-link:hover {
    text-decoration: none;
 }
 
+#Products button{
+    position: absolute;
+    top: 2%;
+    left: 75%;
+    text-align: center;	
+    background: none;
+    color: #614333;
+    font-size: 2em;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    border-radius: 2px;
+    border-width: 0px;
+}
+
+#Products button:hover{
+    background: rgba(200, 200, 200, 0.7);
+}
+
+#Products button:active {
+    background: rgba(150, 150, 150, 0.7);
+    transform: translateY(2px);
+}
+
 #Products div.add-product{
-    height: 230px;
+    height: 217px;
     border: 1px solid #f2e0d3;
     background-color: #F8EEE7;
     font-size: 60px;
@@ -179,39 +204,4 @@ toggle.btn-primary:focus, .open > .dropdown-toggle.btn-link:hover {
 
 .ratings {
     color: #bd9128;
-}
-
-#footer {
-    background-color: #F8EEE7;
-}
-
-#SocialMedia {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#SocialMedia i {
-    font-size: 40px;
-    color: #614333;
-    margin: 0px 10px;
-    transition: all .5s ease;
-    -webkit-transition: all .5s ease; /* Safari and Chrome */
-    -moz-transition: all .5s ease; /* Firefox */
-    -ms-transition: all .5s ease; /* IE 9 */
-    -o-transition: all .5s ease; /* Opera */
-}
-
-#SocialMedia i:hover {
-    color: #614333;
-    transform: scale(1.25);
-    -webkit-transform: scale(1.25); /* Safari and Chrome */
-    -moz-transform: scale(1.25); /* Firefox */
-    -ms-transform: scale(1.25); /* IE 9 */
-    -o-transform: scale(1.25); /* Opera */
-}
-
-#Copyrights {
-    color: #614333;
-    text-align: center;
-    margin-top: 20px;
 }

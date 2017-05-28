@@ -21,7 +21,13 @@
     $highlights = getSpecialOccasionGallery($_GET['id']);
     
     foreach ($highlights as $key2 => $image) {
-        $highlights[$key2]['image_path'] = $BASE_URL . 'images/carousel/' . $image['name'];
+        $src = $BASE_DIR . 'images/carousel/' . $image['name'];
+        if (is_file($src) && file_exists($src)) {
+            $highlights[$key2]['image_path'] = $BASE_URL . 'images/carousel/' . $image['name'];
+        }
+        else{
+            $highlights[$key2]['image_path'] = $BASE_URL . 'images/carousel/placeholder.jpg';
+        }
         $highlights[$key2]['link'] = $BASE_URL . 'pages/products/product?id=' . $image['idproduct'];
     }
     

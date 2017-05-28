@@ -17,7 +17,7 @@ html, body {
     background-image: none;
     background-color: #F8EEE7;
     border: none;
-    box-shadow: 0px 1px 5px #777; 
+    box-shadow: 0px 1px 5px #777;
     -webkit-box-shadow: 0px 1px 5px #777; /* Safari and Chrome */
     -moz-box-shadow: 0px 1px 5px #777; /* Firefox */
     -ms-box-shadow: 0px 1px 5px #777; /* IE 9 */
@@ -97,8 +97,9 @@ html, body {
 
 @media only screen and (min-width: 768px) {
     .nav.navbar-nav.navbar-center a,
-    .nav.navbar-nav.navbar-right a {
-        transition: all .5s ease;
+    .nav.navbar-nav.navbar-right a,
+    .nav.navbar-nav.navbar-right .dropdown i{
+        transition: all .2s ease;
         -webkit-transition: all .2s ease; /* Safari and Chrome */
         -moz-transition: all .2s ease; /* Firefox */
         -ms-transition: all .2s ease; /* IE 9 */
@@ -106,7 +107,8 @@ html, body {
     }
 
     .nav.navbar-nav.navbar-center a:hover,
-    .nav.navbar-nav.navbar-right a:hover {
+    .nav.navbar-nav.navbar-right a:hover,
+    .nav.navbar-nav.navbar-right .dropdown i:hover {
         transform: scale(1.1);
         -webkit-transform: scale(1.1); /* Safari and Chrome */
         -moz-transform: scale(1.1); /* Firefox */
@@ -146,4 +148,118 @@ html, body {
         display: none;
     }
 }
+
+.nav.navbar-nav.navbar-right .dropdown i {
+    padding: 15px 15px;
+    cursor: pointer;
+}
+
+#myNavbar .dropdown-menu {
+    min-width: 0px;
+    border: 1px solid #f2e0d3;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s ease;
+    -webkit-transition: all 1 ease; /* Safari and Chrome */
+    -moz-transition: all 1 ease; /* Firefox */
+    -ms-transition: all 1 ease; /* IE 9 */
+    -o-transition: all 1 ease; /* Opera */
+    transform: translateX(25%);
+    -webkit-transform: -webkit-translateX(25%); /* Safari and Chrome */
+    -moz-transform: -moz-translateX(25%); /* Firefox */
+    -ms-transform: -ms-translateX(25%); /* IE 9 */
+    -o-transform: -o-translateX(25%); /* Opera */
+    background: none;
+}
+
+#myNavbar .open > .dropdown-menu {
+    visibility: visible;
+    background-color: white;
+}
+
+.opened {
+    animation-name: dropdownIn;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.closed {
+    animation-name: dropdownOut;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+}
+
+@keyframes dropdownIn {
+    0% {
+        transform: translate(25%, -20px);
+        opacity: 0;
+    }
+    50 {
+        transform: translate(25%, -10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(25%, 5px);
+        opacity: 1;
+    }
+}
+
+@keyframes dropdownOut {
+    0% {
+        transform: translate(25%, 5px);
+        opacity: 1;
+    }
+    50 {
+        transform: translate(25%, -10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(25%, -20px);
+        opacity: 0;
+    }
+}
+
+#myNavbar .dropdown-menu li a {
+    color: #614333;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+
+#myNavbar .open > #dropdown li a:active,
+#myNavbar .open > #dropdown li a:hover,
+#myNavbar .open > #dropdown li a:visited,
+#myNavbar .open > #dropdown li a:focus,
+#myNavbar .open > #dropdown li a:link
+{
+    background: none !important;
+    background-image: none !important;
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0); /* Safari and Chrome */
+    -moz-transform: scale(1.0); /* Firefox */
+    -ms-transform: scale(1.0); /* IE 9 */
+    -o-transform: scale(1.0); /* Opera */
+}
+
+#searchButton {
+    cursor: pointer;
+}
+
+#searchInput {
+    direction: rtl;
+    padding-top: 15px;
+}
+
+#searchInput > input {
+    text-align: left;
+    opacity: 0;
+    width: 0px;
+    transition: all 1s ease;
+    -webkit-transition: all 1 ease; /* Safari and Chrome */
+    -moz-transition: all 1 ease; /* Firefox */
+    -ms-transition: all 1 ease; /* IE 9 */
+    -o-transition: all 1 ease; /* Opera */
+}
+
 /* End of Navbar */

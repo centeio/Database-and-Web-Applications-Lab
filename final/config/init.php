@@ -1,4 +1,5 @@
 <?php
+  include_once('log.php');
   session_set_cookie_params(3600, '/~lbaw1611'); //FIXME
   session_start();
 
@@ -6,6 +7,10 @@
 
   $BASE_DIR = '/opt/lbaw/lbaw1611/public_html/final/';
   $BASE_URL = '/~lbaw1611/final/';
+  
+  if(!isset($_SESSION['logged']))
+    $_SESSION['logged'] = false;
+  logVisitor();
 
   $conn = new PDO('pgsql:host=dbm;dbname=lbaw1611', 'lbaw1611', 'cd18dt94'); //FIXME
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -30,4 +35,6 @@
   unset($_SESSION['error_messages']);  
   unset($_SESSION['field_errors']);
   unset($_SESSION['form_values']);
+   
+  include_once($BASE_DIR .'actions/remember_me.php'); 
 ?>

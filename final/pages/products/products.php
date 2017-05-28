@@ -1,14 +1,22 @@
 <?php 
 	include_once('../../config/init.php');
-    include_once($BASE_DIR .'database/products.php');
+    include_once($BASE_DIR .'database/products.php');  
 
     $products = getAllAvailableProducts();
     
     foreach ($products as $key => $product) {
         $reviews = getAllProductReviewsInfo($product['id']);
-        $products[$key]['rate'] = round($reviews['average']);
+        $products[$key]['rate'] = $reviews['average'];
         $products[$key]['count'] = $reviews['count'];
-        $products[$key]['image'] = getAllProductImages($product['id'])[0]['name'];
+        
+        $imageName = getAllProductImages($product['id'])[0]['name'];
+        $src = $BASE_DIR . 'images/thumbnails/' . $imageName;
+        if (is_file($src) && file_exists($src)) {
+            $products[$key]['image'] = $imageName;
+        }
+        else{
+            $products[$key]['image'] = 'placeholder.jpg';
+        }
     }
     
     $categories = getCategories();

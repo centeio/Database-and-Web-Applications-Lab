@@ -85,30 +85,23 @@
         </div>
         <div class="col-md-10" id="Products">                     
             {foreach $products as $product}
-            <div class="col-md-3 col-xs-6" id="Product{$product.id}">
-                <div class="thumbnail">
-                    <a href="{$BASE_URL}pages/products/product.php?id={$product.id}">
+            <div class="col-md-3 col-xs-6">
+                {if $USERID == 2}
+                <button onclick="deleteProduct(this, {$product.id})"><i class="fa fa-times pull-right" aria-hidden="true"></i></button>
+                {/if}
+                <a href="{$BASE_URL}pages/products/product.php?id={$product.id}">
+                    <div class="thumbnail">
                         <img src="{$BASE_URL}images/thumbnails/{$product.image}" alt="{$product.image}">
-                    </a>
-                    {if $USERID == 2}
-                    <button onclick="deleteProduct({$product.id})"><i class="fa fa-times pull-right" aria-hidden="true"></i></button>
-                    {/if}
-                    <div class="caption">
-                        <h4 class="col-xs-12"><a href="{$BASE_URL}pages/products/product.php?id={$product.id}">{$product.name}</a></h4>
-                        <h4 class="pull-right col-xs-12">{$product.price}€</h4>
-                        <div class="ratings">
-                            <p class="pull-right">{$product.count} reviews</p>
-                            <p>
-                                {for $i=1 to $product.rate}
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                {/for}
-                                {for $i=1 to 5 - $product.rate}
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                {/for}
-                            </p>
+                        <div class="caption">
+                            <h4 class="col-xs-12">{$product.name}</h4>
+                            <h4 class="pull-right col-xs-12">{$product.price}€</h4>
+                            <div class="ratings">
+                                <p class="pull-right">{$product.count} reviews</p>
+                                <input name="rate" value="{$product.rate}" class="rating-loading">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             {/foreach}
             {if $USERID == 2}
@@ -131,35 +124,41 @@
                 <h4 class="modal-title">New Product</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="NewName">Name:</label>
-                        <input type="text" class="form-control" id="NewName" placeholder="Product name">
+                        <input type="text" class="form-control hide-hints" id="NewName" placeholder="Product name" required>
                     </div>
                     <div class="form-group">
                         <label for="NewPrice">Price:</label>
-                        <input type="number" class="form-control" id="NewPrice" placeholder="Price">
+                        <input type="number" class="form-control hide-hints" id="NewPrice" placeholder="Price" required>
                     </div>
                     <div class="form-group">
                         <label for="NewStock">Stock:</label>
-                        <input type="number" class="form-control" id="NewStock" placeholder="Stock">
+                        <input type="number" class="form-control hide-hints" id="NewStock" placeholder="Stock" required>
                     </div>
                     <div class="form-group">
                         <label for="NewDetails">Details:</label>
-                        <input type="text" class="form-control" id="NewDetails" placeholder="Details">
+                        <textarea class="form-control" id="NewDetails" placeholder="Details"></textarea>
                     </div>
                     <div class="form-group">
                         <fieldset id="NewCategories">
-                            <legend>Categories:<br></legend>
+                            <label>Categories:</label>
+                            <br>
                             {foreach $categories as $category}
                                 <input type="checkbox" value="{$category.id}"> {$category.name}
                             {/foreach}
                         </fieldset>
                     </div>
+                    <div class="form-group">
+                        <label for="NewImage">Image:</label>
+                        <input type="file" class="form-control hide-hints" id="NewImage" name="NewImage" accept="image/*" onchange="readURL(this);" required>
+                        <img id="preview" src="" alt="your image" />
+                    </div>
                     
-                    <div class="form-group add-product-buttons">
+                    <div class="form-group popup-buttons">
                         <hr/>
-                        <span id="addProductResponse"></span>
+                        <span id="popupResponse"></span>
                         <button id="SubmitNewProduct" type="button" class="btn btn-default">Submit</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <span class="clear-fix"></span>
@@ -172,5 +171,11 @@
 
 <script src="{$BASE_URL}/javascript/add_delete_products.js"></script>
 <script src="{$BASE_URL}/javascript/filter_products.js"></script>
+<script src="{$BASE_URL}javascript/plugins/star-rating/star-rating.js" type="text/javascript"></script>
+{literal}
+<script>
+    $('.rating-loading').rating({displayOnly: true, size:'xs', filledStar:'<i class="fa fa-star" aria-hidden="true"></i>', emptyStar:'<i class="fa fa-star-o" aria-hidden="true"></i>'});
+</script>
+{/literal}
 
 {include file='common/footer.tpl'}

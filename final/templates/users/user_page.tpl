@@ -43,29 +43,31 @@
 
     <div id="EditProfile" class="container">
         <div class="row">
-            <form class="form-horizontal col-lg-12 col-md-12 col-sm-12 col-xs-12" onsubmit="return checkPassword()" role="form" method="post" action="../../actions/edit_user.php">
+            <form class="form-horizontal col-lg-12 col-md-12 col-sm-12 col-xs-12" onsubmit="return checkPersonalDetails()" role="form" method="post" action="../../actions/edit_user.php">
                 <div class="panel panel-info">
                     <div class="panel-heading">Edit your Profile</div>
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                                <input name="username" placeholder="Username" class="form-control" type="text" value="{$user.username}">
+                                <input id="username" name="username" placeholder="Username" class="form-control" type="text" value="{$user.username}">
+                                <span id="usernameError"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
+                                <input id="email" name="email" placeholder="E-Mail Address" class="form-control" type="email" value="{$user.email}">
+                                <span id="emailError"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-lg-2 col-md-2 col-lg-offset-4 col-md-offset-4 inputGroupContainer">
-                                <input name="first_name" placeholder="First Name" class="form-control" type="text" value="{$user.firstname}">
+                                <input id="firstName" name="first_name" placeholder="First Name" class="form-control" type="text" value="{$user.firstname}">
                             </div>
                             <div class="col-lg-2 col-md-2  inputGroupContainer">
-                                <input name="last_name" placeholder="Last Name" class="form-control" type="text" value="{$user.lastname}">
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                                <input name="email" placeholder="E-Mail Address" class="form-control" type="email" value="{$user.email}">
+                                <input id="lastName" name="last_name" placeholder="Last Name" class="form-control" type="text" value="{$user.lastname}">
                             </div>
                         </div>
 
@@ -73,7 +75,7 @@
 
                         <div class="form-group">
                             <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                                <input name="phone" placeholder="(845)555-1212" class="form-control" type="text" value="{$user.phonenumber}">
+                                <input id="phone" name="phone" placeholder="(845)555-1212" class="form-control" type="text" value="{$user.phonenumber}">
                             </div>
                         </div>
 
@@ -81,7 +83,7 @@
 
                         <div class="form-group">
                             <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 inputGroupContainer">
-                                <input name="taxpayernumber" placeholder="Tax Payer Number" class="form-control" type="text" value="{$user.taxpayernumber}">
+                                <input id="taxpayernumber" name="taxpayernumber" placeholder="Tax Payer Number" class="form-control" type="text" value="{$user.taxpayernumber}">
                             </div>
                         </div>
 
@@ -94,7 +96,7 @@
 
                         <div class="form-group">
                             <div id="ChangeDetails" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-10 col-md-offset-10 col-sm-offset-10 col-xs-offset-10">
-                                <input type="submit" class="btn btn-default pull-right" value="Change Account Details">
+                                <input id="changeDetails" type="submit" class="btn btn-default pull-right" value="Change Account Details">
                                 <span class="underline"></span>
                             </div>
                         </div>
@@ -178,7 +180,6 @@
     </div>
 </div>
 <!-- /.container -->
-</div>
-<script src="{$BASE_URL}javascript/validation.js"></script>
-<script src="{$BASE_URL}javascript/user_profile_buttons.js"></script>
 {include file='common/footer.tpl'}
+<script src="{$BASE_URL}javascript/validation.js"></script>
+<script src="{$BASE_URL}javascript/user_page.js"></script>

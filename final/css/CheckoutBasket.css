@@ -93,38 +93,3 @@
     font-family: 'Satisfy', cursive;
     font-size: 30px;
 }
-
-#footer {
-    background-color: #F8EEE7;
-}
-
-#SocialMedia {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#SocialMedia i {
-    font-size: 40px;
-    color: #614333;
-    margin: 0px 10px;
-    transition: all .5s ease;
-    -webkit-transition: all .5s ease; /* Safari and Chrome */
-    -moz-transition: all .5s ease; /* Firefox */
-    -ms-transition: all .5s ease; /* IE 9 */
-    -o-transition: all .5s ease; /* Opera */
-}
-
-#SocialMedia i:hover {
-    color: #614333;
-    transform:scale(1.25);
-    -webkit-transform:scale(1.25); /* Safari and Chrome */
-    -moz-transform:scale(1.25); /* Firefox */
-    -ms-transform:scale(1.25); /* IE 9 */
-    -o-transform:scale(1.25); /* Opera */
-}
-
-#Copyrights {
-    color: #614333;
-    text-align: center;
-    margin-top: 20px;
-}

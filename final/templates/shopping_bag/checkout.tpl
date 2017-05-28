@@ -28,7 +28,7 @@
                         <th>Product</th>
                         <th class="text-center">Quantity</th>
                         <th class="text-center">Price</th>
-                        <th class="text-center">Total</th>
+                        <th class="text-center">Total <a href=#> <i id="refresh" class="fa fa-refresh" aria-hidden="true"> </a></i></th>
                         <th> </th>
                     </tr>
                 </thead>
@@ -41,22 +41,30 @@
                                     <img class="media-object" src="{$BASE_URL}images/thumbnails/{$product.image}"> 
                                 </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">{$product.name}</a></h4>
+                                    <h4 class="media-heading"><a href="{$BASE_URL}/pages/products/product.php?id={$product.id}">{$product.name}</a></h4>
                                     {if $product.stock > 0}
                                         <span>Status: <span class="text-success"><strong>In Stock</strong></span></span>
-                                    {else}
+                                  {else}
                                         <span>Status: <span class="text-warning"><strong>Leaves warehouse in 2 - 3 weeks</strong></span></span>
                                     {/if}
                                 </div>
                             </div>
                         </td>
-                        <td class="col-xs-1 col-sm-1 col-md-1" style="text-align: center">
-                            <input type="number" class="form-control" id="quantity" value="{$product.quantity}">
+                        <td class="col-xs-1 col-sm-1 col-md-1 input-group" style="text-align: center">
+                                <button type="button" class="btn_less">
+                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                </button>
+                                <input type="text" min="1" class="quantity" data-product="{$product.id}" value="{$product.quantity}">
+                                <button type="button" class="btn_plus">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button>
+                                
+                                                            
                         </td>
                         <td class="col-sm-6 col-md-1 text-center"><strong>{$product.price}€</strong></td>
                         <td class="col-sm-6 col-md-1 text-center"><strong>{$product.total}€</strong></td>
                         <td class="col-sm-1 col-md-1">
-                            <button type="button" class="btn remove">
+                            <button type="button" class="btn_remove" data-product="{$product.id}">
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </button>
                         </td>
@@ -84,18 +92,20 @@
                     <tr>
                         <td class="col-lg-9 col-md-9"> </td>
                         <td>
-                        <button type="button" class="btn btn-default">
+                        <a type="button" class="btn btn-default" href="{$BASE_URL}/pages/products/products.php">
                             <i class="fa fa-shopping-bag" aria-hidden="true"></i> Continue Shopping
-                        </button></td>
+                        </a></td>
                         <td>
-                        <button type="button" class="btn btn-success">
+                        <a type="button" class="btn btn-success" href="{$BASE_URL}/pages/shopping_bag/checkout_payment.php">
                             Payment <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                        </button></td>
+                        </a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<script src="{$BASE_URL}javascript/checkout.js"></script>
 
 {include file='common/footer.tpl'}

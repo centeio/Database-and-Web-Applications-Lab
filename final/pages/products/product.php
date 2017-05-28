@@ -14,16 +14,23 @@
     $rate = getAllProductReviewsInfo($product['id']);
     $reviews = getAllProductReviews($product['id']);
     $images = getAllProductImages($product['id']);
+    $productCategoriesArray = getProductCategories($product['id']);
+    
+    $productCategories = array();
+    foreach($productCategoriesArray as $category)
+        array_push($productCategories, $category['name']);
   
-    $product['rate'] = round($rate['average']);
+    $product['rate'] = $rate['average'];
     $product['votes'] = $rate['count'];
 
 	$smarty->assign('style','css/Product.css');
 	$smarty->assign('product', $product);
     $smarty->assign('reviews', $reviews);
     $smarty->assign('images', $images);
+    $smarty->assign('categories', getCategories());
+    $smarty->assign('productCategories', $productCategories);
     
-    if(isset($_SESSION['user_id'])){
+    if(isset($_SESSION['user_id']) && !$_SESSION['is_admin']){
         $isFavorite = isFavorite($_GET['id'],$_SESSION['user_id']);
         if($isFavorite)
             $smarty->assign('heart', 'fa-heart');

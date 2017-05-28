@@ -5,7 +5,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     $action = $_POST['action'];
     switch($action) {
         case 'verifyUser' :
-            echo (verifyUser($_POST['username'],$_POST['password']) == false? "false": "true");
+            echo (verifyUser($_POST['username'],$_POST['password'], $_POST['rememberMe']) == false? "false": "true");
             break;
         case 'checkPassword' :
             echo (checkPassword($_POST['password']) == false? "false": "true");
@@ -13,36 +13,234 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }
 }
 
-  function verifyUser($username, $password) {
-    
+  function updatePasswords() {
     global $conn;
-    $stmt = $conn->prepare("SELECT *
+        
+    $stmt = $conn->prepare("SELECT * FROM \"user\";");
+    $stmt->execute();
+
+    $row = $stmt->fetchAll();
+      
+    foreach($row as $key => $value) {
+        //hash password
+        $options = ['cost' => 12];
+        $hash = password_hash($value['password'], PASSWORD_DEFAULT, $options);
+        
+        $stmt = $conn->prepare("UPDATE \"user\" SET \"password\" = ? WHERE id = ?;");
+        $stmt->execute(array($hash, $value['id']));
+    }
+      
+    return "true";
+  }
+
+  function validateUsername($username) {
+      
+    if (!preg_match("/^[a-zA-Z][a-zA-Z0-9]*$/", $username))
+        return "Username needs to start with a letter and can only contain letters and numbers.";
+    else {
+        global $conn;
+        
+        $stmt = $conn->prepare("SELECT *
                             FROM \"user\" 
-                            WHERE username = ? AND password = ?");
-    //TODO: hash password
-    $stmt->execute(array($username, $password));
-    
-    $row = $stmt->fetch();
-    if($row){
-        session_start();
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['is_admin'] = $row['isadmin'];
+                            WHERE username = ?");
+        $stmt->execute(array($username));
+        
+        $row = $stmt->fetch();
+        
+        if($row)
+            if(!isset($_SESSION['user_id']) or (isset($_SESSION['user_id']) and $row['id'] != $_SESSION['user_id']))
+                return "Username already in use.";
+            else
+               return "User username.";
+        else
+            return "true";
+    }
+  }
+
+  function validateEmail($email) {
+      
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+        return "This is not a valid email.";
+      
+    else {
+        global $conn;
+        
+        $stmt = $conn->prepare("SELECT *
+                            FROM \"user\" 
+                            WHERE email = ?");
+        $stmt->execute(array($email));
+        
+        $row = $stmt->fetch();
+        
+        if($row)
+            if(!isset($_SESSION['user_id']) or (isset($_SESSION['user_id']) and $row['id'] != $_SESSION['user_id']))
+                return "Email already in use.";
+            else
+               return "User email.";
+        else
+            return "true";
+    }
+  }
+
+  function validateName($name, $type) {
+    global $conn;
+      
+    if (!preg_match("/^[a-zA-Z][a-zA-Z ]*$/", $name))
+        return "false";
+    else {
+        if(isset($_SESSION['user_id'])) {
+            
+            $stmt = $conn->prepare("SELECT * 
+                            FROM \"user\" NATURAL JOIN client 
+                            WHERE id = ?");
+            $stmt->execute(array($_SESSION['user_id']));
+            
+            $row = $stmt->fetch();
+            
+            if($type == "first") {
+                if($name == $row['firstname'])
+                    return "User name.";
+                else
+                    return "true";
+            } else {
+                if($name == $row['lastname'])
+                    return "User name.";
+                else
+                    return "true";
+            }
+        } else
+            return "true";
+    }
+  }
+  
+  //Remembe Me
+  function randomKey($length) {
+        $pool = array_merge(range(0,9), range('a', 'z'),range('A', 'Z'));
+
+        for($i=0; $i < $length; $i++) {
+            $key .= $pool[mt_rand(0, count($pool) - 1)];
+        }
+        return $key;
     }
 
-    return $row;
+    function rememberUser($id) {
+        global $conn;
+        
+        $selector = randomKey(12);
+        $validator = randomKey(20);
+        $hash = hash('sha256', $validator);
+        $expires = strtotime('+1 week');
+            
+        $stmt = $conn->prepare("INSERT INTO auth_tokens (selector , \"hashedValidator\" , userid, expires) values (?, ?, ?, ?);");
+        $stmt->execute(array($selector, $hash, $id, date('Y-m-d H:i:s', $expires)));
+        
+        if (!$stmt) {
+            echo "\nPDO::errorInfo():\n";
+            print_r($conn->errorInfo());
+            
+            return false;
+        }
+        
+        setcookie("selector", $selector, $expires, '/~lbaw1611/final');
+        setcookie("validator", $validator, $expires, '/~lbaw1611/final');
+          
+        return true;
+    }
+    //End remember me
+
+  function verifyUser($username, $password, $rememberMe) {
+    
+    global $conn;
+      
+    $stmt = $conn->prepare("SELECT *
+                            FROM \"user\" 
+                            WHERE username = ?");
+      
+    $stmt->execute(array($username));
+    
+    $row = $stmt->fetch();
+      
+    if($row) {
+        if(password_verify($password, $row['password'])) {
+            session_start();
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['is_admin'] = $row['isadmin'];
+            
+            if($rememberMe){
+                rememberUser($row['id']);
+            }
+            else{
+                setcookie("selector", "", -1, '/~lbaw1611/final');
+                setcookie("validator", "", -1, '/~lbaw1611/final');
+            }
+            
+            return true;
+        }
+    }
+
+    return false;
   }
+
+  function register($username, $email, $password, $firstName, $lastName) {
+    
+    global $conn;
+      
+    //hash password
+    $options = ['cost' => 12];
+    $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+      
+    try {
+        $conn->beginTransaction();
+        
+        $stmt = $conn->prepare("INSERT INTO \"user\" (username , email , \"password\") values (?, ?, ?);");
+        $stmt->execute(array($username, $email, $hash));
+        
+        $stmt = $conn->prepare("INSERT INTO \"client\" (id, firstName, lastName, phoneNumber, taxPayerNumber)   
+                                        (SELECT id, ?, ?, null, null from \"user\" WHERE username = ?);");
+        $stmt->execute(array($firstName, $lastName, $username));
+        
+        $conn->commit();
+        
+        $stmt = $conn->prepare("SELECT *
+                            FROM \"user\" 
+                            WHERE username = ?");
+        $stmt->execute(array($username));
+
+        $row = $stmt->fetch();
+        
+        if($row) {
+            session_start();
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['is_admin'] = $row['isadmin'];
+            return "true";
+        }
+        
+        return "Something went wrong with the server. Apologies!";
+
+    } catch(Exception $e) {
+        $conn->rollBack();
+        return "Something went wrong with the server. Apologies!";
+    }
+  }
+
 
   function checkPassword($password) {
     
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM \"user\" 
-                            WHERE id = ? AND password = ?");
+                            WHERE id = ?");
     //TODO: hash password
-    $stmt->execute(array($_SESSION['user_id'], $password));
+    $stmt->execute(array($_SESSION['user_id']));
     $row = $stmt->fetch();
+      
+    if($row) {
+        if(password_verify($password, $row['password'])) {
+            return true;
+        }
+    }
 
-    return $row;
+    return false;
   }
   
   function getClient($id) {
@@ -71,7 +269,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
   function getAddresses($iduser) {
     
     global $conn;
-    $stmt = $conn->prepare("SELECT iduser, idaddress, address, zipnumber, city 
+    $stmt = $conn->prepare("SELECT iduser, idaddress, address, zipnumber, city, country 
                             FROM \"client-address\", address, \"zip-code\"
                             WHERE \"client-address\".iduser = ? AND \"client-address\".idaddress = address.id AND address.idzipcode = \"zip-code\".id ORDER BY idaddress ASC;");
     
@@ -207,12 +405,12 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
             $stmt->execute(array($_SESSION['user_id'], $streetname, $zipCodeResult['id']));
             
+            $conn->commit();
+            
             $stmt = $conn->prepare("SELECT * FROM \"address\" WHERE \"address\".address = ? AND \"address\".idzipcode = ?;");
 
             $stmt->execute(array($streetname, $zipCodeResult['id']));
             $row = $stmt->fetch();
-
-            $conn->commit();
             
             $answer['status'] = "true";
             $answer['addressID'] = $row['id'];
@@ -247,14 +445,14 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
                                             AND \"zip-code\".zipnumber = ? AND \"zip-code\".city = ?);");
             $stmt->execute(array($_SESSION['user_id'], $streetname, $zipcode, $cityname));
             
+            $conn->commit();
+            
             $stmt = $conn->prepare("SELECT \"address\".id FROM \"address\", \"zip-code\" 
                                         WHERE \"address\".address = ? AND \"address\".idzipcode = \"zip-code\".id
                                             AND \"zip-code\".zipnumber = ? AND \"zip-code\".city = ?;");
-            $stmt->execute(array(streetname, $zipcode, $cityname));
+            $stmt->execute(array($streetname, $zipcode, $cityname));
             
             $row = $stmt->fetch();
-            
-            $conn->commit();
             
             $answer['status'] = "true";
             $answer['addressID'] = $row['id'];
@@ -273,12 +471,26 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     $answer['status'] = "false";
     return json_encode($answer);
   }
-
+  
   function deleteAddress($addressID) {
     global $conn;
     $stmt = $conn->prepare("DELETE FROM \"client-address\" WHERE idaddress = ? AND iduser = ?;");
 
     return $stmt->execute(array($addressID, $_SESSION['user_id']));
+  }
+
+  function desactivate($clientID) {
+       global $conn;
+       $stmt = $conn->prepare("UPDATE \"client\" SET isremoved = true WHERE id = ?;");
+     
+       return $stmt->execute(array($clientID));
+  }
+
+  function activate($clientID) {
+       global $conn;
+       $stmt = $conn->prepare("UPDATE \"client\" SET isremoved = false WHERE id = ?;");
+     
+       return $stmt->execute(array($clientID));
   }
 
 ?>

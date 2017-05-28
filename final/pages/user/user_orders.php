@@ -10,6 +10,7 @@
     }
 
     $orders = getOrders($_SESSION['user_id']);
+    $user = getClient($_SESSION['user_id']);
     
     foreach ($orders as $key => $order) {
         $products = getProductsFromOrder($order['id']);
@@ -34,6 +35,7 @@
 
 	$smarty->assign('style','css/UserOrders.css');
     $smarty->assign('orders', $orders);
+    $smarty->assign('user', $user);
     
     $smarty->assign('num_orders', count($orders));
     $smarty->assign('num_favorites', count(getFavorites($_SESSION['user_id'])));

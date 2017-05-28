@@ -1,5 +1,7 @@
 {include file='common/header.tpl'}
 
+<div class="spinner"></div>
+
 <!-- /#wrapper -->
     <div class="container">
         <div class="row">
@@ -42,12 +44,24 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form id="register-form" action="" method="post" role="form" style="display: none;">
+                                <form id="register-form" onsubmit="return validateRegister()" action="{$BASE_URL}actions/register.php" method="post" role="form" style="display: none;">
                                     <div class="form-group">
                                         <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                        <span id="usernameError"> </span>
                                     </div>
                                     <div class="form-group">
                                         <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                        <span id="emailError"> </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="register-first-name col-lg-6 col-md-6">
+                                                <input type="text" name="firstName" id="firstName" tabindex="1" class="form-control" placeholder="First name" value="">
+                                            </div>
+                                            <div class="register-last-name col-lg-6 col-md-6">
+                                                <input type="text" name="lastName" id="lastName" tabindex="1" class="form-control" placeholder="Last name" value="">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
@@ -56,9 +70,7 @@
                                         <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
                                     </div>
                                     <div class="form-group">
-
                                         <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-
                                     </div>
                                 </form>
                             </div>
@@ -68,27 +80,8 @@
             </div>
         </div>
     </div>
+    {include file='common/footer.tpl'}
 </div>
-
-<script>
-    $(function () {
-        $('#login-form-link').click(function (e) {
-            $("#login-form").delay(100).fadeIn(100);
-            $("#register-form").fadeOut(100);
-            $('#register-form-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-        $('#register-form-link').click(function (e) {
-            $("#register-form").delay(100).fadeIn(100);
-            $("#login-form").fadeOut(100);
-            $('#login-form-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-
-    });
-</script>
+<script src="{$BASE_URL}javascript/plugins/js.cookie.js"></script>
 <script src="{$BASE_URL}javascript/validation.js"></script>
-
-{include file='common/footer.tpl'}
+<script src="{$BASE_URL}javascript/register.js"></script>

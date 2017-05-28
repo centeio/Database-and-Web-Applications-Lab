@@ -1,6 +1,7 @@
 <?php
 	include_once('../../config/init.php');
     include_once($BASE_DIR .'database/products.php');
+    include_once($BASE_DIR .'database/users.php');
     
     session_start();
     if(!isset($_SESSION['user_id'])){
@@ -23,6 +24,7 @@
     $smarty->assign('subTotal', $subTotal);
     $smarty->assign('shipping', $shipping);
     $smarty->assign('total', $subTotal + $shipping);
+    $smarty->assign('addresses', getAddresses($_SESSION['user_id']));
     
     $smarty->display('shopping_bag/payment.tpl'); 
 ?>

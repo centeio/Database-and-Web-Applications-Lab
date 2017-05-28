@@ -93,6 +93,15 @@
     $stmt->execute(array($productId));
     return $stmt->fetchAll();
   }
+
+  function getProductCategories($productID) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT category.name
+                            FROM kind, category
+                            WHERE kind.idproduct = ? AND idcategory = category.id");
+    $stmt->execute(array($productID));
+    return $stmt->fetchAll();
+  }
   
   function isFavorite($productid, $userid) {
     global $conn;
@@ -118,6 +127,14 @@
     $stmt->execute(array($userid, $productid)); 
     return;
   }
+
+    function removeShoppingBag($userid, $productid) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM \"to-go\"
+                            WHERE iduser = ? AND idproduct = ?");
+    return $stmt->execute(array($userid, $productid)); 
+
+  }
   
   function addToShoppingBag($userid, $productid, $quantity = 1) {
     global $conn;
@@ -135,27 +152,46 @@
     $stmt->execute(array($userid, $productid)); 
     return;
   }
-  
-  function addNewProduct($name, $price, $stock, $details){
+
+  function updateShoppingBag($userid, $productid, $quantity) {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO product (name, price, stock, details, idPromotion, idSpecialOccasion) 
-                            VALUES (?, ?, ?, ?, NULL, NULL);");
-    if($stmt->execute(array($name, $price, $stock, $details))){
-        $result['status'] = 'Success';
-        $result['last_id'] = $conn->lastInsertId();
-    }
-    else{
-        $result['status'] = $conn->errorInfo();
-    }
-    
-    return $result;
+    $stmt = $conn->prepare("UPDATE \"to-go\" 
+                            SET quantity = ? 
+                            WHERE iduser = ? AND idproduct = ?;");
+    $stmt->execute(array($quantity, $userid, $productid)); 
+    return;
   }
   
-  function addNewCategoryToProduct($productId, $categoryId){
+  function addNewProduct($name, $price, $stock, $details, $categories, $image){
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO \"kind\" (idProduct, idCategory)
+    
+    try {
+        $conn->beginTransaction();
+
+        // A set of queries; if one fails, an exception should be thrown
+        $stmt = $conn->prepare("INSERT INTO product (name, price, stock, details, idPromotion, idSpecialOccasion) 
+                                VALUES (?, ?, ?, ?, NULL, NULL);");
+        $stmt->execute(array($name, $price, $stock, $details));
+        $result['last_id'] = $conn->lastInsertId();
+        
+        foreach($categories as $key => $category){
+            $stmt = $conn->prepare("INSERT INTO \"kind\" (idProduct, idCategory)
                             VALUES (?, ?);");
-    $stmt->execute(array($productId, $categoryId));
+            $stmt->execute(array($result['last_id'], $category));
+        }
+        
+        $stmt = $conn->prepare("INSERT INTO image (name, idproduct) 
+                                VALUES (?, ?);");
+        $stmt->execute(array($image, $result['last_id']));
+
+        $conn->commit();
+        $result['status'] = 'Success';
+        
+    } catch (Exception $e) {
+        $conn->rollback();
+        
+        $result['status'] = "" . $e;
+    }
     
     return $result;
   }
@@ -173,5 +209,16 @@
     }
     
     return $result;
+  }
+
+  function search($input) {
+    global $conn;
+    $string = "%" . $input . "%";
+    $stmt = $conn->prepare("SELECT product.id AS id, product.name, product.price, COALESCE(AVG(review.rate),0) AS rate, COUNT(review.id) AS count                                 FROM product LEFT OUTER JOIN review ON (review.idproduct = product.id), kind, category 
+                                WHERE product.availability = TRUE AND product.id = kind.idproduct AND kind.idcategory = category.id AND (product.name ILIKE ? OR  details ILIKE ? OR category.name ILIKE ?)
+                                GROUP BY product.id, product.price, product.name;");
+      
+     $stmt->execute(array($string, $string, $string));
+     return $stmt->fetchAll();
   }
 ?>

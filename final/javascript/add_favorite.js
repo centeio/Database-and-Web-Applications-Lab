@@ -6,7 +6,7 @@ $(document).ready(function() {
 
         $.ajax({
                 method: "POST",
-                url: "../../actions/add_favorite.php",
+                url: "../../api/add_favorite.php",
                 data: { product: product_id }
             })
             .done(function(data) {
