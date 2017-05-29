@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-27 15:34:33
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-29 16:23:42
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7884386858fe1e2c7937a5-05639259%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '54fd1359051f3e360a2134457ab24fbb0facbcbd' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/common/header.tpl',
-      1 => 1495895629,
+      1 => 1496071417,
       2 => 'file',
     ),
   ),
@@ -47,8 +47,8 @@ css/star-rating.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="https://use.fontawesome.com/518af292f4.js"></script>
         <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
@@ -110,9 +110,9 @@ pages/shopping_bag/checkout_basket.php">Shopping Bag</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li id="searchInput" class="navbar-icon"><input type="text" name="searchText"/></li>
-                            <li class="navbar-icon"><a id="searchButton"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                            <li class="navbar-icon"><a id="searchButton" aria-label="Search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                             <?php if (isset($_SESSION['user_id'])) {?>
-                            <li class="navbar-icon dropdown"> 
+                            <li class="navbar-icon dropdown" aria-label="User Pages"> 
                                 <i id="toggleDropdown" class="fa fa-user dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 <ul id="dropdown" class="dropdown-menu">
                                     <?php if ($_SESSION['is_admin']) {?>
@@ -128,10 +128,10 @@ actions/logout.php">Log out</a></li>
                             </li>
                             <?php } else { ?>
                             <li class="navbar-icon"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/common/register.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+pages/common/register.php" aria-label="Register/Log In"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                             <?php }?>
 			    <li class="navbar-icon"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/shopping_bag/checkout_basket.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+pages/shopping_bag/checkout_basket.php" aria-label="Shopping Bag"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>

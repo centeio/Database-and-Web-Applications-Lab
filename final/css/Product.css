@@ -239,3 +239,12 @@ a.btn:hover{
         -ms-transform: translate(-50%, -50%); /* IE 9 */
     }
 }
+
+#newImage {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}

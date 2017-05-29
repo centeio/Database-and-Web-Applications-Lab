@@ -22,11 +22,11 @@
     $categories = getCategories();
     
     $highlights;
-    $highlights[0]['image_path'] = $BASE_URL . 'images/h1.jpg';
+    $highlights[0]['image_path'] = $BASE_URL . 'images/carousel/h1.jpg';
     $highlights[0]['link'] = '';
-    $highlights[1]['image_path'] = $BASE_URL . 'images/h2.jpg';
+    $highlights[1]['image_path'] = $BASE_URL . 'images/carousel/h2.jpg';
     $highlights[1]['link'] = '';
-    $highlights[2]['image_path'] = $BASE_URL . 'images/h3.jpg';
+    $highlights[2]['image_path'] = $BASE_URL . 'images/carousel/h3.jpg';
     $highlights[2]['link'] = '';
     
     $smarty->assign('style','css/Products.css');

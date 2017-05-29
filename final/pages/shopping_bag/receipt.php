@@ -11,13 +11,13 @@
     
     $user = getClient($_SESSION['user_id']);
     $id = "CW" + $_SESSION['user_id'] + date("Ymd");
-    $address =  $_POST["address"];
-    $city =  $_POST["city"];
-    $zipcode =  $_POST["zip_code"];
-    $phone = $_POST["phone_number"];
+    $address =  $_POST["shipping_address"];
+    $city =  $_POST["shipping_city"];
+    $zipcode =  $_POST["shipping_zip_code"];
     $date = date("Y-m-d");
     
     $products = getShoppingBag($_SESSION['user_id']);
+    $phone = getClient($_SESSION['user_id'])['phonenumber'];
     $subTotal = 0;
 
     foreach ($products as $key => $product) {
@@ -44,5 +44,5 @@
     $smarty->assign('shipping', $shipping);
     $smarty->assign('total', $subTotal + $shipping);
     
-	$smarty->display('shopping_bag/receipt.tpl');  
+	$smarty->display('shopping_bag/receipt.tpl');
 ?>

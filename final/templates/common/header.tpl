@@ -20,8 +20,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="https://use.fontawesome.com/518af292f4.js"></script>
         <script src="{$BASE_URL}javascript/header.js"></script>
@@ -67,9 +67,9 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li id="searchInput" class="navbar-icon"><input type="text" name="searchText"/></li>
-                            <li class="navbar-icon"><a id="searchButton"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                            <li class="navbar-icon"><a id="searchButton" aria-label="Search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                             {if isset($smarty.session.user_id)}
-                            <li class="navbar-icon dropdown"> 
+                            <li class="navbar-icon dropdown" aria-label="User Pages"> 
                                 <i id="toggleDropdown" class="fa fa-user dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 <ul id="dropdown" class="dropdown-menu">
                                     {if $smarty.session.is_admin}
@@ -81,9 +81,9 @@
                                 </ul>
                             </li>
                             {else}
-                            <li class="navbar-icon"><a href="{$BASE_URL}pages/common/register.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                            <li class="navbar-icon"><a href="{$BASE_URL}pages/common/register.php" aria-label="Register/Log In"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                             {/if}
-			    <li class="navbar-icon"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+			    <li class="navbar-icon"><a href="{$BASE_URL}pages/shopping_bag/checkout_basket.php" aria-label="Shopping Bag"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>

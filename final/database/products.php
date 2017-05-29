@@ -114,9 +114,13 @@
   
   function addFavorite($userid, $productid) {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO favorite (iduser,idproduct) 
+    try{
+        $stmt = $conn->prepare("INSERT INTO favorite (iduser,idproduct) 
                             VALUES (?,?)");
-    $stmt->execute(array($userid, $productid)); 
+        $stmt->execute(array($userid, $productid)); 
+    } catch(Exception $e) {        
+        logError($e->getMessage());
+    }
     return;
   }
   
@@ -138,27 +142,40 @@
   
   function addToShoppingBag($userid, $productid, $quantity = 1) {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO \"to-go\" (iduser,idproduct,quantity) 
-                            VALUES (?,?,?)");
-    $stmt->execute(array($userid, $productid, $quantity)); 
+    
+    try{
+        $stmt = $conn->prepare("INSERT INTO \"to-go\" (iduser,idproduct,quantity) 
+                                VALUES (?,?,?)");
+        $stmt->execute(array($userid, $productid, $quantity)); 
+    } catch(Exception $e) {
+        logError($e->getMessage());
+    }
     return;
   }
   
   function addAnotherToShoppingBag($userid, $productid) {
     global $conn;
-    $stmt = $conn->prepare("UPDATE \"to-go\" 
-                            SET quantity = quantity + 1 
-                            WHERE iduser = ? AND idproduct = ?;");
-    $stmt->execute(array($userid, $productid)); 
+    try{
+        $stmt = $conn->prepare("UPDATE \"to-go\" 
+                                SET quantity = quantity + 1 
+                                WHERE iduser = ? AND idproduct = ?;");
+        $stmt->execute(array($userid, $productid)); 
+    } catch(Exception $e) {
+        logError($e->getMessage());
+    }
     return;
   }
 
   function updateShoppingBag($userid, $productid, $quantity) {
     global $conn;
-    $stmt = $conn->prepare("UPDATE \"to-go\" 
-                            SET quantity = ? 
-                            WHERE iduser = ? AND idproduct = ?;");
-    $stmt->execute(array($quantity, $userid, $productid)); 
+    try{
+        $stmt = $conn->prepare("UPDATE \"to-go\" 
+                                SET quantity = ? 
+                                WHERE iduser = ? AND idproduct = ?;");
+        $stmt->execute(array($quantity, $userid, $productid)); 
+    } catch(Exception $e) {
+        logError($e->getMessage());
+    }
     return;
   }
   
@@ -190,7 +207,42 @@
     } catch (Exception $e) {
         $conn->rollback();
         
+        logError($e->getMessage());
+        
         $result['status'] = "" . $e;
+    }
+    
+    return $result;
+  }
+
+  function addNewImage($productID, $extension) {
+    global $conn;
+    
+    try {
+        $conn->beginTransaction();
+        
+        $stmt = $conn->prepare("SELECT id FROM image
+                                ORDER BY id DESC LIMIT 1;");
+        $stmt->execute();
+        
+        $fetch = $stmt->fetch();
+        $newID = $fetch['id'] + 1;
+        $imageName = "image" . $newID . "." . $extension;
+        
+        $stmt = $conn->prepare("INSERT INTO image (id, name, idproduct) 
+                                VALUES (?, ?, ?);");
+        
+        $stmt->execute(array($newID, $imageName, $productID));
+        $result['imageName'] = $imageName;
+
+        $conn->commit();
+        $result['status'] = "success";
+        
+    } catch (Exception $e) {
+        $conn->rollback();
+        logError($e->getMessage());
+        
+        $result['status'] = "false";
     }
     
     return $result;
@@ -198,13 +250,15 @@
   
   function deleteProduct($id){
     global $conn;
-    $stmt = $conn->prepare("UPDATE product
-                            SET availability = FALSE
-                            WHERE id = ?;");
-    if($stmt->execute(array($id))){
+    try{
+        $stmt = $conn->prepare("UPDATE product
+                                SET availability = FALSE
+                                WHERE id = ?;");
+        $stmt->execute(array($id));
         $result['status'] = 'Success';
-    }
-    else{
+    } catch(Exception $e) {
+        logError($e->getMessage());
+        
         $result['status'] = $conn->errorInfo();
     }
     
@@ -213,12 +267,23 @@
 
   function deleteImage($id) {
     global $conn;
+    global $BASE_DIR;
+    
+    $stmt = $conn->prepare("SELECT name FROM image
+                            WHERE id = ?;");
+    
+    $stmt->execute(array($id));
+    $name = $stmt->fetch()['name'];
+      
     $stmt = $conn->prepare("DELETE FROM image
                             WHERE id = ?;");
     
     if($stmt->execute(array($id)))
         return false;
     
+    unlink($BASE_DIR . 'images/originals/' . $name);
+    unlink($BASE_DIR . 'images/thumbnails/' . $name);
+    unlink($BASE_DIR . 'images/products/' . $name);
     return true;
   }
 
@@ -235,39 +300,44 @@
 
   function editProduct($id, $name, $price, $stock, $details, $newCategories) {
     global $conn;
-    $stmt = $conn->prepare("UPDATE product
-                            SET name = ?
-                            WHERE id = ?;");
-    if(!$stmt->execute(array($name, $id)))
-        return false;
-      
-    $stmt = $conn->prepare("UPDATE product
-                            SET price = ?
-                            WHERE id = ?;");
-    if(!$stmt->execute(array($price, $id)))
-        return false;
-      
-    $stmt = $conn->prepare("UPDATE product
-                            SET stock = ?
-                            WHERE id = ?;");
-    if(!$stmt->execute(array($stock, $id)))
-        return false;
-      
-    $stmt = $conn->prepare("UPDATE product
-                            SET details = ?
-                            WHERE id = ?;");
-    if(!$stmt->execute(array($details, $id)))
-        return false;
-      
-    $stmt = $conn->prepare("DELETE FROM kind
-                                WHERE idproduct = ?;");
-    if(!$stmt->execute(array($id)))
-        return false;
-      
-    foreach($newCategories as $category) {
-        $stmt = $conn->prepare("INSERT INTO kind (idcategory, idproduct) VALUES (?,?);");
-        if(!$stmt->execute(array($category, $id)))
+    
+    try{
+        $stmt = $conn->prepare("UPDATE product
+                                SET name = ?
+                                WHERE id = ?;");
+        if(!$stmt->execute(array($name, $id)))
             return false;
+          
+        $stmt = $conn->prepare("UPDATE product
+                                SET price = ?
+                                WHERE id = ?;");
+        if(!$stmt->execute(array($price, $id)))
+            return false;
+          
+        $stmt = $conn->prepare("UPDATE product
+                                SET stock = ?
+                                WHERE id = ?;");
+        if(!$stmt->execute(array($stock, $id)))
+            return false;
+          
+        $stmt = $conn->prepare("UPDATE product
+                                SET details = ?
+                                WHERE id = ?;");
+        if(!$stmt->execute(array($details, $id)))
+            return false;
+          
+        $stmt = $conn->prepare("DELETE FROM kind
+                                    WHERE idproduct = ?;");
+        if(!$stmt->execute(array($id)))
+            return false;
+          
+        foreach($newCategories as $category) {
+            $stmt = $conn->prepare("INSERT INTO kind (idcategory, idproduct) VALUES (?,?);");
+            if(!$stmt->execute(array($category, $id)))
+                return false;
+        }
+    } catch(Exception $e) {
+        logError($e->getMessage());
     }
       
     return true;

@@ -52,5 +52,13 @@
        // $nvisitors = count($log);
         return $log;
     }
+    
+    function logError($message) {
+        global $BASE_DIR;
+        
+        $errorLog = $BASE_DIR . 'config/error_log.txt';
+            
+        file_put_contents($errorLog,date(DATE_RSS) . "\n" . $message . "\n\n" , FILE_APPEND | LOCK_EX);
+    }
 
 ?>

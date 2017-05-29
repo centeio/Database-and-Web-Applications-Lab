@@ -97,7 +97,10 @@
                             {/for}
                             <div id="addNewImage" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div id="insideAddNewImage">
-                                    <i class="fa fa-plus " aria-hidden="true"></i>
+                                    <label for="newImage">
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="newImage" type="file" accept=".jpg,.png,.jpeg" />
                                 </div>
                             </div>
                         </div>

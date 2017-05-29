@@ -97,7 +97,49 @@ $(document).ready(function(){
                 alert(thrownError);
             }
 		});
+    });
+    
+    $("#newImage").on("change", function() {
+        var ext = this.value.match(/\.([^\.]+)$/)[1];
+        var accepted = false;
         
+        switch(ext) {
+            case 'jpg':
+            case 'jpeg':
+            case 'png':
+                accepted = true;
+                break;
+            default:
+                alert('You can only choose images.');
+                this.value='';
+                break;
+        }
         
+        if(accepted) {
+            var data = new FormData();
+            
+            data.append('productID', $("#productID").val());
+            $.each($('#newImage')[0].files, function(i, file) {
+                data.append('file-'+i, file);
+            });
+            
+            $.ajax({
+                type:"POST",
+                url: "../../api/add_image.php",
+                cache: false,
+                contentType: false,
+                processData: false,
+                async: false,
+                data: data,
+                success: function(result) {
+                    var resultParsed = JSON.parse(result);
+                    alert(result.status);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
     });
 });

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 20:28:03
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-29 16:07:18
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/shopping_bag/payment.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:137170642658ffd56d0e1dd2-21166640%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ea1bfd14243f26cb0f08aec41f6bff8669bd7e8' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/shopping_bag/payment.tpl',
-      1 => 1495999678,
+      1 => 1496070431,
       2 => 'file',
     ),
   ),
@@ -113,8 +113,8 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                     <div class="panel-heading"><span><i class="fa fa-lock" aria-hidden="true"></i></span>Secure Payment</div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <div class="col-md-12"><strong>Card Type:</strong></div>
                             <div class="col-md-12">
+                                <label for="CreditCardType"><strong>Card Type:<br></strong></label>
                                 <select id="CreditCardType" name="CreditCardType" class="form-control">
                                     <option value="5">Visa</option>
                                     <option value="6">MasterCard</option>
@@ -124,19 +124,23 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-12"><strong>Credit Card Number:</strong></div>
-                            <div class="col-md-12"><input type="text" class="form-control" name="car_number" value="" /></div>
+                            <div class="col-md-12">
+                                <label for="car_number"><strong>Credit Card Number:<br></strong></label>
+                                <input type="text" class="form-control hide-hints" name="car_number" id="car_number" value="" required/>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-12"><strong>Card CVV:</strong></div>
-                            <div class="col-md-12"><input type="text" class="form-control" name="car_code" value="" /></div>
+                            <div class="col-md-12">
+                                <label for="car_code"><strong>Card CVV:<br></strong></label>
+                                <input type="text" class="form-control hide-hints" name="car_code" id="car_code" value="" required/>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
                                 <strong>Expiration Date</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="">
+                                <select class="form-control hide-hints" name="expiration_month" required>
                                     <option value="">Month</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
@@ -150,10 +154,10 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                                     <option value="10">10</option>
                                     <option value="11">11</option>
                                     <option value="12">12</option>
-                            </select>
+                                </select>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="">
+                                <select class="form-control hide-hints" name="expiration_year" required>
                                     <option value="">Year</option>
                                     <option value="2015">2015</option>
                                     <option value="2016">2016</option>
@@ -166,7 +170,7 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                                     <option value="2023">2023</option>
                                     <option value="2024">2024</option>
                                     <option value="2025">2025</option>
-                            </select>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -193,32 +197,32 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Address:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="address" class="form-control" value="" />
+                                    <label for="billing_address"><strong>Address:<br></strong></label>
+                                    <input type="text" name="billing_address" id="billing_address" class="form-control hide-hints" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>City:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="city" class="form-control" value="" />
+                                    <label for="billing_city"><strong>City:<br></strong></label>
+                                    <input type="text" name="billing_city" id="billing_city" class="form-control hide-hints" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="zip_code" class="form-control" value="" />
+                                    <label for="billing_zip_code"><strong>Zip / Postal Code:<br></strong></label>
+                                    <input type="text" name="billing_zip_code" id="billing_zip_code" class="form-control hide-hints" value=""  required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Country:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" name="country" value="" />
+                                    <label for="billing_country"><strong>Country:<br></strong></label>
+                                    <input type="text" name="billing_country" id="billing_country" class="form-control hide-hints" value=""  required/>
                                 </div>
                             </div>
                         </div>
                         <!--BILLING FORM END-->
-                        <input type="checkbox" id="addressesAreTheSame">  My Shipping address is the same as my billing address.</input>
+                        <label><input type="checkbox" id="addressesAreTheSame"/> My Shipping address is the same as my billing address.</label>
                         
                         <!--SHIPPING FORM-->
                         <div id="shipping">
@@ -236,27 +240,27 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Address:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="address" class="form-control" value="" />
+                                    <label for="shipping_address"><strong>Address:<br></strong></label>
+                                    <input type="text" name="shipping_address" id="shipping_address" class="form-control hide-hints" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>City:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="city" class="form-control" value="" />
+                                    <label for="shipping_city"><strong>City:<br></strong></label>
+                                    <input type="text" name="shipping_city" id="shipping_city" class="form-control hide-hints" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="zip_code" class="form-control" value="" />
+                                    <label for="shipping_zip_code"><strong>Zip / Postal Code:<br></strong></label>
+                                    <input type="text" name="shipping_zip_code" id="shipping_zip_code" class="form-control hide-hints" value=""  required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Country:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" name="country" value="" />
+                                    <label for="shipping_country"><strong>Country:<br></strong></label>
+                                    <input type="text" name="shipping_country" id="shipping_country" class="form-control hide-hints" value=""  required/>
                                 </div>
                             </div>
                         </div>
@@ -264,14 +268,15 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <button type="submit" value="Submit">Confirm</button>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="button" value="click" id="submit_button" class="btn btn-default" onclick="beforeSubmit();">Confirm</button>
             </div>
         </form>
     </div> 
 </div>
 
-
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/validate_payment.js"></script>
 <script>
     var addresses = <?php echo json_encode($_smarty_tpl->tpl_vars['addresses']->value);?>
 ;
@@ -289,16 +294,16 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
         if(this.value != -1){
             var address = addresses[this.value];
             
-            $('#billing input[name=address]').val(address.address);
-            $('#billing input[name=city]').val(address.city);
-            $('#billing input[name=zip_code]').val(address.zipnumber);
-            $('#billing input[name=country]').val(address.country);
+            $('#billing_address').val(address.address);
+            $('#billing_city').val(address.city);
+            $('#billing_zip_code').val(address.zipnumber);
+            $('#billing_country').val(address.country);
         }
         else{
-            $('#billing input[name=address]').val("");
-            $('#billing input[name=city]').val("");
-            $('#billing input[name=zip_code]').val("");
-            $('#billing input[name=country]').val("");
+            $('#billing_address').val("");
+            $('#billing_city').val("");
+            $('#billing_zip_code').val("");
+            $('#billing_country').val("");
         }
     });
     
@@ -307,31 +312,18 @@ images/thumbnails/<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?
         if(this.value != -1){
             var address = addresses[this.value];
             
-            $('#shipping input[name=address]').val(address.address);
-            $('#shipping input[name=city]').val(address.city);
-            $('#shipping input[name=zip_code]').val(address.zipnumber);
-            $('#shipping input[name=country]').val(address.country);
+            $('#shipping_address').val(address.address);
+            $('#shipping_city').val(address.city);
+            $('#shipping_zip_code').val(address.zipnumber);
+            $('#shipping_country]').val(address.country);
         }
         else{
-            $('#shipping input[name=address]').val("");
-            $('#shipping input[name=city]').val("");
-            $('#shipping input[name=zip_code]').val("");
-            $('#shipping input[name=country]').val("");
+            $('#shipping_address').val("");
+            $('#shipping_city').val("");
+            $('#shipping_zip_code').val("");
+            $('#shipping_country').val("");
         }
     });
-    
-    $('#addressesAreTheSame').click(function() {
-        $('#shipping').toggle();
-    });
-    
-    function validateForm() {
-        if($('#addressesAreTheSame').is(':checked')){
-            $('#shipping input[name=address]').val( $('#billing input[name=address]').val());
-            $('#shipping input[name=city]').val($('#billing input[name=city]').val());
-            $('#shipping input[name=zip_code]').val($('#billing input[name=zip_code]').val());
-            $('#shipping input[name=country]').val($('#billing input[name=country]').val());
-        }
-    };
 </script>
 
 

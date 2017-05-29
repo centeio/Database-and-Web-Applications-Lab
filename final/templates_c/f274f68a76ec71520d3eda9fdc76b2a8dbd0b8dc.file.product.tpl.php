@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-05-28 23:16:50
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-29 15:08:23
          compiled from "/opt/lbaw/lbaw1611/public_html/final/templates/products/product.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:64699621758fe772517a9c0-91842440%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f274f68a76ec71520d3eda9fdc76b2a8dbd0b8dc' => 
     array (
       0 => '/opt/lbaw/lbaw1611/public_html/final/templates/products/product.tpl',
-      1 => 1496009806,
+      1 => 1496066893,
       2 => 'file',
     ),
   ),
@@ -153,7 +153,10 @@ images/products/<?php echo $_smarty_tpl->tpl_vars['images']->value[$_smarty_tpl-
                             <?php }} ?>
                             <div id="addNewImage" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div id="insideAddNewImage">
-                                    <i class="fa fa-plus " aria-hidden="true"></i>
+                                    <label for="newImage">
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </label>
+                                    <input id="newImage" type="file" accept=".jpg,.png,.jpeg" />
                                 </div>
                             </div>
                         </div>

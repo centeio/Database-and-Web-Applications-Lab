@@ -125,7 +125,6 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
     function rememberUser($id) {
         global $conn;
-        global $BASE_DIR;
         
         $selector = randomKey(12);
         $validator = randomKey(20);
@@ -136,10 +135,8 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
         $stmt = $conn->prepare("INSERT INTO auth_tokens (selector , \"hashedValidator\" , userid, expires) values (?, ?, ?, ?);");
         $stmt->execute(array($selector, $hash, $id, date('Y-m-d H:i:s', $expires)));
         }
-        catch(Exception $e){
-            $errorLog = $BASE_DIR . 'config/error_log.txt';
-            
-            file_put_contents($errorLog,date(DATE_RSS) . "\n" . $e->getMessage() . "\n\n" , FILE_APPEND | LOCK_EX);
+        catch(Exception $e){            
+            logError($e->getMessage());
             
             return false;
         }
@@ -222,6 +219,9 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
     } catch(Exception $e) {
         $conn->rollBack();
+        
+        logError($e->getMessage());
+        
         return "Something went wrong with the server. Apologies!";
     }
   }
@@ -387,6 +387,8 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
             $answer['status'] = "Address already added!";
             $answer['addressID'] = $addressResult[0]['id'];
             
+            logError($e->getMessage());
+
             return json_encode($answer);
         }
         
@@ -423,6 +425,8 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
         } catch(Exception $e) {
             $conn->rollBack();
+            
+            logError($e->getMessage());
             
             $answer['status'] = "Something went wrong with the server. Apologies.";
             
@@ -465,6 +469,8 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
         } catch(Exception $e) {
             $conn->rollBack();
+            
+            logError($e->getMessage());
             
             $answer['status'] = "Something went wrong with the server. Apologies.";
             
